@@ -1,7 +1,7 @@
 import React from 'react'
 import '@/styles/header.css'
 
-export default function Home() {
+const Header = () => {
   return (
     <>
       <header className="header">
@@ -101,3 +101,5 @@ export default function Home() {
     </>
   );
 };
+
+export default Header;
