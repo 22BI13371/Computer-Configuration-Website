@@ -4,24 +4,6 @@ import '@/styles/completebuild.css'
 const completebuild = () => {
   return (
     <>
-      <body>
-      <header class="header">
-          <nav class="navbar">
-              <div className="nav-links">
-                <a href="/">Home</a>
-                <a href="/builder">Builds</a>
-                <a href="/products">Products</a>
-                <a href="/complete-build">Complete Builds</a>
-                <a href="#">Forum</a>
-                <a href="#">Contact</a>
-              </div>
-              <div class="nav-buttons">
-                  <button class="btn">Sign in</button>
-                  <button class="btn">Register</button>
-              </div>
-          </nav>
-      </header>
-
       <section class="page-title">
           <h1>Complete PC builds</h1>
       </section>
@@ -164,12 +146,7 @@ const completebuild = () => {
               <button class="page-number">68</button>
           </div>
           <button class="pagination-btn">Next</button>
-      </div>
-
-      <footer class="footer">
-          <p>Thank you for visiting!</p>
-      </footer>
-      </body>    
+      </div> 
     </>
   )
 }
