@@ -13,7 +13,8 @@ const completebuild = () => {
           <input type="text" class="search-input" placeholder="Hinted search text"></input>
       </section>
 
-      <section class="builds-gallery">
+        <section class="container">
+        <section class="builds-gallery">
           <div class="build-item">
               <img src="pc_build.jpg" alt="PC Build"></img>
               <div class="build-info">
@@ -134,8 +135,8 @@ const completebuild = () => {
                   <button class="btn">Price: $1500</button>
               </div>
           </div>
-      </section>
-
+        </section>
+        </section>
       <div class="pagination">
           <button class="pagination-btn">Previous</button>
           <div class="page-numbers">
