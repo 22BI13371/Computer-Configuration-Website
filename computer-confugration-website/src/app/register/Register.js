@@ -1,10 +1,9 @@
-// src/app/login/Login.js
-"use client"; // Add this line to declare this component as a Client Component
+"use client";
 
 import React from "react";
 
-function Login({ onRegisterClick }) {
-  console.log("Rendering Login Component"); // Moved this up to ensure it's logged on render
+function Register({ onLoginClick }) {
+  console.log("Rendering Register Component");
   return (
     <div style={styles.app}>
       <style>{`
@@ -14,31 +13,35 @@ function Login({ onRegisterClick }) {
         .input { display: block; width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #b2dfdb; border-radius: 5px; }
         .btn-primary { width: 100%; padding: 10px; background-color: #4fd0e9; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
         .btn-primary:hover { background-color: #38c0d7; }
-        .forgot-password { color: #38c0d7; cursor: pointer; margin: 10px 0; }
-        hr { border: 1px solid #ccc; margin: 20px 0; }
+        .note { height: auto; width: 100%; border: none; font-size: 0.9em; color: #666; text-align: left; }
         .toggle-link { width: 100%; padding: 10px; background-color: #fff; color: #4fd0e9; border: solid; border-radius: 5px; cursor: pointer; }
-        .text-align {text-align: left; color: #000000; font-weight: bold; margin-bottom: 6px;}
       `}</style>
 
       <div className="auth-container">
-        <h2>Your account</h2>
+        <h2>Registration</h2>
         <div className="auth-box">
-          <h3>Sign in</h3>
+          <h3>Create a new account</h3>
+          <input type="text" placeholder="Username" className="input" />
+          <input type="email" placeholder="Email" className="input" />
+          <input type="email" placeholder="Email (again)" className="input" />
+          <p className="note">
+            Note: An account activation email will be sent to the email address
+            you provide.
+          </p>
+
+          <input type="password" placeholder="Password" className="input" />
           <input
-            type="text"
-            placeholder="Username or Email"
+            type="password"
+            placeholder="Password (again)"
             className="input"
           />
-          <input type="password" placeholder="Password" className="input" />
-          <button className="btn-primary">Sign In</button>
-          <p className="forgot-password">Forgot password?</p>
-          <hr />
-          <p className="text-align">
-            Not a member? <br />
+          <button className="btn-primary">Register</button>
+          <p>
+            Already a member?{" "}
+            <button onClick={onLoginClick} className="toggle-link">
+              Sign in
+            </button>
           </p>
-          <button onClick={onRegisterClick} className="toggle-link">
-            Register here
-          </button>
         </div>
       </div>
     </div>
@@ -55,4 +58,4 @@ const styles = {
   },
 };
 
-export default Login;
+export default Register;
