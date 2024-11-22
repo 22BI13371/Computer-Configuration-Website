@@ -1,0 +1,156 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1f2937; /* Dark background */
+    color: #ffffff;
+}
+
+/* Header */
+.header {
+    background-color: #1f2937;
+    padding: 1rem;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #ffffff;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.nav-buttons .btn {
+    color: #1f2937;
+    background-color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: #374151;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background-color: #14b8a6;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Complete Builds Section */
+.complete-builds {
+    max-width: 1600px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    gap: 2rem;
+    background-color: #F7FFF7;
+}
+
+.builds-text {
+    width: 20%;
+}
+
+.builds-text h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.builds-text p {
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.builds-gallery {
+    display: flex;
+    flex: 2;
+    gap: 1rem;
+}
+
+.build-item {
+    background-color: #e5e7eb;
+    color: #1f2937;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    height: 400px;
+}
+
+.build-item img {
+    width: 100%;
+    height: 220px;
+}
+
+.build-info {
+    padding: 1rem;
+}
+
+.user {
+    font-size: 0.9rem;
+    color: #14b8a6;
+}
+
+.build-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.build-specs {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #1f2937;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.footer {
+    background-color: #1f2937; /* Same dark color as header */
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
