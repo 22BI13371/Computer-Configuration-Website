@@ -52,6 +52,7 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    color: white;
 }
 
 .hero p {
@@ -73,12 +74,11 @@ body {
 .complete-builds {
     max-width: 1600px;
     width: 100%;
-    height: 400px;
-    padding-bottom: 10px;
+    height: auto;
     margin-bottom: 10px;
+    padding: 10px;
     display: flex;
     gap: 2rem;
-    padding: 4rem 1rem;
     background-color: #F7FFF7;
 }
 
@@ -110,12 +110,12 @@ body {
     overflow: hidden;
     text-align: center;
     width: 100%;
-    height: auto;
+    height: 400px;
 }
 
 .build-item img {
     width: 100%;
-    height: auto;
+    height: 220px;
 }
 
 .build-info {
