@@ -6,6 +6,7 @@ import Image from 'next/image';
 import picture from '@/img/pic1.jpg';
 
 export default function Home() {
+  const router = useRouter()
   return (
     <>
       <section className="hero">
@@ -102,4 +103,4 @@ export default function Home() {
       </section>
     </>
   );
-}
+};
