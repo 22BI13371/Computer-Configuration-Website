@@ -191,7 +191,7 @@ async function seedStorage() {
     CREATE TABLE IF NOT EXIST comments (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
       capacity INT NOT NULL,
-      price_gb INT NOT NULL,
+      price_per_gb INT NOT NULL,
       type TEXT NOT NULL,
       cache INT NOT NULL,
       form_factor TEXT NOT NULL,
