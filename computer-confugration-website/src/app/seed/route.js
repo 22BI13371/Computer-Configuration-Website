@@ -46,7 +46,7 @@
 //       created_at VARCHAR,
 //       FOREIGN KEY user_id  REFERENCES users,
 //       FOREIGN KEY post_id  REFERENCES posts
-      
+
 //     );
 //   `;
 // }
@@ -109,7 +109,7 @@
 //   `;
 // }
 
-// async function seedCpu() {
+// async function seedCooler() {
 //   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
 //   await client.sql`
@@ -118,6 +118,7 @@
 //       fan_rpn TEXT NOT NULL,
 //       noise_level TEXT NOT NULL,
 //       color TEXT NOT NULL,
+//       height INT,
 //       cpu_socket TEXT NOT NULL,
 //       water_cooled BOOLEAN NOT NULL,
 //       fanless BOOLEAN NOT NULL
@@ -191,7 +192,7 @@
 //     CREATE TABLE IF NOT EXIST comments (
 //       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
 //       capacity INT NOT NULL,
-//       price_gb INT NOT NULL,
+//       price_per_gb INT NOT NULL,
 //       type TEXT NOT NULL,
 //       cache INT NOT NULL,
 //       form_factor TEXT NOT NULL,
@@ -225,6 +226,82 @@
 //       external_power TEXT NOT NULL,
 //       display_port_14a_output INT NOT NULL,
 //       hdmi_21a_out[uts] INT NOT NULL
+//     );
+//   `;
+// }
+
+// async function seedCase() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+//   await client.sql`
+//     CREATE TABLE IF NOT EXIST comments (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       type TEXT NOt NULL,
+//       color TEXT NOt NULL,
+//       power_supply TEXT,
+//       side_panel TEXT NOT NULL,
+//       power_supply_shroud TEXT NOT NULL,
+//       front_panel_usb TEXT NOT NULL,
+//       motherboard_form_factor TEXT NOT NULL,
+//       max_video_card_length TEXT NOT NULL,
+//       drive_bays TEXT NOT NULL,
+//       expansion_slots TEXT NOT NULL,
+//       dimensions TEXT NOT NULL,
+//       volume TEXT NOT NULL
+//     );
+//   `;
+// }
+
+// async function seedPowerSupply() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+//   await client.sql`
+//     CREATE TABLE IF NOT EXIST comments (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       type TEXT NOt NULL,
+//       efficiency_rating TEXT NOT NULL,
+//       wattage INT NOT NULL,
+//       length INT NOT NULL,
+//       modular TEXT NOT NULL,
+//       color TEXT NOT NULL,
+//       fanless BOOLEAN NOT NULL,
+//       atx_4_pin_connectors INT NOT NULL,
+//       eps_8_pin_connectors INT NOT NULL,
+//       pcie_12_4_pin_12vhpwrd_connectors INT NOT NULL,
+//       pcie_12_pin_connectors INT NOT NULL,
+//       pcie_8_pin_connectors INT NOT NULL,
+//       pcie_6_2_pin_connectors INT NOT NULL,
+//       pcie_6_pin_connectors INT NOT NULL,
+//       sata_connectors INT NOT NULL,
+//       molex_4_pin_connectors INT NOT NULL
+//     );
+//   `;
+// }
+
+// async function seedMonitor() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+//   await client.sql`
+//     CREATE TABLE IF NOT EXIST comments (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       screen_size INT NOT NULL,
+//       resolution TEXT NOT NULL,
+//       refresh_rate INT NOT NULL,
+//       response_time INT NOT NULL,
+//       panel_type TEXT NOT NULL,
+//       aspect_ratio TEXT NOT NULL,
+//       color TEXT NOT NULL,
+//       brightness INT NOT NULL,
+//       pixel_pitch INT NOT NULL,
+//       widescreen BOOLEAN NOT NULL,
+//       curved_screen BOOLEAN NOT NULL,
+//       curvature_radius TEXT,
+//       frame_sync TEXT NOT NULL,
+//       built_in_speaker BOOLEAN NOT NULL,
+//       viewing_radius TEXT NOT NULL,
+//       inputs TEXT NOT NULL,
+//       vesa_mounting TEXT,
+//       hdr_tier TEXT
 //     );
 //   `;
 // }
