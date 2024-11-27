@@ -1,7 +1,6 @@
-// components/ProductCard.js
 import Image from "next/image";
 
-const ProductCard = ({ picture, title, specs, price }) => {
+const BuildCard = ({ picture, title, specs, price }) => {
   return (
     <div className="build-item">
       <Image src={picture} alt={title} width={200} height={150} />
@@ -16,4 +15,4 @@ const ProductCard = ({ picture, title, specs, price }) => {
   );
 };
 
-export default ProductCard;
+export default BuildCard;

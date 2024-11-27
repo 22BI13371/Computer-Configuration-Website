@@ -1,14 +1,13 @@
 import picture from '@/img/pic1.jpg';
+
 const products = [
     {
       id: 1,
-      picture: "/img/pic1.jpg",
+      picture: picture,
       title: "Exceptional Black Build with Core i7-12700F",
       specs: [
-        "Intel Core i7-12700F",
-        "GeForce RTX 3060 12GB",
-        "16GB DDR4 3200",
-        "500GB SSD",
+        "Intel Core i7-12700F | GeForce RTX 3060 12GB",
+        "16GB DDR4 3200 | 500GB SSD",
         "LGA170 Semi-Modular 600W",
       ],
       price: 1500,
@@ -236,5 +235,5 @@ const products = [
     },
 ];
   
-  export default products;
+export default products;
   

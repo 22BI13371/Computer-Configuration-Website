@@ -1,10 +1,21 @@
+'use client';
 import React from 'react'
 import '@/styles/completebuild.css'
-import picture from '@/img/pic1.jpg'
-import Image from 'next/image'
+import BuildCard from './buildcard'
+import { useState } from 'react'
+import products from './build_data';
+
+const ITEMS_PER_PAGE = 12;
 
 const completebuild = () => {
-  return (
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const currentProducts = products.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+
+    return (
     <>
         <section className="page-title">
             <h1>Complete PC builds</h1>
@@ -15,141 +26,31 @@ const completebuild = () => {
             <input type="text" className="search-input" placeholder="Hinted search text"></input>
         </section>
 
-            <section className="container">
+        <section className="container">
             <section className="builds-gallery">
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
-            <div className="build-item">
-                <Image src={picture} alt='PC build'></Image>
-                <div className="build-info">
-                    <h2>Exceptional Black Build with Core i7-12700F</h2>
-                    <p>Intel Core i7-12700F | GeForce RTX 3060 12GB</p>
-                    <p>16GB DDR4 3200 | 500GB SSD</p>
-                    <p>LGA170 Semi-Modular 600W</p>
-                    <button className="btn">Price: $1500</button>
-                </div>
-            </div>
+            {currentProducts.map((product) => (
+                <BuildCard
+                    key={product.id}
+                    picture={product.picture}
+                    title={product.title}
+                    specs={product.specs}
+                    price={product.price}
+                />
+            ))}
             </section>
-            </section>
+        </section>
+
         <div className="pagination">
-            <button className="pagination-btn">Previous</button>
-            <div className="page-numbers">
-                <button className="page-number active">1</button>
-                <button className="page-number">2</button>
-                <button className="page-number">3</button>
-                <span>...</span>
-                <button className="page-number">68</button>
-            </div>
-            <button className="pagination-btn">Next</button>
-        </div> 
+            {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                    key={index}
+                    onClick={() => setCurrentPage(index + 1)}
+                    className={index + 1 === currentPage ? "active" : ""}
+                >
+                    {index + 1}
+                </button>
+            ))}
+        </div>
     </>
   )
 }
