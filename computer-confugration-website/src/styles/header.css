@@ -25,9 +25,14 @@ body {
     align-items: center;
 }
 
-.nav-links a {
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-items {
     color: #ffffff;
-    margin-right: 1rem;
     text-decoration: none;
 }
 
