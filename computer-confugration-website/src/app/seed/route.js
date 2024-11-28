@@ -351,6 +351,7 @@ export async function GET() {
     await seedUsers();
     await seedPosts();
     await seedComments();
+    await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
