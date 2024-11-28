@@ -31,6 +31,7 @@ const completebuild = () => {
             {currentProducts.map((product) => (
                 <BuildCard
                     key={product.id}
+                    id={product.id}
                     picture={product.picture}
                     title={product.title}
                     specs={product.specs}
