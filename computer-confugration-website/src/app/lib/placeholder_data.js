@@ -1,4 +1,4 @@
-let date = new Date().toISOString.split('T')[0];
+let date = new Date().toISOString().split('T')[0];
 
 const users = [
   {
