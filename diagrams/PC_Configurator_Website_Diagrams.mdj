@@ -37260,7 +37260,7 @@
 										},
 										{
 											"_type": "ERDColumnView",
-											"_id": "AAAAAAGTcYZBF73Rk98=",
+											"_id": "AAAAAAGTc3e9jMmm65Y=",
 											"_parent": {
 												"$ref": "AAAAAAGSzAftZNFQ+lE="
 											},
@@ -37336,7 +37336,7 @@
 										},
 										{
 											"_type": "ERDColumnView",
-											"_id": "AAAAAAGTcYZBC73OPB4=",
+											"_id": "AAAAAAGTc3e9fcmjsiE=",
 											"_parent": {
 												"$ref": "AAAAAAGSzAftZNFQ+lE="
 											},
@@ -46059,7 +46059,8 @@
 							},
 							"name": "Current_Price",
 							"documentation": "in USD * 100 ( in Cents)\n",
-							"type": "INTEGER"
+							"type": "INTEGER",
+							"nullable": true
 						},
 						{
 							"_type": "ERDColumn",

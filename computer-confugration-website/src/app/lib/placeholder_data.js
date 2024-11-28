@@ -263,6 +263,212 @@ const comments = [
   },
 ];
 
+const pcPart = [
+  {
+    id: cpu[0].id,
+    name: 'Intel Core i5-14400F 2.5 GHz 10-Core Processor',
+    current_price: 175.81,
+    category: 'CPU',
+    manufacturer: 'Intel',
+    part_number: 'BX8071514400F',
+  },
+  {
+    id: cpu[1].id,
+    name: 'AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor',
+    current_price: 459.0,
+    category: 'CPU',
+    manufacturer: 'AMD',
+    part_number: '100-100000910WOF',
+  },
+  {
+    id: cpu[2].id,
+    name: 'Intel Core i9-14900K 3.2 GHz 24-Core Processor',
+    current_price: 438.49,
+    category: 'CPU',
+    manufacturer: 'Intel',
+    part_number: 'BX8071514900K',
+  },
+  {
+    id: cooler[0].id,
+    name: 'EK AIO Elite 360 D-RGB 66.04 CFM Liquid CPU Cooler',
+    current_price: 157.49,
+    category: 'Cooler',
+    manufacturer: 'EK',
+    part_number: 'EK-AIO Elite 360 D-RGB, 3831109829820',
+  },
+  {
+    id: cooler[1].id,
+    name: 'Cooler Master Hyper 212 Black Edition 42 CFM CPU Cooler',
+    current_price: 31.48,
+    category: 'Cooler',
+    manufacturer: 'Cooler Master',
+    part_number: 'RR-212S-20PK-R1',
+  },
+  {
+    id: cooler[2].id,
+    name: 'Noctua NH-D15 chromax.black 82.52 CFM CPU Cooler',
+    current_price: 119.95,
+    category: 'Cooler',
+    manufacturer: 'Noctua',
+    part_number: 'NH-D15 CHROMAX.BLACK, NH-D15 CH.BK, NH-D15-CH-BK',
+  },
+  {
+    id: motherboard[0].id,
+    name: 'MSI B760M GAMING PLUS WIFI Micro ATX LGA1700',
+    current_price: null,
+    category: 'Motherboard',
+    manufacturer: 'MSI',
+    part_number: 'B760M GAMING PLUS WIFI, 911-7D99-017, 7D99-017R, B760MGAPLWI',
+  },
+  {
+    id: motherboard[1].id,
+    name: 'MSI MAG B650 TOMAHAWK WIFI ATX AM5 Motherboard',
+    current_price: 179.99,
+    category: 'Motherboard',
+    manufacturer: 'MSI',
+    part_number:
+      'MAG B650 TOMAHAWK WIFI, 7D75-001R, B650TOMAHAWKWIFI, 911-7D75-001',
+  },
+  {
+    id: motherboard[2].id,
+    name: 'Gigabyte Z790 AORUS ELITE AX ATX LGA1700 Motherboard',
+    current_price: 199.99,
+    category: 'Motherboard',
+    manufacturer: 'Gigabyte',
+    part_number: 'Z790 AORUS ELITE AX',
+  },
+  {
+    id: memory[0].id,
+    name: 'Corsair Vengeance 32 GB (2 x 16 GB) DDR5-5600 CL36 Memory',
+    current_price: 104.99,
+    category: 'Memory',
+    manufacturer: 'Corsair',
+    part_number: 'CMK32GX5M2B5600C36',
+  },
+  {
+    id: memory[1].id,
+    name: 'G.Skill Flare X5 32 GB (2 x 16 GB) DDR5-6000 CL30 Memory',
+    current_price: 99.99,
+    category: 'Memory',
+    manufacturer: 'G.Skill',
+    part_number: 'F5-6000J3038F16GX2-FX5',
+  },
+  {
+    id: memory[2].id,
+    name: 'TEAMGROUP T-Create Expert 32 GB (2 x 16 GB) DDR5-6000 CL30 Memory',
+    current_price: 84.99,
+    category: 'Memory',
+    manufacturer: 'TEAMGROUP',
+    part_number: 'CTCED532G6000HC30DC01',
+  },
+  {
+    id: storage[0].id,
+    name: 'Kingston NV2 500 GB M.2-2280 PCIe 4.0 X4 NVME Solid State Drive',
+    current_price: 37.99,
+    category: 'Storage',
+    manufacturer: 'Kingston',
+    part_number: 'SNV2S/500G',
+  },
+  {
+    id: storage[0].id,
+    name: 'Samsung 990 Pro 2 TB M.2-2280 PCIe 4.0 X4 NVME Solid State Drive',
+    current_price: '159.99',
+    category: 'Storage',
+    manufacturer: 'Samsung',
+    part_number: 'MZ-V9P2T0BW, MZ-V9P2T0B/AM',
+  },
+  {
+    id: storage[0].id,
+    name: 'Crucial P3 1 TB M.2-2280 PCIe 3.0 X4 NVME Solid State Drive',
+    current_price: 60.85,
+    category: 'Storage',
+    manufacturer: 'Crucial',
+    part_number: 'CT1000P3SSD8',
+  },
+  {
+    id: videoCard[0].id,
+    name: 'MSI VENTUS 2X BLACK OC GeForce RTX 4060 8 GB Video Card',
+    current_price: 299.0,
+    category: 'Video Card',
+    manufacturer: 'MSI',
+    part_number:
+      'RTX 4060 VENTUS 2X BLACK 8G OC, GeForce RTX 4060 VENTUS 2X BLACK 8G OC, 912-V516-004, V516-004R, G4060V2XB8C',
+  },
+  {
+    id: videoCard[1].id,
+    name: 'MSI GeForce RTX 3060 Ventus 2X 12G GeForce RTX 3060 12GB 12 GB Video Card',
+    current_price: 279.99,
+    category: 'Video Card',
+    manufacturer: 'MSI',
+    part_number:
+      'RTX 4060 VENTUS 2X BLACK 8G OC, GeForce RTX 4060 VENTUS 2X BLACK 8G OC, 912-V516-004, V516-004R, G4060V2XB8C',
+  },
+  {
+    id: videoCard[2].id,
+    name: 'Sapphire PULSE Radeon RX 7900 XT 20 GB Video Card',
+    current_price: 649.98,
+    category: 'Video Card',
+    manufacturer: 'Sapphire',
+    part_number: '11323-02-20G',
+  },
+  {
+    id: pcCase[0].id,
+    name: 'Corsair 4000D Airflow ATX Mid Tower Case',
+    current_price: 74.94,
+    category: 'Case',
+    manufacturer: 'Corsair',
+    part_number: 'CC-9011200-WW',
+  },
+  {
+    id: pcCase[1].id,
+    name: 'NZXT H5 Flow (2022) ATX Mid Tower Case',
+    current_price: 59.99,
+    category: 'Case',
+    manufacturer: 'NZXT',
+    part_number: 'CC-H51FW-01',
+  },
+  {
+    id: pcCase[2].id,
+    name: 'Corsair iCUE 4000X RGB ATX Mid Tower Case',
+    current_price: 97.98,
+    category: 'Case',
+    manufacturer: 'Corsair',
+    part_number: 'CC-9011204-WW',
+  },
+  {
+    id: powerSupply[0].id,
+    name: 'MSI MAG A650BN 650 W 80+ Bronze Certified ATX Power Supply',
+    current_price: 49.99,
+    category: 'Power Supply',
+    manufacturer: 'MSI',
+    part_number: 'MAG A650BN, 306-7ZP2B11-CE0',
+  },
+  {
+    id: powerSupply[1].id,
+    name: 'Corsair RM750e (2023) 750 W 80+ Gold Certified Fully Modular ATX Power Supply',
+    current_price: 99.99,
+    category: 'Power Supply',
+    manufacturer: 'Corsair',
+    part_number: 'CP-9020262-NA, CP-9020262-UK, CP-9020262-EU, CP-9020262-AU',
+  },
+  {
+    id: powerSupply[2].id,
+    name: 'MSI A1000G PCIE5 1000 W 80+ Gold Certified Fully Modular ATX Power Supply',
+    current_price: 129.44,
+    category: 'Power Supply',
+    manufacturer: 'MSI',
+    part_number: 'MPG A1000G PCIE 5, 306-7ZP7C11-CE0',
+  },
+  // {
+  //   id:,
+  //   name:,
+  //   current_price:,
+  //   category:,
+  //   manufacturer:,
+  //   part_number:,
+  // },
+];
+
 const cpu = [
   // Intel Core i5-14400F 2.5 GHz 10-Core Processor
   {
@@ -516,20 +722,20 @@ const memory = [
     ecc_registered: 'Non-ECC / Unbuffered',
     heat_spreader: true,
   },
-  // G.Skill Flare X5 32 GB (2 x 16 GB) DDR5-6000 CL36 Memory
+  // TEAMGROUP T-Create Expert 32 GB (2 x 16 GB) DDR5-6000 CL30 Memory
   {
     id: 'a0bc2d2b-b2cb-445a-bd2d-14d9cb833457',
     speed: 'DDR5-6000',
     form_factor: '288-pin DIMM (DDR5)',
     modules: '2 x 16GB',
-    price_gb: 2.625,
+    price_gb: 2.562,
     color: 'Black',
-    first_word_latency: 12,
-    cas_latency: 36,
+    first_word_latency: 10,
+    cas_latency: 30,
     voltage: 1.35,
-    timing: '36-36-36-96',
+    timing: '30-36-36-76',
     ecc_registered: 'Non-ECC / Unbuffered',
-    heat_spreader: false,
+    heat_spreader: true,
   },
 ];
 
@@ -567,7 +773,7 @@ const storage = [
   },
 ];
 
-const video_card = [
+const videoCard = [
   // MSI VENTUS 2X BLACK OC GeForce RTX 4060 8 GB Video Card
   {
     id: '70b0ba27-5594-4eb4-9a63-18343f27ba10',
@@ -814,3 +1020,18 @@ const monitor = [
     hdr_tier: false,
   },
 ];
+
+export {
+  users,
+  posts,
+  comments,
+  cpu,
+  cooler,
+  motherboard,
+  memory,
+  storage,
+  videoCard,
+  pcCase,
+  powerSupply,
+  monitor,
+};
