@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import {products} from './build_data'
 
 const BuildCard = ({ id, picture, title, specs, price }) => {
   return (
     <div className="build-item">
-      <Link href={`/completebuild/build/${id}`}>{
+      <Link href={`/complete_build/build/${id}`}>{
             <>
               <Image src={picture} alt={title} width={200} height={150} />
               <div className="build-info">
