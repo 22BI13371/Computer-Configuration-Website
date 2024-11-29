@@ -31,7 +31,7 @@ export default function Home() {
             partlist, photos, and overall build experience.
           </p>
           <button className="btn-primary">
-            <Link href={'/complete_build'}>View Complete Builds</Link>
+            <Link href={'/complete-build'}>View Complete Builds</Link>
           </button>
         </div>
         <div className="builds-gallery">
