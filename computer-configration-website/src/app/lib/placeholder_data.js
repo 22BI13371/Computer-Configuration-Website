@@ -1101,12 +1101,179 @@ const pcBuilds = [
 ];
 
 const pcBuildsParts = [
+  // build 1
+  {
+    id: 'ad68176e-6502-40e6-97a1-6e9210d2ac78',
+    build_id: pcBuilds[0].id,
+    part_id: cpu[0].id,
+    quantity: 1,
+  },
+  {
+    id: '8a15dfdb-e1a5-49a8-9089-86815cf56c0e',
+    build_id: pcBuilds[0].id,
+    part_id: cooler[0].id,
+    quantity: 1,
+  },
+  {
+    id: '145a5301-60f3-45c8-9004-8bdfb8ad08ed',
+    build_id: pcBuilds[0].id,
+    part_id: motherboard[0].id,
+    quantity: 1,
+  },
+  {
+    id: '1873797b-4d13-4374-b3e9-982ea13c35ff',
+    build_id: pcBuilds[0].id,
+    part_id: memory[0].id,
+    quantity: 1,
+  },
+  {
+    id: 'f6319038-7fda-4cf9-a9bf-c213562f789c',
+    build_id: pcBuilds[0].id,
+    part_id: storage[0].id,
+    quantity: 1,
+  },
+  {
+    id: 'f2f2f836-adf9-41c0-8de9-ba15140acd43',
+    build_id: pcBuilds[0].id,
+    part_id: videoCard[0].id,
+    quantity: 1,
+  },
+  {
+    id: '6c207604-85ab-4a39-a955-de90bcd9a8bc',
+    build_id: pcBuilds[0].id,
+    part_id: pcCase[0].id,
+    quantity: 1,
+  },
+  {
+    id: 'd7fcd120-49dc-4638-afc0-a01fc93ba5e4',
+    build_id: pcBuilds[0].id,
+    part_id: powerSupply[0].id,
+    quantity: 1,
+  },
+  {
+    id: 'beaf3b43-0212-4354-9aa2-e6240d8567cd',
+    build_id: pcBuilds[0].id,
+    part_id: monitor[0].id,
+    quantity: 1,
+  },
+  // Build 2
+  {
+    id: '92f94344-ad02-408b-84f4-e4c4f4c6fab9',
+    build_id: pcBuilds[1].id,
+    part_id: cpu[1].id,
+    quantity: 1,
+  },
+  {
+    id: 'a77f9377-ae85-4455-a42b-99b3139b30d9',
+    build_id: pcBuilds[1].id,
+    part_id: cooler[1].id,
+    quantity: 1,
+  },
+  {
+    id: '3538bc68-1b66-4e8b-aea5-adabf0303aad',
+    build_id: pcBuilds[1].id,
+    part_id: motherboard[1].id,
+    quantity: 1,
+  },
+  {
+    id: '11186dc0-c955-42ae-823d-0ff80ef552d9',
+    build_id: pcBuilds[1].id,
+    part_id: memory[1].id,
+    quantity: 1,
+  },
+  {
+    id: 'dd6d758f-cab0-4ebb-86c3-aa3e207d99cd',
+    build_id: pcBuilds[1].id,
+    part_id: storage[1].id,
+    quantity: 1,
+  },
+  {
+    id: '6e1a2ae3-2936-490c-b02a-f0406cf0f551',
+    build_id: pcBuilds[1].id,
+    part_id: videoCard[1].id,
+    quantity: 1,
+  },
+  {
+    id: '1e4b8af0-6776-4e51-bff1-21af7557494c',
+    build_id: pcBuilds[1].id,
+    part_id: pcCase[1].id,
+    quantity: 1,
+  },
+  {
+    id: 'd5b8c813-ce56-4e7e-b8e0-b5b699fddf51',
+    build_id: pcBuilds[1].id,
+    part_id: powerSupply[1].id,
+    quantity: 1,
+  },
+  {
+    id: 'c254c28f-3290-4e03-855e-45d939f2e8e4',
+    build_id: pcBuilds[1].id,
+    part_id: monitor[1].id,
+    quantity: 1,
+  },
+  // Build 3
+  {
+    id: '3d29e4bc-c6d5-4a60-bc2f-1afff7981f44',
+    build_id: pcBuilds[2].id,
+    part_id: cpu[2].id,
+    quantity: 1,
+  },
+  {
+    id: '3a501755-982c-40ea-bf54-28f117908b19',
+    build_id: pcBuilds[2].id,
+    part_id: cooler[2].id,
+    quantity: 1,
+  },
+  {
+    id: '626c2def-0f4a-4a57-a2a7-6a0a97574e8c',
+    build_id: pcBuilds[2].id,
+    part_id: motherboard[2].id,
+    quantity: 1,
+  },
+  {
+    id: '23ff75f7-e82a-43db-9dd1-258b9e118ee7',
+    build_id: pcBuilds[2].id,
+    part_id: memory[2].id,
+    quantity: 1,
+  },
+  {
+    id: '5537a3c8-875d-4647-a943-5599b501dce6',
+    build_id: pcBuilds[2].id,
+    part_id: storage[2].id,
+    quantity: 1,
+  },
+  {
+    id: '1f9e1423-daa1-44d3-befa-f2a608def4fa',
+    build_id: pcBuilds[2].id,
+    part_id: videoCard[2].id,
+    quantity: 1,
+  },
+  {
+    id: 'a8e43035-0a9f-4494-84f1-117b3ad51bec',
+    build_id: pcBuilds[2].id,
+    part_id: pcCase[2].id,
+    quantity: 1,
+  },
+  {
+    id: '917bf21b-5d49-4fd9-86e5-9174b461ca86',
+    build_id: pcBuilds[2].id,
+    part_id: powerSupply[2].id,
+    quantity: 1,
+  },
+  {
+    id: 'b1169ef0-4fdd-414d-92b3-c4db3a03a234',
+    build_id: pcBuilds[2].id,
+    part_id: monitor[2].id,
+    quantity: 1,
+  },
   // {
   //   id:,
-  //   build_id:,
-  //   part_id:,
-  //   quantity:,
-  // }
+  //   build_id: pcBuilds[0].id,
+  //   part_id: memory[0].id,
+  //   quantity: 1,
+  // },
 ];
 
-export { users, posts, comments, pcParts };
+console.log(cpu[0].id);
+
+export { users, posts, comments, pcParts, pcBuilds, pcBuildsParts };

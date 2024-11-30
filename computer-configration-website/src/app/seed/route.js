@@ -1,6 +1,13 @@
 import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
-import { users, posts, comments, pcParts } from '../lib/placeholder_data';
+import {
+  users,
+  posts,
+  comments,
+  pcParts,
+  pcBuilds,
+  pcBuildsParts,
+} from '../lib/placeholder_data';
 
 const client = await db.connect();
 
@@ -102,6 +109,18 @@ async function seedPcBuilds() {
       FOREIGN KEY (user_id) REFERENCES users(id)
     );
   `;
+
+  const insertedPcBuilds = await Promise.all(
+    pcBuilds.map(
+      (pcBuild) => client.sql`
+        INSERT INTO pc_builds (id, user_id, name, created_at, is_private, allow_comments)
+        VALUES (${pcBuild.id}, ${pcBuild.user_id}, ${pcBuild.name}, ${pcBuild.created_at}, ${pcBuild.is_private}, ${pcBuild.allow_comments})
+        ON CONFLICT (id) DO NOTHING
+      `
+    )
+  );
+
+  return insertedPcBuilds;
 }
 
 async function seedPcBuildParts() {
@@ -114,9 +133,20 @@ async function seedPcBuildParts() {
       part_id UUID NOT NULL,
       quantity INT NOT NULL DEFAULT 1,
       FOREIGN KEY (build_id) REFERENCES pc_builds(id),
-      FOREIGN KEY (part_id) REFERENCES pc_oarts(id)
+      FOREIGN KEY (part_id) REFERENCES pc_parts(id)
     );
   `;
+
+  const insertedPcBuildParts = await Promise.all(
+    pcBuildsParts.map(
+      (pcBuildsPart) => client.sql`
+      INSERT INTO pc_build_parts (id, build_id, part_id, quantity)
+      VALUES (${pcBuildsPart.id}, ${pcBuildsPart.build_id}, ${pcBuildsPart.part_id}, ${pcBuildsPart.quantity})
+    `
+    )
+  );
+
+  return insertedPcBuildParts;
 }
 
 async function seedPcParts() {
@@ -150,7 +180,7 @@ async function seedPcParts() {
 }
 
 export async function GET() {
-  // console.log(JSON.stringify(pcPart[0]));
+  // console.log(cpu[0].id);
   // return Response.json(JSON.stringify(pcPart[0]));
   try {
     await client.sql`BEGIN`;
@@ -158,6 +188,8 @@ export async function GET() {
     await seedPosts();
     await seedComments();
     await seedPcParts();
+    await seedPcBuilds();
+    await seedPcBuildParts();
     await client.sql`COMMIT`;
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
