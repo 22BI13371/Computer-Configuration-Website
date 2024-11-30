@@ -1,4 +1,4 @@
-import { removeIdToJson } from './common';
+import { removeIdToJson } from './utils';
 let date = new Date().toISOString().split('T')[0];
 
 const users = [
@@ -1273,7 +1273,5 @@ const pcBuildsParts = [
   //   quantity: 1,
   // },
 ];
-
-console.log(cpu[0].id);
 
 export { users, posts, comments, pcParts, pcBuilds, pcBuildsParts };

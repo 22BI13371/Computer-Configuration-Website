@@ -179,6 +179,13 @@ async function seedPcParts() {
   return insertedPcParts;
 }
 
+async function createIndexes() {
+  await client.sql`
+    CREATE INDEX IF NOT EXISTS pc_parts_category_idx ON pc_parts (category);
+    CREATE INDEX IF NOT EXISTS pc_parts_manufacturer_idx ON pc_parts (manufacturer); 
+  `;
+}
+
 export async function GET() {
   // console.log(cpu[0].id);
   // return Response.json(JSON.stringify(pcPart[0]));
@@ -190,6 +197,7 @@ export async function GET() {
     await seedPcParts();
     await seedPcBuilds();
     await seedPcBuildParts();
+    await createIndexes();
     await client.sql`COMMIT`;
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
