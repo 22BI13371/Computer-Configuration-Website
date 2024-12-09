@@ -1,0 +1,80 @@
+.relative {
+    position: relative;
+}
+
+.dropbox-button {
+    padding: 10px 15px;
+    background-color: #1f2937;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbox-background {
+    background-color: #1f2937;
+    height: fit-content;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    border: 1px solid #ccc;
+}
+
+.dropbox-content {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dropbox-content-left {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px;
+}
+
+.product-card {
+    background-color: #374151;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.product-name {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.dropbox-content-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px 100px;
+    background-color: #1f2937;
+    color: white;
+    padding: 5px 20px 10px;
+    white-space: nowrap;
+}
+
+h3 {
+    margin: 10px 0 5px 0px;
+    font-size: 14px;
+    color: #adadad;
+    font-weight: bold;
+}
+
+li {
+    margin: 5px 0;
+    font-size: 12px;
+}

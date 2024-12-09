@@ -25,20 +25,21 @@ body {
     align-items: center;
 }
 
-.nav-links a {
-    color: #ffffff;
-    margin-right: 1rem;
-    text-decoration: none;
+.nav-links {
+    display: flex; /* Sử dụng Flexbox cho các liên kết */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 1.5rem; /* Khoảng cách giữa các mục */
 }
 
-.nav-buttons .btn {
-    color: #1f2937;
-    background-color: #ffffff;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    cursor: pointer;
-    border-radius: 5px;
+.nav-item {
+    color: #ffffff; /* Màu chữ */
+    text-decoration: none; /* Không có gạch chân */
+    text-align: center; /* Căn giữa chữ trong mục */
+}
+
+.nav-buttons {
+    display: flex; /* Căn giữa các nút */
+    gap: 1rem; /* Khoảng cách giữa các nút */
 }
 
 /* Hero Section */
