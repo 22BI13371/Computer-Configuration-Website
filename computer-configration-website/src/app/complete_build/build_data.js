@@ -11,6 +11,17 @@ const products = [
         "LGA170 Semi-Modular 600W",
       ],
       price: 1500,
+      user: "User ABC",
+      mainImage: "/images/main1.jpg",
+        gallery: ["/images/side1.jpg", "/images/side2.jpg", "/images/side3.jpg", "/images/side4.jpg"],
+        components: [
+            { name: "CPU", description: "Intel Core i7-14700K", image: "/images/cpu.jpg" },
+            { name: "GPU", description: "NVIDIA RTX 4090", image: "/images/gpu.jpg" },
+            { name: "RAM", description: "Corsair Vengeance RGB 32GB", image: "/images/ram.jpg" },
+            { name: "Motherboard", description: "ASUS ROG STRIX Z790-E", image: "/images/motherboard.jpg" },
+            { name: "Case", description: "Lian Li Evo RGB", image: "/images/case.jpg" },
+        ],
+        description: "This is a rebuild from an early 2024 system I put together. Got a new case and a few other things. Got the latest BIOS installed for the 14700K and runs great. Used for gaming and work equally.",
     },
     {
         id: 2,
