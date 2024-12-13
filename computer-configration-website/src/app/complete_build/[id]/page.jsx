@@ -5,9 +5,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'; // Import useRouter
 import products from '../build_data'; // Import your data
 
-const BuildDetail = () => {
-    const router = useRouter();
-    const { id } = router.query; // Get the dynamic `id` from the URL
+const BuildDetail = ({params}) => {
+    const { id } = params;
 
     // Find the corresponding build from the data
     const build = products.find((item) => item.id === parseInt(id));

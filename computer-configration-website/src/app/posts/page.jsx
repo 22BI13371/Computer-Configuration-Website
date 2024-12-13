@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import posts from './posts.json'; // Importing the local posts.json file
-
+import posts from './posts.js'; // Importing data from the posts.js file
+import Link from 'next/link.js';
 export default function Posts() {
     return (
         <div className="p-5">
@@ -8,7 +7,7 @@ export default function Posts() {
             <ul>
                 {posts.map(post => (
                     <li key={post.id} className="mb-2">
-                        <Link className="text-blue-500 hover:underline" href={`/posts/${post.id}`}>
+                        <Link href={`/posts/${post.id}`} className="text-blue-500 hover:underline">
                             {post.title}
                         </Link>
                     </li>

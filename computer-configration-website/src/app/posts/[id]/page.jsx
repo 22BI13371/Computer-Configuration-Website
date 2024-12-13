@@ -1,9 +1,9 @@
-import posts from '../posts.json';// Importing the local posts.json file
+import posts from '../posts.js'; // Adjusted import path to point to the local posts.js file
 
 export default function Post({ params }) {
-    const { id } = params; // Extract the id from params
-    const post = posts.find(post => post.id === parseInt(id)); // Find the post by its ID
-    console.log("Post ID:", id);
+    const { id } = params; // Extract the id from the URL
+    const post = posts.find(post => post.id === parseInt(id)); // Find the post by id
+
     if (!post) {
         return <p>Post not found.</p>;
     }

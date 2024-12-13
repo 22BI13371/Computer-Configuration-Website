@@ -31,7 +31,7 @@ const completebuild = () => {
             <div className="builds-gallery">
                 {currentProducts.map((product) => (
                 <div key={product.id}>
-                    <Link href={`/build/${product.id}`} legacyBehavior>
+                    <Link href={`/complete_build/${product.id}`} legacyBehavior>
                     <a>
                         <BuildCard
                             id={product.id}
