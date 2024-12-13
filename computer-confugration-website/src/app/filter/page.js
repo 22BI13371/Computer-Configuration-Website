@@ -65,6 +65,46 @@ const Sidebar = () => {
       {/* Inline CSS */}
       <style>
         {`
+          .form-range {
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.max-value {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+
           .filter-section {
             width: 300px; /* Set sidebar width */
             padding: 15px;
@@ -109,17 +149,35 @@ const Sidebar = () => {
         {/* Price Filter */}
         <div className="filter-group">
           <div className="filter-title">Price</div>
-          <input
-            type="range"
-            className="form-range"
-            min="0"
-            max="71169"
-            value={price}
-            onChange={handlePriceChange}
-          />
+          <div className="slider-container" style={{ position: "relative" }}>
+            <input
+              type="range"
+              className="form-range"
+              min="0"
+              max="71169"
+              value={price}
+              onChange={handlePriceChange}
+              style={{ width: "100%" }}
+            />
+            <span
+              className="max-value"
+              style={{
+                position: "absolute",
+                right: "0", // Position the max value at the rightmost side of the container
+                top: "-25px", // Adjust the vertical positioning as needed
+                fontWeight: "bold",
+                fontSize: "14px",
+                color: "#333",
+              }}
+            >
+              ${price}
+            </span>
+          </div>
           <div className="d-flex justify-content-between">
             <span>$0</span>
-            <span>${price}</span>
+            <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+              ${price}
+            </span>
           </div>
         </div>
 
