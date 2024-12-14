@@ -1,0 +1,79 @@
+.user-profile-box {
+  display: flex;
+  align-items: center;
+  background-color: #2f2f2f; 
+  color: white;
+  border-radius: 10px; 
+  padding: 5px 15px;
+  gap: 40px; /* Space between the avatar and icons */
+  height: 40px; /* Match the bar height */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.user-profile-box img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; /* Makes the avatar circular */
+  background-color: #ccc; /* Placeholder for the avatar */
+}
+
+.user-profile-box span {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.user-profile-box .icons {
+  display: flex;
+  gap: 10px; /* Space between the icons */
+}
+
+.user-profile-box .icons i {
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-profile-box .icons i:hover {
+  transform: scale(1.1);
+}
+
+.forums-container {
+  padding: 0;
+}
+
+/* Posts Container */
+.forum-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between posts */
+    margin-top: 20px; /* Add space below the title */
+  }
+  
+  /* Individual Post */
+  .post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .post:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* General Styling for Topic Page */
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .forums-container {
+    padding: 20px;
+  }
+  
