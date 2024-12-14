@@ -37,20 +37,24 @@
 
 .sidebar {
     width: 33%;
-    background-color: blue;
+    background-color: #F7FFF7;
     float: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 0.5px solid #1f2937;
+    border-radius: 10px;
 }
 
 .mainbar {
     width: 66%;
-    background-color: green;
+    background-color: #F7FFF7;
     float: right;
     padding-left: 1rem;
     padding-top: 1rem;
+    border: 0.5px solid #1f2937;
+    border-radius: 10px;
 }
 
 .description_box {
@@ -115,6 +119,8 @@
     padding: 5px;
     margin-bottom: 5px;
     background-color: #14b8a6;
+    border-radius: 10px;
+    color: #1f2937;
 }
 
 .detail {

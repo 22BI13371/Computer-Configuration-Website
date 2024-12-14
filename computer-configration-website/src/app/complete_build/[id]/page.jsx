@@ -2,7 +2,6 @@
 'use client';
 import '@/styles/builddetail.css';
 import Image from 'next/image';
-import { useRouter } from 'next/router'; // Import useRouter
 import products from '../build_data'; // Import your data
 
 const BuildDetail = ({params}) => {
