@@ -4,6 +4,7 @@ import '@/styles/completebuild.css'
 import BuildCard from './buildcard'
 import { useState } from 'react'
 import products from './build_data';
+import Link from 'next/link';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -27,18 +28,23 @@ const completebuild = () => {
         </section>
 
         <section className="container">
-            <section className="builds-gallery">
-            {currentProducts.map((product) => (
-                <BuildCard
-                    key={product.id}
-                    id={product.id}
-                    picture={product.picture}
-                    title={product.title}
-                    specs={product.specs}
-                    price={product.price}
-                />
-            ))}
-            </section>
+            <div className="builds-gallery">
+                {currentProducts.map((product) => (
+                <div key={product.id}>
+                    <Link href={`/complete_build/${product.id}`} legacyBehavior>
+                    <a>
+                        <BuildCard
+                            id={product.id}
+                            picture={product.picture}
+                            title={product.title}
+                            specs={product.specs}
+                            price={product.price}
+                        />
+                    </a>
+                    </Link>
+                </div>
+                ))}
+            </div>
         </section>
 
         <div className="pagination">
