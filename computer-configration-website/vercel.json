@@ -1,1 +1,5 @@
-{ "version": 2, "routes": [ { "src": "/(.)", "dest": "/server.js" }, { "src": "/views/layouts/main.handlebars", "dest": "/server.js" }, { "src": "/public/(.*)", "dest": "/public/$1" } ] }
+{
+    "rewrites": [
+        {"source": "/(.*)", "destination": "/"}
+    ]
+}
