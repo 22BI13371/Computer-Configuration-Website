@@ -45,23 +45,67 @@ export async function fetchComments(id) {
   }
 }
 
-export async function fetchPcPartWithFilter(category = '', filters = {}) {
-  let query = `SELECT * FROM pc_parts WHERE category = $1`;
+export async function fetchPcPartWithFilter(
+  category = '',
+  filters = {},
+  jsonFilters = {}
+) {
+  let query = 'SELECT * FROM pc_parts WHERE category = $1';
   const queryParams = [category];
+
   const filterClauses = [];
   let paramIndex = 2;
 
   Object.entries(filters).forEach(([key, value]) => {
     if (Array.isArray(value)) {
-      // Handle multiple values with IN
       const placeholders = value.map(() => `$${paramIndex++}`).join(', ');
       filterClauses.push(`${key} IN (${placeholders})`);
       queryParams.push(...value);
+    } else if (typeof value === 'object' && (value.min || value.max)) {
+      if (value.min !== undefined) {
+        filterClauses.push(`${key} >= $${paramIndex}`);
+        queryParams.push(value.min);
+        paramIndex++;
+      }
+      if (value.max !== undefined) {
+        filterClauses.push(`${key} <= $${paramIndex}`);
+        queryParams.push(value.max);
+        paramIndex++;
+      }
     } else {
-      // Handle single value
       filterClauses.push(`${key} = $${paramIndex}`);
       queryParams.push(value);
       paramIndex++;
+    }
+  });
+
+  Object.entries(jsonFilters).forEach(([key, value]) => {
+    if (typeof value === 'string' || typeof value === 'number') {
+      // Handle equality in JSONB
+      filterClauses.push(`specification->>'${key}' = $${paramIndex}`);
+      queryParams.push(value);
+      paramIndex++;
+    } else if (Array.isArray(value)) {
+      // Handle array containment in JSONB
+      filterClauses.push(`specification->'${key}' @> $${paramIndex}::jsonb`);
+      queryParams.push(JSON.stringify(value));
+      paramIndex++;
+    } else if (typeof value === 'object' && (value.min || value.max)) {
+      // Handle range filters in JSONB
+      if (value.min !== undefined) {
+        filterClauses.push(
+          `(specification->>'${key}')::numeric >= $${paramIndex}`
+        );
+        queryParams.push(value.min);
+        paramIndex++;
+      }
+      if (value.max !== undefined) {
+        filterClauses.push(
+          `(specification->>'${key}')::numeric <= $${paramIndex}`
+        );
+        queryParams.push(value.max);
+        paramIndex++;
+      }
     }
   });
 
