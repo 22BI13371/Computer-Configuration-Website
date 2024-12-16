@@ -21,7 +21,10 @@ export default function ForumsPage() {
         </div>
       </div>
 
-      <h1>Forums</h1>
+      <div className='title-wrap'>
+        <h1 className='main-page-title'>Forums</h1>
+
+      </div>
       <div className="forums-grid">
         {forums.map((forum) => (
           <Link key={forum.id} href={forum.link}>

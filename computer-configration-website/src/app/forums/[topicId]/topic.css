@@ -47,6 +47,7 @@
     flex-direction: column;
     gap: 10px; /* Space between posts */
     margin-top: 20px; /* Add space below the title */
+    padding: 0 100px;
   }
   
   /* Individual Post */
@@ -73,7 +74,97 @@
     text-align: center;
   }
   
-  .forums-container {
-    padding: 20px;
+  .forum-header-bar {
+    width: 100%;
+    background-color: #14b8a6; 
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   }
   
+  .header-wrap {
+    padding: 0 20px;
+  }
+
+  /* Content Container */
+.content-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Header */
+/* .header {
+} */
+
+/* .title-wrap {
+  padding: 0 100px;
+} */
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 600px;
+  border-bottom: 2px solid white;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: gray;
+  margin: 5px 0 20px;
+}
+
+/* Table Layout */
+.table {
+  display: flex;
+  flex-direction: column; /* Ensures rows stack vertically */
+  text-align: left;
+  border-collapse: collapse; /* For cleaner spacing */
+}
+
+/* Header Row */
+.row.header-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ccc; /* Single border for the header row */
+  font-weight: bold;
+  padding-bottom: 10px; /* Adds space below the header row */
+  font-size: large;
+}
+
+/* Normal Rows */
+.row {
+  display: flex;
+  justify-content: space-between; /* Aligns columns */
+  padding: 10px 0;
+}
+
+/* Columns */
+.left-column, .right-column {
+  flex: 1; /* Each column takes equal width */
+  padding: 0 10px; /* Adds some horizontal spacing */
+}
+
+.left-column {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.right-column li {
+  font-size: 16px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table {
+    grid-template-columns: 1fr; /* Stacks columns */
+  }
+}
