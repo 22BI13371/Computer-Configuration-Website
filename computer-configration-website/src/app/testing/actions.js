@@ -23,6 +23,7 @@ export async function setCookie(data) {
       value: cpus[0].name,
       secure: true,
       sameSite: 'none',
+      httpOnly: true,
     });
   } else {
     cpuName = cookieStore.get('cpu_name');
