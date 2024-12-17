@@ -37,16 +37,24 @@
 
 .sidebar {
     width: 33%;
-    background-color: blue;
+    background-color: #F7FFF7;
     float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #1f2937;
+    border-radius: 10px;
 }
 
 .mainbar {
     width: 66%;
-    background-color: green;
+    background-color: #F7FFF7;
     float: right;
     padding-left: 1rem;
     padding-top: 1rem;
+    border: 0.5px solid #1f2937;
+    border-radius: 10px;
 }
 
 .description_box {
@@ -71,4 +79,50 @@
     margin: 1rem 0;
     padding: 10px 20px;
     border-radius: 10%;
+}
+
+.gallery {
+    width: max-content;
+    min-height: 300px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.main_img {
+    min-height: 200px;
+}
+
+.side_img {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.main_img img{
+    width: 220px;
+    height: 220px;
+}
+
+.side_img img{
+    width: 50px;
+    height: 50px;
+}
+
+.component_item {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #14b8a6;
+    border-radius: 10px;
+    color: #1f2937;
+}
+
+.detail {
+    margin-left: 1rem;
 }
