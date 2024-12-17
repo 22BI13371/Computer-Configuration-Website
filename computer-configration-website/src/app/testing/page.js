@@ -1,6 +1,6 @@
 import { fetchCpuWithFilter, fetchPcPartWithFilter } from '../lib/data';
 import { cookies } from 'next/headers';
-import { setCookie } from './actions';
+import { setCookie, clearCookie } from './actions';
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -24,6 +24,9 @@ export default async function Page() {
       <div>
         <form action={setCookie}>
           <button type="submit">click here</button>
+          <button type="submit" formAction={clearCookie}>
+            delete cookie
+          </button>
         </form>
         {/* <p>{cpu.name}</p> */}
         {/* <p>{cpu.current_price / 100}</p>

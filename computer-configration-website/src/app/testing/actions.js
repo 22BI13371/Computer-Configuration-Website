@@ -6,8 +6,9 @@ import { fetchPcPartWithFilter } from '../lib/data';
 export async function setCookie(data) {
   const cookieStore = await cookies();
   let cpuName = cookieStore.get('cpu_name');
+  console.log(cpuName);
 
-  if (cpuName == '') {
+  if (!cpuName) {
     let cpus = await fetchPcPartWithFilter(
       'CPU',
       {
@@ -29,4 +30,10 @@ export async function setCookie(data) {
     cpuName = cookieStore.get('cpu_name');
     console.log(cpuName.value);
   }
+  // cookieStore.delete('cpu_name');
+}
+
+export async function clearCookie() {
+  const cookieStore = await cookies();
+  cookieStore.delete('cpu_name');
 }
