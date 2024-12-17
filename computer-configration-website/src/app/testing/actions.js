@@ -18,7 +18,12 @@ export async function setCookie(data) {
     );
     // console.log(cpus[0].name);
 
-    cookieStore.set('cpu_name', cpus[0].name);
+    cookieStore.set({
+      name: 'cpu_name',
+      value: cpus[0].name,
+      secure: true,
+      sameSite: 'none',
+    });
   } else {
     cpuName = cookieStore.get('cpu_name');
     console.log(cpuName.value);
