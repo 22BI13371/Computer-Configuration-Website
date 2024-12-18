@@ -37,3 +37,7 @@ export async function clearCookie() {
   const cookieStore = await cookies();
   cookieStore.delete('cpu_name');
 }
+
+export async function authenticate(prevState, formData) {
+  console.log(formData);
+}

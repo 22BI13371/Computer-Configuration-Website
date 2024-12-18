@@ -1,10 +1,14 @@
 // src/app/login/Login.js
-"use client"; // Add this line to declare this component as a Client Component
+'use client'; // Add this line to declare this component as a Client Component
 
-import React from "react";
+import React from 'react';
+import { useFormState } from 'react-dom';
+import { authenticate, signOut } from '../lib/action';
 
 function Login({ onRegisterClick }) {
-  console.log("Rendering Login Component"); // Moved this up to ensure it's logged on render
+  const [state, formAction, isPending] = useFormState(authenticate, undefined);
+
+  console.log('Rendering Login Component'); // Moved this up to ensure it's logged on render
   return (
     <div style={styles.app}>
       <style>{`
@@ -19,39 +23,49 @@ function Login({ onRegisterClick }) {
         .toggle-link { width: 100%; padding: 10px; background-color: #fff; color: #4fd0e9; border: solid; border-radius: 5px; cursor: pointer; }
         .text-align {text-align: left; color: #000000; font-weight: bold; margin-bottom: 6px;}
       `}</style>
-
-      <div className="auth-container">
-        <h2>Your account</h2>
-        <div className="auth-box">
-          <h3>Sign in</h3>
-          <input
-            type="text"
-            placeholder="Username or Email"
-            className="input"
-          />
-          <input type="password" placeholder="Password" className="input" />
-          <button className="btn-primary">Sign In</button>
-          <p className="forgot-password">Forgot password?</p>
-          <hr />
-          <p className="text-align">
-            Not a member? <br />
-          </p>
-          <button onClick={onRegisterClick} className="toggle-link">
-            Register here
-          </button>
+      <form action={formAction}>
+        <div className="auth-container">
+          <h2>Your account</h2>
+          <div className="auth-box">
+            <h3>Sign in</h3>
+            <input
+              type="text"
+              placeholder="Username or Email"
+              className="input"
+              name="username"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="input"
+              name="password"
+            />
+            <button className="btn-primary">Sign In</button>
+            <button className="btn-primary" formAction={signOut}>
+              Log out
+            </button>
+            <p className="forgot-password">Forgot password?</p>
+            <hr />
+            <p className="text-align">
+              Not a member? <br />
+            </p>
+            <button onClick={onRegisterClick} className="toggle-link">
+              Register here
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
 
 const styles = {
   app: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#2c2f33",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    backgroundColor: '#2c2f33',
   },
 };
 
