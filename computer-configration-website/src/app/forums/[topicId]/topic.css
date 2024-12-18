@@ -104,14 +104,15 @@
 /* .header {
 } */
 
-/* .title-wrap {
-  padding: 0 100px;
-} */
+.title-wrap {
+  align-self: center;
+}
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0 600px;
+  display: inline-block;
+  align-self: center;
   border-bottom: 2px solid white;
 }
 
