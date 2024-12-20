@@ -1,20 +1,25 @@
-"use client";
-import React, { useState } from "react";
-import { cpu } from "../../lib/placeholder_data"; // Importing the data from placeholder_data.js
-import "./cpu.css";
+'use client';
+import React, { useState, useEffect } from 'react';
+// import { cpu } from "../../lib/placeholder_data"; // Importing the data from placeholder_data.js
+import { fetchPcParts } from '@/app/lib/data';
+import './cpu.css';
 
-const Sidebar = ({ onFilterChange, onCpuSelect }) => {
+const Sidebar = ({ onFilterChange, onCpuSelect, cpu }) => {
   const [price, setPrice] = useState(71169);
   const [manufacturer, setManufacturer] = useState({
     all: true,
     amd: false,
     intel: false,
   });
+
   const [cpuOptions, setCpuOptions] = useState({
     all: true,
     options: cpu.map((cpuItem) => ({
       id: cpuItem.id,
-      label: cpuItem.series + " " + cpuItem.micro_architecture,
+      label:
+        cpuItem.specification.series +
+        ' ' +
+        cpuItem.specification.micro_architecture,
       checked: false,
       details: cpuItem, // Store the full CPU data to show later
     })),
@@ -28,9 +33,9 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
 
   const handleManufacturerChange = (key) => {
     const newManufacturer = {
-      all: key === "all",
-      amd: key === "amd",
-      intel: key === "intel",
+      all: key === 'all',
+      amd: key === 'amd',
+      intel: key === 'intel',
     };
     setManufacturer(newManufacturer);
 
@@ -47,7 +52,9 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
     };
 
     // Check if all individual checkboxes are unchecked
-    const allUnchecked = newCpuOptions.options.every((option) => !option.checked);
+    const allUnchecked = newCpuOptions.options.every(
+      (option) => !option.checked
+    );
 
     if (allUnchecked) {
       newCpuOptions.all = true;
@@ -210,14 +217,14 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
   );
 };
 
-const CPU = () => {
+const CPU = ({ cpu }) => {
   const [cpuData, setCpuData] = useState(cpu);
   const [selectedCpus, setSelectedCpus] = useState([]);
-  const [manufacturerFilter, setManufacturerFilter] = useState("all");
+  const [manufacturerFilter, setManufacturerFilter] = useState('all');
 
   // Function to handle "Add" button click (you can modify the functionality as needed)
   const handleAddClick = (cpu) => {
-    console.log("Added CPU:", cpu);
+    console.log('Added CPU:', cpu);
     // Add your logic to handle the add action here
   };
 
@@ -227,16 +234,17 @@ const CPU = () => {
 
     // Apply price filter
     if (newFilters.price) {
-      filteredData = filteredData.filter((cpu) => cpu.current_price <= newFilters.price);
+      filteredData = filteredData.filter(
+        (cpu) => cpu.current_price <= newFilters.price
+      );
     }
 
     // Apply manufacturer filter
-    if (newFilters.manufacturer && newFilters.manufacturer !== "all") {
-      filteredData = filteredData.filter(
-        (cpu) =>
-          newFilters.manufacturer === "amd"
-            ? cpu.series.includes("AMD")
-            : cpu.series.includes("Intel")
+    if (newFilters.manufacturer && newFilters.manufacturer !== 'all') {
+      filteredData = filteredData.filter((cpu) =>
+        newFilters.manufacturer === 'amd'
+          ? cpu.specification.series.includes('AMD')
+          : cpu.specification.series.includes('Intel')
       );
     }
 
@@ -250,13 +258,18 @@ const CPU = () => {
   // Filter CPU data based on selected CPUs
   const filteredCpuData = cpuData.filter(
     (cpu) =>
-      selectedCpus.length === 0 || selectedCpus.some((selected) => selected.id === cpu.id)
+      selectedCpus.length === 0 ||
+      selectedCpus.some((selected) => selected.id === cpu.id)
   );
 
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar onFilterChange={handleFilterChange} onCpuSelect={handleCpuSelect} />
-      <div style={{ marginLeft: "20px", flex: 1 }}>
+    <div style={{ display: 'flex' }}>
+      <Sidebar
+        onFilterChange={handleFilterChange}
+        onCpuSelect={handleCpuSelect}
+        cpu={cpu}
+      />
+      <div style={{ marginLeft: '20px', flex: 1 }}>
         <h1>Choose a CPU</h1>
         <div className="search-bar">
           <input type="text" placeholder="Search CPUs" />
@@ -279,25 +292,26 @@ const CPU = () => {
             {filteredCpuData.map((cpu) => (
               <tr key={cpu.id}>
                 <td>
-                  {cpu.series} {cpu.core_family} {cpu.performance_core_clock} GHz
+                  {cpu.specification.series} {cpu.specification.core_family}{' '}
+                  {cpu.specification.performance_core_clock} GHz
                 </td>
-                <td>{cpu.core_count}</td>
-                <td>{cpu.performance_core_clock} GHz</td>
-                <td>{cpu.efficiency_core_boost_clock} GHz</td>
-                <td>{cpu.micro_architecture}</td>
-                <td>{cpu.tdp}W</td>
-                <td>{cpu.integrated_graphics}</td>
+                <td>{cpu.specification.core_count}</td>
+                <td>{cpu.specification.performance_core_clock} GHz</td>
+                <td>{cpu.specification.efficiency_core_boost_clock} GHz</td>
+                <td>{cpu.specification.micro_architecture}</td>
+                <td>{cpu.specification.tdp}W</td>
+                <td>{cpu.specification.integrated_graphics}</td>
                 <td>${(cpu.current_price / 100).toFixed(2)}</td>
                 <td>
                   <button
                     onClick={() => handleAddClick(cpu)}
                     style={{
-                      backgroundColor: "#1abc9c",
-                      color: "white",
-                      border: "none",
-                      padding: "8px 16px",
-                      cursor: "pointer",
-                      borderRadius: "5px",
+                      backgroundColor: '#1abc9c',
+                      color: 'white',
+                      border: 'none',
+                      padding: '8px 16px',
+                      cursor: 'pointer',
+                      borderRadius: '5px',
                     }}
                   >
                     Add
