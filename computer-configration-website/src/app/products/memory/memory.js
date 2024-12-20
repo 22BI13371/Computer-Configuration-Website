@@ -1,23 +1,21 @@
 import React from 'react';
-import './cpu.css';
+import './memory.css';
 
-const CPU = () => {
+const Memory = () => {
     return (
         <div className="cpu-container">
-            <h1>Choose a CPU</h1>
+            <h1>Choose a Memory</h1>
             <div className="search-bar">
-                <input type="text" placeholder="find a cpu" />
+                <input type="text" placeholder="find a memory" />
             </div>
             <table className="cpu-table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Core Count</th>
-                        <th>Performance Core Clock</th>
-                        <th>Performance Core Boost Clock</th>
-                        <th>Microarchitecture</th>
-                        <th>TIP</th>
-                        <th>Integrated Graphics</th>
+                        <th>Speed</th>
+                        <th>Modules</th>
+                        <th>Memory max</th>
+                        <th>Memory slots</th>
+                        <th>Color</th>
                         <th>Rating</th>
                         <th>Price</th>
                         <th>Action</th>
@@ -31,4 +29,4 @@ const CPU = () => {
     );
 };
 
-export default CPU;
+export default Memory;
