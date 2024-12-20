@@ -2,13 +2,28 @@
 'use client';
 import '@/styles/builddetail.css';
 import Image from 'next/image';
-import products from '../build_data'; // Import your data
+import { pcBuilds, pcBuildsParts, users, pcParts } from '@/app/lib/placeholder_data'; // Import your data
 
 const BuildDetail = ({params}) => {
     const { id } = params;
 
     // Find the corresponding build from the data
-    const build = products.find((item) => item.id === parseInt(id));
+    const build = pcBuilds.find((item) => item.id === String(id));
+    const user = users.find((item) => item.id === build.user_id);
+
+    const buildparts = pcBuildsParts.filter((item) => item.build_id === String(build.id));
+    // console.log('parts', buildparts)
+
+    // Extract part IDs from buildparts
+    const partIds = buildparts.map((part) => part.part_id);
+    // console.log('Part IDs:', partIds);
+
+    // Filter pcParts using the extracted part IDs
+    const pcparts = pcParts.filter((item) => partIds.includes(item.id));
+    // console.log('PC Parts:', pcparts);
+
+    const totalPrice = pcparts.reduce((sum, part) => sum + part.current_price, 0);
+    // console.log('Total Price:', totalPrice);
 
     // Handle the case where no build is found
     if (!build) {
@@ -20,8 +35,8 @@ const BuildDetail = ({params}) => {
             <div className="main_content">
                 <div className="page_title">
                     <h4>Build</h4>
-                    <h1 className="build_name">{build.title}</h1>
-                    <div className="user">by {build.user}</div>
+                    <h1 className="build_name">{build.name}</h1>
+                    <div className="user">by {user.name}</div>
                 </div>
                 <div className="page_content">
                     <div className="sidebar">
@@ -30,20 +45,20 @@ const BuildDetail = ({params}) => {
                                 <Image src={build.mainImage} width={200} height={200} alt="Main build image" />
                             </div>
                             <div className="side_img">
-                                {build.gallery.map((img, index) => (
+                                {/* {build.gallery.map((img, index) => (
                                     <Image key={index} src={img} width={50} height={50} alt={`Gallery image ${index + 1}`} />
-                                ))}
+                                ))} */}
                             </div>
                         </div>
                         <div className="components">
-                            {build.components.map((component, index) => (
+                            {pcparts.map((component, index) => (
                                 <div className="component_item" key={index}>
                                     <div className="side_img">
                                         <Image src={component.image} width={50} height={50} alt={component.name} />
                                     </div>
                                     <div className="detail">
                                         <h3>{component.name}</h3>
-                                        <p>{component.description}</p>
+                                        <p>{component.current_price}</p>
                                     </div>
                                 </div>
                             ))}
@@ -52,7 +67,9 @@ const BuildDetail = ({params}) => {
                     <div className="mainbar">
                         <div className="description_box">
                             <h2>Description</h2>
-                            <p>{build.description}</p>
+                            <p>{build.description}
+                                Example description
+                            </p>
                         </div>
                         <div className="comment_box">
                             <h2>Leave a comment</h2>
@@ -60,6 +77,15 @@ const BuildDetail = ({params}) => {
                                 <input className="cmbox" type="text" />
                                 <button className="savebtn">Save</button>
                             </div>
+                        </div>
+                        <div className='comments'>
+                            <div className='comment_title'>
+                                <h1>Comments</h1>
+                            </div> 
+                            <div className='1_comment'>
+                                <div className='comment_user'><p>User Name</p></div>
+                                <div className='comment_content'><p>Example pagaraph</p></div>
+                            </div>          
                         </div>
                     </div>
                 </div>

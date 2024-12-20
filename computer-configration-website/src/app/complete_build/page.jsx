@@ -3,7 +3,7 @@ import React from 'react'
 import '@/styles/completebuild.css'
 import BuildCard from './buildcard'
 import { useState } from 'react'
-import products from './build_data';
+import { pcBuilds, users, pcParts, pcBuildsParts } from '../lib/placeholder_data';
 import Link from 'next/link';
 
 const ITEMS_PER_PAGE = 12;
@@ -12,9 +12,9 @@ const completebuild = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const currentProducts = products.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    const currentProducts = pcBuilds.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-    const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(pcBuilds.length / ITEMS_PER_PAGE);
 
     return (
     <>
@@ -35,10 +35,10 @@ const completebuild = () => {
                     <a>
                         <BuildCard
                             id={product.id}
+                            users_id={product.user_id}
+                            users={users}
                             picture={product.picture}
-                            title={product.title}
-                            specs={product.specs}
-                            price={product.price}
+                            title={product.name}
                         />
                     </a>
                     </Link>
