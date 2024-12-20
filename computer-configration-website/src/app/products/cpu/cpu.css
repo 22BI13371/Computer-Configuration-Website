@@ -5,7 +5,8 @@
 
 h1 {
     text-align: center;
-    color: #343a40; /* Dark text */
+    font-size: 50px;
+    color: #ced4da; /* Dark text */
     margin-bottom: 20px;
 }
 
@@ -39,6 +40,17 @@ h1 {
     color: white;
 }
 
-.cpu-table tr:nth-child(even) {
-    background-color: #f2f2f2; /* Zebra striping */
+
+
+
+
+ .cpu td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: #343a40;
+}
+
+.cpu th {
+    background-color: #f4f4f4;
 }

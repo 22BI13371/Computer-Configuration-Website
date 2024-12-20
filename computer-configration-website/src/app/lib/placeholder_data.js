@@ -264,9 +264,10 @@ const comments = [
   },
 ];
 
-const cpu = [
+export const cpu = [
   // Intel Core i5-14400F 2.5 GHz 10-Core Processor
   {
+    current_price: 17581,
     id: 'b2dc819d-994c-4038-8df9-30a12aac8475',
     series: 'Intel Core i5',
     micro_architecture: 'Raptor Lake Refresh ',
@@ -291,6 +292,7 @@ const cpu = [
   },
   // AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor
   {
+    current_price: 45900,
     id: '8afca899-d9c0-494e-895a-1d5f369bb893',
     series: 'AMD Ryzen 7',
     micro_architecture: 'Zen 4',
@@ -313,7 +315,8 @@ const cpu = [
     simultaneous_multithreading: true,
   },
   // Intel Core i9-14900K 3.2 GHz 24-Core Processor
-  {
+  { 
+    current_price: 43849,
     id: '35bdeee5-d7a7-46a4-ae68-e7f0a5e323c1',
     series: 'Intel Core i9',
     micro_architecture: 'Raptor Lake Refresh',
