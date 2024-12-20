@@ -124,3 +124,21 @@ export async function fetchPcPartWithFilter(
     throw new Error("Failed to fetch data");
   }
 }
+
+export async function fetchPcBuildPartsWithId(id) {
+  try {
+    const parts = await sql`
+      select * 
+      from pc_parts
+      where id
+      in (SELECT part_id
+          FROM pc_build_parts
+          WHERE build_id = ${id})
+          `;
+
+    return parts.rows;
+  } catch (error) {
+    console.error('Database Error', error);
+    throw new Error('Failed to fetch data');
+  }
+}
