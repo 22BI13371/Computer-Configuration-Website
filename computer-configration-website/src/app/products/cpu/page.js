@@ -1,9 +1,12 @@
 import CPU from './cpu';
+import { fetchPcParts } from '@/app/lib/data';
 
-const CPUPage = () => {
+async function CPUPage() {
+    const cpu = await fetchPcParts('CPU')
+
     return (
         <div>
-            <CPU /> {/* Render the CPU component */}
+            <CPU cpu={cpu} /> {/* Render the CPU component */}
         </div>
     );
 };

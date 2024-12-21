@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
-import { db } from '@vercel/postgres';
+import bcrypt from "bcrypt";
+import { db } from "@vercel/postgres";
 import {
   users,
   posts,
@@ -7,7 +7,7 @@ import {
   pcParts,
   pcBuilds,
   pcBuildsParts,
-} from '../lib/placeholder_data';
+} from "../lib/placeholder_data";
 
 const client = await db.connect();
 
@@ -182,7 +182,7 @@ async function seedPcParts() {
 async function createIndexes() {
   await client.sql`
     CREATE INDEX IF NOT EXISTS pc_parts_category_idx ON pc_parts (category);
-    CREATE INDEX IF NOT EXISTS pc_parts_manufacturer_idx ON pc_parts (manufacturer); 
+    CREATE INDEX IF NOT EXISTS pc_parts_manufacturer_idx ON pc_parts (manufacturer);
   `;
 }
 
@@ -199,7 +199,7 @@ export async function GET() {
     await seedPcBuildParts();
     await createIndexes();
     await client.sql`COMMIT`;
-    return Response.json({ message: 'Database seeded successfully' });
+    return Response.json({ message: "Database seeded successfully" });
   } catch (error) {
     await client.sql`ROLLBACK`;
     return Response.json({ error }, { status: 500 });

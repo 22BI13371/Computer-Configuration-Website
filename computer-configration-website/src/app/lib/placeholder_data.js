@@ -264,7 +264,7 @@ const comments = [
   },
 ];
 
-const cpu = [
+export const cpu = [
   // Intel Core i5-14400F 2.5 GHz 10-Core Processor
   {
     id: 'b2dc819d-994c-4038-8df9-30a12aac8475',
@@ -1074,14 +1074,14 @@ const pcParts = [
 ];
 
 const pcBuilds = [
-    {
-      id: 'ba739067-1888-4017-908a-390583099f04',
-      user_id: users[0].id,
-      name: 'Build 1',
-      created_at: '2024-11-29',
-      is_private: false,
-      allow_comments: false,
-    },
+  {
+    id: 'ba739067-1888-4017-908a-390583099f04',
+    user_id: users[0].id,
+    name: 'Build 1',
+    created_at: '2024-11-29',
+    is_private: false,
+    allow_comments: false,
+  },
   {
     id: '565ed09b-94bf-4b7e-9af9-b8ae6aa78624',
     user_id: users[0].id,
@@ -1266,7 +1266,7 @@ const pcBuildsParts = [
     part_id: monitor[2].id,
     quantity: 1,
   },
-  // {  
+  // {
   //   id:,
   //   build_id: pcBuilds[0].id,
   //   part_id: memory[0].id,

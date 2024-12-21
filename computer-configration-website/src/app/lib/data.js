@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import { sql } from "@vercel/postgres";
 
 // function fetchPcBuild() {
 //   try {
@@ -6,7 +6,7 @@ import { sql } from '@vercel/postgres';
 //   }
 // }
 
-export async function fetchPcParts(cat = '') {
+export async function fetchPcParts(cat = "") {
   try {
     const data = await sql`
     SELECT *
@@ -16,8 +16,8 @@ export async function fetchPcParts(cat = '') {
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch data.');
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch data.");
   }
 }
 
@@ -27,8 +27,8 @@ export async function fetchposts() {
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error', error);
-    throw new Error('Failed to fetch data');
+    console.error("Database Error", error);
+    throw new Error("Failed to fetch data");
   }
 }
 
@@ -40,17 +40,17 @@ export async function fetchComments(id) {
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error', error);
-    throw new Error('Failed to fetch data');
+    console.error("Database Error", error);
+    throw new Error("Failed to fetch data");
   }
 }
 
 export async function fetchPcPartWithFilter(
-  category = '',
+  category = "",
   filters = {},
   jsonFilters = {}
 ) {
-  let query = 'SELECT * FROM pc_parts WHERE category = $1';
+  let query = "SELECT * FROM pc_parts WHERE category = $1";
   const queryParams = [category];
 
   const filterClauses = [];
@@ -58,10 +58,10 @@ export async function fetchPcPartWithFilter(
 
   Object.entries(filters).forEach(([key, value]) => {
     if (Array.isArray(value)) {
-      const placeholders = value.map(() => `$${paramIndex++}`).join(', ');
+      const placeholders = value.map(() => `$${paramIndex++}`).join(", ");
       filterClauses.push(`${key} IN (${placeholders})`);
       queryParams.push(...value);
-    } else if (typeof value === 'object' && (value.min || value.max)) {
+    } else if (typeof value === "object" && (value.min || value.max)) {
       if (value.min !== undefined) {
         filterClauses.push(`${key} >= $${paramIndex}`);
         queryParams.push(value.min);
@@ -80,7 +80,7 @@ export async function fetchPcPartWithFilter(
   });
 
   Object.entries(jsonFilters).forEach(([key, value]) => {
-    if (typeof value === 'string' || typeof value === 'number') {
+    if (typeof value === "string" || typeof value === "number") {
       // Handle equality in JSONB
       filterClauses.push(`specification->>'${key}' = $${paramIndex}`);
       queryParams.push(value);
@@ -90,7 +90,7 @@ export async function fetchPcPartWithFilter(
       filterClauses.push(`specification->'${key}' @> $${paramIndex}::jsonb`);
       queryParams.push(JSON.stringify(value));
       paramIndex++;
-    } else if (typeof value === 'object' && (value.min || value.max)) {
+    } else if (typeof value === "object" && (value.min || value.max)) {
       // Handle range filters in JSONB
       if (value.min !== undefined) {
         filterClauses.push(
@@ -110,7 +110,7 @@ export async function fetchPcPartWithFilter(
   });
 
   if (filterClauses.length > 0) {
-    query += ` AND ${filterClauses.join(' AND ')}`;
+    query += ` AND ${filterClauses.join(" AND ")}`;
   }
 
   console.log(queryParams);
@@ -120,8 +120,8 @@ export async function fetchPcPartWithFilter(
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error', error);
-    throw new Error('Failed to fetch data');
+    console.error("Database Error", error);
+    throw new Error("Failed to fetch data");
   }
 }
 
