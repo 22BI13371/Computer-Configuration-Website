@@ -1,242 +1,55 @@
 "use client";
 import React, { useState } from "react";
 import { cpu } from "../../lib/placeholder_data"; // Importing the data from placeholder_data.js
+import Sidebar from "./Sidebar"; // Import Sidebar component
 import "./cpu.css";
-
-const Sidebar = ({ onFilterChange, onCpuSelect }) => {
-  const [price, setPrice] = useState(71169);
-  const [manufacturer, setManufacturer] = useState({
-    all: true,
-    amd: false,
-    intel: false,
-  });
-  const [cpuOptions, setCpuOptions] = useState({
-    all: true,
-    options: cpu.map((cpuItem) => ({
-      id: cpuItem.id,
-      label: cpuItem.series + " " + cpuItem.micro_architecture,
-      checked: false,
-      details: cpuItem, // Store the full CPU data to show later
-    })),
-  });
-
-  const handlePriceChange = (e) => {
-    const newPrice = e.target.value;
-    setPrice(newPrice);
-    onFilterChange({ price: newPrice });
-  };
-
-  const handleManufacturerChange = (key) => {
-    const newManufacturer = {
-      all: key === "all",
-      amd: key === "amd",
-      intel: key === "intel",
-    };
-    setManufacturer(newManufacturer);
-
-    // Trigger the filter change with the selected manufacturer
-    onFilterChange({ manufacturer: key });
-  };
-
-  const handleCpuChange = (id) => {
-    const newCpuOptions = {
-      ...cpuOptions,
-      options: cpuOptions.options.map((option) =>
-        option.id === id ? { ...option, checked: !option.checked } : option
-      ),
-    };
-
-    // Check if all individual checkboxes are unchecked
-    const allUnchecked = newCpuOptions.options.every((option) => !option.checked);
-
-    if (allUnchecked) {
-      newCpuOptions.all = true;
-      newCpuOptions.options = newCpuOptions.options.map((option) => ({
-        ...option,
-        checked: false,
-      }));
-    } else {
-      newCpuOptions.all = false;
-    }
-
-    setCpuOptions(newCpuOptions);
-
-    const selectedCpus = newCpuOptions.options
-      .filter((option) => option.checked)
-      .map((option) => option.details);
-
-    onCpuSelect(selectedCpus);
-  };
-
-  const handleAllCpuChange = () => {
-    setCpuOptions({
-      all: true,
-      options: cpuOptions.options.map((option) => ({
-        ...option,
-        checked: false,
-      })),
-    });
-    onCpuSelect([]);
-  };
-
-  return (
-    <>
-      <style>
-        {`
-          .form-range {
-            appearance: none;
-            width: 100%;
-            height: 8px;
-            background: #ddd;
-            border-radius: 5px;
-            outline: none;
-          }
-
-          .form-range::-webkit-slider-thumb {
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #007bff;
-            border-radius: 50%;
-            cursor: pointer;
-          }
-
-          .form-range::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: #007bff;
-            border-radius: 50%;
-            cursor: pointer;
-          }
-
-          .filter-section {
-            width: 300px;
-            padding: 15px;
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            color: #000;
-          }
-
-          .filter-header {
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-          }
-
-          .filter-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-          }
-
-          .filter-group {
-            margin-bottom: 20px;
-          }
-
-          .slider-container {
-            position: relative;
-          }
-
-          .max-value {
-            position: absolute;
-            right: 0;
-            top: -25px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #333;
-          }
-        `}
-      </style>
-
-      <div className="filter-section">
-        <div className="filter-header">Filters</div>
-
-        <div className="filter-group">
-          <div className="filter-title">Price</div>
-          <div className="slider-container">
-            <input
-              type="range"
-              className="form-range"
-              min="0"
-              max="71169"
-              value={price}
-              onChange={handlePriceChange}
-            />
-            <span className="max-value">${price}</span>
-          </div>
-        </div>
-
-        <div className="filter-group">
-          <div className="filter-title">Manufacturer</div>
-          {Object.keys(manufacturer).map((key) => (
-            <div key={key}>
-              <input
-                type="checkbox"
-                id={`manufacturer-${key}`}
-                checked={manufacturer[key]}
-                onChange={() => handleManufacturerChange(key)}
-              />
-              <label htmlFor={`manufacturer-${key}`}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </label>
-            </div>
-          ))}
-        </div>
-
-        <div className="filter-group">
-          <div className="filter-title">SERIES</div>
-          <input
-            type="checkbox"
-            id="cpu-all"
-            checked={cpuOptions.all}
-            onChange={handleAllCpuChange}
-          />
-          <label htmlFor="cpu-all">All</label>
-
-          {cpuOptions.options.map((option) => (
-            <div key={option.id}>
-              <input
-                type="checkbox"
-                id={`cpu-${option.id}`}
-                checked={option.checked}
-                onChange={() => handleCpuChange(option.id)}
-              />
-              <label htmlFor={`cpu-${option.id}`}>{option.label}</label>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-};
 
 const CPU = () => {
   const [cpuData, setCpuData] = useState(cpu);
   const [selectedCpus, setSelectedCpus] = useState([]);
-  const [manufacturerFilter, setManufacturerFilter] = useState("all");
 
-  // Function to handle "Add" button click (you can modify the functionality as needed)
-  const handleAddClick = (cpu) => {
-    console.log("Added CPU:", cpu);
-    // Add your logic to handle the add action here
-  };
-
-  // Function to filter CPUs based on the selected filters
   const handleFilterChange = (newFilters) => {
     let filteredData = cpu;
 
     // Apply price filter
     if (newFilters.price) {
-      filteredData = filteredData.filter((cpu) => cpu.current_price <= newFilters.price);
+      filteredData = filteredData.filter(
+        (cpu) => cpu.current_price <= newFilters.price
+      );
+    }
+
+    // Apply thread count filter
+    if (newFilters.thread) {
+      filteredData = filteredData.filter(
+        (cpu) => cpu.thread_count <= newFilters.thread
+      );
+    }
+
+    // Apply L2 Cache filter
+    if (newFilters.l2Cache) {
+      filteredData = filteredData.filter(
+        (cpu) => cpu.l2_cache <= newFilters.l2Cache
+      );
+    }
+
+    if (newFilters.l3Cache) {
+      filteredData = filteredData.filter(
+        (cpu) => cpu.l3_cache <= newFilters.l3Cache
+      );
     }
 
     // Apply manufacturer filter
     if (newFilters.manufacturer && newFilters.manufacturer !== "all") {
-      filteredData = filteredData.filter(
-        (cpu) =>
-          newFilters.manufacturer === "amd"
-            ? cpu.series.includes("AMD")
-            : cpu.series.includes("Intel")
+      filteredData = filteredData.filter((cpu) =>
+        newFilters.manufacturer === "amd"
+          ? cpu.series.includes("AMD")
+          : cpu.series.includes("Intel")
+      );
+    }
+
+    if (newFilters.coreFamily && newFilters.coreFamily.length > 0) {
+      filteredData = filteredData.filter((cpu) =>
+        newFilters.coreFamily.includes(cpu.core_family)
       );
     }
 
@@ -247,20 +60,20 @@ const CPU = () => {
     setSelectedCpus(cpus);
   };
 
-  // Filter CPU data based on selected CPUs
   const filteredCpuData = cpuData.filter(
     (cpu) =>
-      selectedCpus.length === 0 || selectedCpus.some((selected) => selected.id === cpu.id)
+      selectedCpus.length === 0 ||
+      selectedCpus.some((selected) => selected.id === cpu.id)
   );
 
   return (
     <div style={{ display: "flex" }}>
-      <Sidebar onFilterChange={handleFilterChange} onCpuSelect={handleCpuSelect} />
+      <Sidebar
+        onFilterChange={handleFilterChange}
+        onCpuSelect={handleCpuSelect}
+      />
       <div style={{ marginLeft: "20px", flex: 1 }}>
         <h1>Choose a CPU</h1>
-        <div className="search-bar">
-          <input type="text" placeholder="Search CPUs" />
-        </div>
         <table className="cpu-table">
           <thead>
             <tr>
@@ -279,7 +92,8 @@ const CPU = () => {
             {filteredCpuData.map((cpu) => (
               <tr key={cpu.id}>
                 <td>
-                  {cpu.series} {cpu.core_family} {cpu.performance_core_clock} GHz
+                  {cpu.series} {cpu.core_family} {cpu.performance_core_clock}{" "}
+                  GHz
                 </td>
                 <td>{cpu.core_count}</td>
                 <td>{cpu.performance_core_clock} GHz</td>
@@ -290,7 +104,7 @@ const CPU = () => {
                 <td>${(cpu.current_price / 100).toFixed(2)}</td>
                 <td>
                   <button
-                    onClick={() => handleAddClick(cpu)}
+                    onClick={() => console.log("Added CPU:", cpu)}
                     style={{
                       backgroundColor: "#1abc9c",
                       color: "white",
