@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import './forum.css';
 import { getForums } from './forum';
