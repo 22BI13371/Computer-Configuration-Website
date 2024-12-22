@@ -36,20 +36,19 @@ export default function SubtopicPage() {
   }
 
   return (
-    <div className={styles.subtopicContainer}>
+    (<div className={styles.subtopicContainer}>
       {/* Header */}
       <h1 className={styles.subtopicTitle}>{subtopic.title}</h1>
-
       {/* Post List */}
       <ul className={styles.postList}>
         {subtopic.posts.map((post) => (
           <li key={post.id} className={styles.postItem}>
-            <Link href={`/forums/posts/${post.id}`}>
-              <a className={styles.postLink}>{post.title}</a>
+            <Link href={`/forums/posts/${post.id}`} className={styles.postLink}>
+              {post.title}
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </div>)
   );
 }

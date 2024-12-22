@@ -47,7 +47,7 @@ export default function TopicPage() {
 
 
   return (
-    <div className="forums-container">
+    (<div className="forums-container">
       {/* Header Bar */}
       <div className="forum-header-bar">
         <div className="header-wrap">
@@ -62,7 +62,6 @@ export default function TopicPage() {
           </div>
         </div>
       </div>
-
       {/* Page Content */}
       <div className="content-container">
         <div>
@@ -83,7 +82,7 @@ export default function TopicPage() {
             <div className="row" key={index}>
               {/* Link to subtopic page */}
               <div className="left-column">
-                <Link href={`/forums/subtopics/${id}`}>{forumTitle}</Link>
+                <Link href={`/forums/subtopics/${id}`} legacyBehavior>{forumTitle}</Link>
               </div>
 
               {/* Posts */}
@@ -91,7 +90,7 @@ export default function TopicPage() {
                 <ol>
                   {posts.map((post) => (
                     <li key={post.id}>
-                      <Link href={`/forums/posts/${post.id}`}>{post.title}</Link>
+                      <Link href={`/forums/posts/${post.id}`} legacyBehavior>{post.title}</Link>
                     </li>
                   ))}
                 </ol>
@@ -100,6 +99,6 @@ export default function TopicPage() {
           ))}
         </div>
       </div>
-    </div>
+    </div>)
   );
 }

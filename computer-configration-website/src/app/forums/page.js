@@ -8,7 +8,7 @@ export default function ForumsPage() {
   const forums = getForums();
 
   return (
-    <div className="forums-container">
+    (<div className="forums-container">
       <div className="forum-header-bar">
         <div className="header-wrap">
           <div className="user-profile-box">
@@ -22,20 +22,19 @@ export default function ForumsPage() {
           </div>
         </div>
       </div>
-
       <div className='title-wrap'>
         <h1 className='main-page-title'>Forums</h1>
 
       </div>
       <div className="forums-grid">
         {forums.map((forum) => (
-          <Link key={forum.id} href={forum.link}>
+          <Link key={forum.id} href={forum.link} legacyBehavior>
             <div className="forum-box">
               <span>{forum.title}</span>
             </div>
           </Link>
         ))}
       </div>
-    </div>
+    </div>)
   );
 }
