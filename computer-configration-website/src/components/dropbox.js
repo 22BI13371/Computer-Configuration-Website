@@ -32,7 +32,7 @@ const Dropbox = () => {
     }, [isOpen]);
 
     return (
-        <div className="relative">
+        (<div className="relative">
             <button onClick={toggleDropbox} className="dropbox-button">
                 Products
             </button>
@@ -144,7 +144,7 @@ const Dropbox = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </div>)
     );
 };
 
