@@ -1,6 +1,6 @@
 import '@/styles/header.css'
 import Link from 'next/link'
-import Dropbox from '@/components/dropbox'
+import Dropbox from "@/components/dropbox";
 
 const Header = () => {
     return (<>
