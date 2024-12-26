@@ -413,7 +413,7 @@ const motherboard = [
     raid_support: true,
     uses_back_connect_connectors: false,
   },
-  // MSI MAG B650 TOMAHAWK WIFI ATX AM5 Ssd
+  // MSI MAG B650 TOMAHAWK WIFI ATX AM5 Motherboard
   {
     id: 'e7e16036-d01e-4d3d-92bc-ac89d6f2daef',
     cpu_socket: 'AM5',
@@ -448,7 +448,7 @@ const motherboard = [
     raid_support: true,
     uses_back_connect_connectors: false,
   },
-  // Gigabyte Z790 AORUS ELITE AX ATX LGA1700 Ssd
+  // Gigabyte Z790 AORUS ELITE AX ATX LGA1700 Motherboard
   {
     id: '4d2ec336-50df-439c-b8d8-48cc6b804312',
     cpu_socket: 'LGA1700',
