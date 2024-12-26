@@ -1,150 +1,73 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import './dropbox.css';
-import Link from 'next/link'
-import picture from '@/img/pic1.jpg'
-import Image from 'next/image'
+import React, { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Link from 'next/link';
+import Image from 'next/image';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './dropdownMenu.css';
+
+
+import cpuImage from '@/img/cpu.jpg';
+import coolerImage from '@/img/cooler.jpg';
+import motherboardImage from '@/img/motherboard.jpg';
+import memoryImage from '@/img/memory.jpg';
+import ssdImage from '@/img/ssd.jpg';
+import hddImage from '@/img/hdd.jpg';
+import vgaImage from '@/img/vga.jpg';
+import powerSupplyImage from '@/img/powerSupply.jpg';
+import caseImage from '@/img/case.jpg';
+import monitorImage from '@/img/monitor.jpg';
 
 const Dropbox = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleDropbox = () => {
-        setIsOpen(prev => !prev);
+    const handleToggle = () => {
+        setIsOpen((prev) => !prev);
     };
 
-    const closeDropbox = () => {
-        setIsOpen(false);
+    const handleItemClick = () => {
+        setIsOpen(false); // Close dropdown when an item is clicked
     };
 
-    // Close dropbox when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (isOpen && !event.target.closest('.dropbox-menu') && !event.target.closest('.dropbox-button')) {
-                closeDropbox();
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isOpen]);
+    // Product data with corresponding images
+    const products = [
+        { href: "/products/cpu", label: "CPU", image: cpuImage },
+        { href: "/products/cooler", label: "CPU Cooler", image: coolerImage },
+        { href: "/products/motherboard", label: "Motherboard", image: motherboardImage },
+        { href: "/products/memory", label: "Memory", image: memoryImage },
+        { href: "/products/ssd", label: "SSD", image: ssdImage },
+        { href: "/products/hdd", label: "HDD", image: hddImage },
+        { href: "/products/videocard", label: "Video Card", image: vgaImage },
+        { href: "/products/power-supply", label: "Power Supply", image: powerSupplyImage },
+        { href: "/products/case", label: "Case", image: caseImage },
+        { href: "/products/monitor", label: "Monitor", image: monitorImage },
+    ];
 
     return (
-        (<div className="relative">
-            <button onClick={toggleDropbox} className="dropbox-button">
-                Products
-            </button>
-            {isOpen && (
-                <div className="dropbox-background">
-                    <div className="dropbox-content">
-                        <div className='dropbox-content-left'>
-                            <div className="product-card">
-                                <Link href={"/products/cpu"}>
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </Link>
+        <DropdownButton
+            id="dropdown-basic-button"
+            title="Products"
+            menuVariant="dark"
+            className="nav-item"
+            show={isOpen}
+            onToggle={handleToggle}
+        >
+            <Dropdown.Header>Products</Dropdown.Header>
+            <div className="dropdown-content">
+                {products.map(({ href, label, image }) => (
+                    <div className="product-card" key={label}>
+                        <Link href={href} passHref>
+                            <div className="product-link" onClick={handleItemClick}>
+                                <Image src={image} alt={label} width={24} height={24} />
+                                <span>{label}</span>
                             </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                            <div className="product-card">
-                                <a href="#">
-                                    <Image src={picture} alt='CPUs' className="product-image" />
-                                    <p className="product-name">CPUs</p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="dropbox-content-right">
-                            <div>
-                                <div class="section">
-                                    <h3>Peripherals</h3>
-                                    <ul>
-                                        <li><a href="#">Headphones</a></li>
-                                        <li><a href="#">Keyboards</a></li>
-                                        <li><a href="#">Mice</a></li>
-                                        <li><a href="#">Speakers</a></li>
-                                        <li><a href="#">Webcams</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="section">
-                                    <h3>Displays</h3>
-                                    <ul>
-                                        <li><a href="#">Monitors</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="section">
-                                    <h3>Software</h3>
-                                    <ul>
-                                        <li><a href="#">Operating Systems</a></li>
-                                    </ul>
-                                </div>
-                            
-                            </div>
-
-                            <div>
-                                <div class="section">
-                                    <h3>Expansion</h3>
-                                    <ul>
-                                        <li><a href="#">Sound Cards</a></li>
-                                        <li><a href="#">Wireless Networking</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="section">
-                                    <h3>Accessories / Other</h3>
-                                    <ul>
-                                        <li><a href="#">Case Fans</a></li>
-                                        <li><a href="#">Fan Controllers</a></li>
-                                        <li><a href="#">Thermal Compound</a></li>
-                                        <li><a href="#">External Hard Drives</a></li>
-                                        <li><a href="#">Optical Drives</a></li>
-                                        <li><a href="#">Uninterruptible Power Supplies</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        </Link>
                     </div>
-                </div>
-            )}
-        </div>)
+                ))}
+            </div>
+        </DropdownButton>
     );
 };
 
