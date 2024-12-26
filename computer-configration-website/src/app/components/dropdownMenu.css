@@ -1,0 +1,93 @@
+/* Additional styling for tables in dropdown */
+.table {
+    margin: 0; /* Remove default margin */
+}
+
+.table td {
+    vertical-align: middle; /* Center align items */
+    padding: 0.5rem; /* Adjust padding */
+    display: grid;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.dropdown-content {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
+    gap: 1rem; /* Space between items */
+    padding: 1rem;
+}
+
+.product-card {
+    border: 2px solid #ccc; /* Border for each item */
+    border-radius: 5px; /* Rounded corners */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center; /* Center text */
+    overflow: hidden; /* Hide overflow content */
+    padding: 10px; /* Padding inside the box */
+}
+
+.product-link {
+    display: flex;
+    flex-direction: column; /* Stack image above text */
+    align-items: center; /* Center align items */
+    width: 100%; /* Full width */
+}
+
+.product-link img {
+    width: 40px; /* Adjust image size */
+    height: 40px; /* Adjust image size */
+    margin-bottom: 5px; /* Space between image and text */
+}
+
+.product-card:hover {
+    border-color: #495057; /* Change border color on hover */
+    background-color: rgba(73, 80, 87, 0.1); /* Light background on hover */
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+    margin-bottom: 10px;
+    padding: 20px 20px; /* Adjust padding for size (top/bottom, left/right) */
+    color: #ffffff; /* White text color */
+    font-size: 15px; /* Adjust font size */
+    display: contents; /* Use flex for alignment */
+    align-items: center; /* Center align items vertically */
+    width: 100%; /* Full width of the parent */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Style for the dropdown headers */
+.dropdown-header {
+    font-weight: bold;
+    font-size: 16px; /* Slightly larger for headers */
+    color: #cccccc; /* Light gray color for headers */
+}
+
+/* Custom styles for the dropdown button */
+.dropdown-toggle {
+    background-color: #343a40; /* Dark background */
+    border: none; /* Remove border */
+    color: #ffffff; /* White text color */
+}
+
+/* Change background color on hover */
+.dropdown-item:hover {
+    background-color: #495057; /* Darker background on hover */
+}
+
+/* Adjust the width of the dropdown */
+.dropdown-menu {
+    min-width: 600px;
+}
+
+/* Style for the images in dropdown items */
+.dropdown-item img {
+    width: 30px; /* Adjust image size */
+    height: 30px; /* Adjust image size */
+}

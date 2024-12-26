@@ -9,7 +9,7 @@ const Builder = () => {
         { name: "Memory", path: "/products/memory" },
         { name: "SSD", path: "/products/ssd" },
         { name: "HDD", path: "/products/hdd" },
-        { name: "VGA", path: "/products/vga" },
+        { name: "Videocard", path: "/products/videocard" },
         { name: "Power Supply", path: "/products/power-supply" },
         { name: "Case", path: "/products/case" },
         { name: "Monitor", path: "/products/monitor" },
