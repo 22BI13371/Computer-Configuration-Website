@@ -1,9 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import { pcBuildsParts, pcBuilds, pcParts } from "../lib/placeholder_data";
+import '@/styles/completebuild.css'
+import picture from '@/img/pic1.jpg'
 
-
-const BuildCard = ({id, picture, title, users, users_id, price }) => {
+const BuildCard = ({id, title, users, users_id}) => {
   // Find the user from the users array using user_id
   console.log("User ID:", users_id);
   const user = users.find((user) => user.id === users_id);
@@ -27,13 +27,26 @@ const BuildCard = ({id, picture, title, users, users_id, price }) => {
 
   return (
     <div className="build-item">
-      <Image src={picture} alt={title} width={200} height={150} />
-      <div className="user">
-        <h4>{userName}</h4>
+      <div className="content1">
+        <Image src={picture} alt={title} width={200} height={150} />
+        <div className="user_name">
+          <p className="user_avatar">
+            <Image src={picture} alt={user.name}/>
+          </p>
+          <p className="username">{user.name}</p>
+        </div>
+        <div className="build-info">
+          <h1 className="title">{title}</h1>
+          <ul className="specs">
+            <li className="list_specs">Description 1</li>
+            <li className="list_specs">Description 1</li>
+          </ul>
+        </div>
       </div>
-      <div className="build-info">
-        <h2>{title}</h2>
-        <button className="btn">Price: ${parseFloat(totalPrice).toFixed(2)}</button>
+      <div className="content2">
+        <div className="price">
+          <p>Price: ${parseFloat(totalPrice).toFixed(2)}</p>
+        </div>
       </div>
     </div>
   );

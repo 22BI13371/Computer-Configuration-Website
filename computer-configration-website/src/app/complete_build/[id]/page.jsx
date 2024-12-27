@@ -3,6 +3,7 @@
 import '@/styles/builddetail.css';
 import Image from 'next/image';
 import { pcBuilds, pcBuildsParts, users, pcParts } from '@/app/lib/placeholder_data'; // Import your data
+import picture from '@/img/pic1.jpg'
 
 const BuildDetail = ({params}) => {
     const { id } = params;
@@ -42,21 +43,27 @@ const BuildDetail = ({params}) => {
                     <div className="sidebar">
                         <div className="gallery">
                             <div className="main_img">
-                                <Image src={build.mainImage} width={200} height={200} alt="Main build image" />
+                                <Image src={picture} width={200} height={200} alt="Main build image" />
                             </div>
                             <div className="side_img">
                                 {/* {build.gallery.map((img, index) => (
                                     <Image key={index} src={img} width={50} height={50} alt={`Gallery image ${index + 1}`} />
                                 ))} */}
+                                <Image src={picture}/>
+                                <Image src={picture}/>
+                                <Image src={picture}/>
+                                <Image src={picture}/>
                             </div>
                         </div>
                         <div className="components">
-                            {pcparts.map((component, index) => (
-                                <div className="component_item" key={index}>
-                                    <div className="side_img">
-                                        <Image src={component.image} width={50} height={50} alt={component.name} />
+                            <h1>Part List</h1>
+                            {pcparts.map((component) => (
+                                <div className="component_item">
+                                    <div className="side_img_component">
+                                        <Image src={picture} width={50} height={50} alt={component.name} />
                                     </div>
                                     <div className="detail">
+                                        <p>{component.category}</p>
                                         <h3>{component.name}</h3>
                                         <p>{component.current_price}</p>
                                     </div>
@@ -66,13 +73,13 @@ const BuildDetail = ({params}) => {
                     </div>
                     <div className="mainbar">
                         <div className="description_box">
-                            <h2>Description</h2>
+                            <h1>Description</h1>
                             <p>{build.description}
                                 Example description
                             </p>
                         </div>
                         <div className="comment_box">
-                            <h2>Leave a comment</h2>
+                            <h1>Leave a comment</h1>
                             <div className="input_comment">
                                 <input className="cmbox" type="text" />
                                 <button className="savebtn">Save</button>
@@ -82,10 +89,28 @@ const BuildDetail = ({params}) => {
                             <div className='comment_title'>
                                 <h1>Comments</h1>
                             </div> 
-                            <div className='1_comment'>
-                                <div className='comment_user'><p>User Name</p></div>
-                                <div className='comment_content'><p>Example pagaraph</p></div>
-                            </div>          
+                            <div className='one_comment'>
+                                <div className="user_name">
+                                    <p className="user_avatar">
+                                        <Image src={picture} alt={user.name}/>
+                                    </p>
+                                    <p className="username">{user.name}</p>
+                                </div>
+                                <div className='comment_detail'>
+                                    <p>This is a good build</p>
+                                </div>
+                            </div>
+                            <div className='one_comment'>
+                                <div className="user_name">
+                                    <p className="user_avatar">
+                                        <Image src={picture} alt={user.name}/>
+                                    </p>
+                                    <p className="username">{user.name}</p>
+                                </div>
+                                <div className='comment_detail'>
+                                    <p>This is a good build</p>
+                                </div>
+                            </div>           
                         </div>
                     </div>
                 </div>

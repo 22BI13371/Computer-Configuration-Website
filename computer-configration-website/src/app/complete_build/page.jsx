@@ -22,9 +22,9 @@ const completebuild = () => {
             <h1>Complete PC builds</h1>
         </section>
 
-        <section className="filter-section">
-            <button className="filter-btn">Filters</button>
-            <input type="text" className="search-input" placeholder="Hinted search text"></input>
+        <div className='main_block'>
+        <section className='side_container'>
+            <div className='filter'>Filter</div>    
         </section>
 
         <section className="container">
@@ -37,7 +37,7 @@ const completebuild = () => {
                             id={product.id}
                             users_id={product.user_id}
                             users={users}
-                            picture={product.picture}
+                            // picture={product.picture}
                             title={product.name}
                         />
                     </a>
@@ -46,6 +46,7 @@ const completebuild = () => {
                 ))}
             </div>
         </section>
+        </div>
 
         <div className="pagination">
             {Array.from({ length: totalPages }, (_, index) => (
@@ -58,6 +59,7 @@ const completebuild = () => {
                 </button>
             ))}
         </div>
+        
     </>
   )
 }
