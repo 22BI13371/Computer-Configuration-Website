@@ -1,0 +1,171 @@
+.user-profile-box {
+  display: flex;
+  align-items: center;
+  background-color: #2f2f2f; 
+  color: white;
+  border-radius: 10px; 
+  padding: 5px 15px;
+  gap: 40px; /* Space between the avatar and icons */
+  height: 40px; /* Match the bar height */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.user-profile-box img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; /* Makes the avatar circular */
+  background-color: #ccc; /* Placeholder for the avatar */
+}
+
+.user-profile-box span {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.user-profile-box .icons {
+  display: flex;
+  gap: 10px; /* Space between the icons */
+}
+
+.user-profile-box .icons i {
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-profile-box .icons i:hover {
+  transform: scale(1.1);
+}
+
+.forums-container {
+  padding: 0;
+}
+
+/* Posts Container */
+.forum-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between posts */
+    margin-top: 20px; /* Add space below the title */
+    padding: 0 100px;
+  }
+  
+  /* Individual Post */
+  .post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .post:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* General Styling for Topic Page */
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .forum-header-bar {
+    width: 100%;
+    background-color: #14b8a6; 
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .header-wrap {
+    padding: 0 20px;
+  }
+
+  /* Content Container */
+.content-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Header */
+/* .header {
+} */
+
+.title-wrap {
+  align-self: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: inline-block;
+  align-self: center;
+  border-bottom: 2px solid white;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: gray;
+  margin: 5px 0 20px;
+}
+
+/* Table Layout */
+.table {
+  display: flex;
+  flex-direction: column; /* Ensures rows stack vertically */
+  text-align: left;
+  border-collapse: collapse; /* For cleaner spacing */
+}
+
+/* Header Row */
+.row.header-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ccc; /* Single border for the header row */
+  font-weight: bold;
+  padding-bottom: 10px; /* Adds space below the header row */
+  font-size: large;
+}
+
+/* Normal Rows */
+.row {
+  display: flex;
+  justify-content: space-between; /* Aligns columns */
+  padding: 10px 0;
+}
+
+/* Columns */
+.left-column, .right-column {
+  flex: 1; /* Each column takes equal width */
+  padding: 0 10px; /* Adds some horizontal spacing */
+}
+
+.left-column {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.right-column li {
+  font-size: 16px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table {
+    grid-template-columns: 1fr; /* Stacks columns */
+  }
+}
