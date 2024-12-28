@@ -1,12 +1,15 @@
+import Powersupply from './power-supply';
+import { fetchPcParts } from '@/app/lib/data';
 
-import PowerSupply from "./power-supply";
+async function PowerSupplyPage() {
+    const powerSupply = await fetchPcParts('powerSupply');
+    console.log("Fetched Power Supply Data:", powerSupply);
 
-const CPUPage = () => {
     return (
         <div>
-            <PowerSupply /> {/* Render the CPU component */}
+            <Powersupply powerSupply={powerSupply || []} />
         </div>
     );
-};
+}
 
-export default CPUPage;
+export default PowerSupplyPage;

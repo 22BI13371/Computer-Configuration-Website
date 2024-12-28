@@ -1,12 +1,14 @@
+import Monitor from './monitor';
+import { fetchPcParts } from '@/app/lib/data';
 
-import Monitor from "./monitor";
+async function MonitorPage() {
+    const monitor = await fetchPcParts('Monitor');
 
-const CPUPage = () => {
     return (
         <div>
-            <Monitor /> {/* Render the CPU component */}
+            <Monitor monitor={monitor} /> {/* Render the CPU component */}
         </div>
     );
 };
 
-export default CPUPage;
+export default MonitorPage;

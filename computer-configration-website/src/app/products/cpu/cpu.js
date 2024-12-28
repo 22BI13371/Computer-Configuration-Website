@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
+// import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
 import Sidebar from './Sidebar'; // Import Sidebar component
 import './cpu.css';
 
@@ -66,7 +66,7 @@ const CPU = ({ cpu }) => {
         <table className="cpu-table">
           <thead>
             <tr>
-              <th>Product</th>
+              <th>Manufacturer</th>
               <th>Core Count</th>
               <th>Performance Core Clock</th>
               <th>Performance Core Boost Clock</th>
@@ -79,10 +79,12 @@ const CPU = ({ cpu }) => {
           </thead>
           <tbody>
             {filteredCpuData.map((cpu) => (
-              <tr key={cpu.id}>
+                <tr key={cpu.id}>
                 <td>
-                  {cpu.series} {cpu.core_family} {cpu.performance_core_clock}{' '}
-                  GHz
+                  {cpu.specification.series}
+                  {/*{cpu.core_family}*/}
+                  {/*{cpu.performance_core_clock}{' '}*/}
+                  {/*GHz*/}
                 </td>
                 <td>{cpu.specification.core_count}</td>
                 <td>{cpu.specification.performance_core_clock} GHz</td>

@@ -6,12 +6,12 @@
     font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: #1f2937; /* Dark background */
-    color: #ffffff;
-}
+/*body {*/
+/*    background-color: #1f2937; !* Dark background *!*/
+/*    color: #ffffff;*/
+/*}*/
 
-/* Header */
+/* Header*/
 .header {
     background-color: #1f2937;
     padding: 1rem;
@@ -147,11 +147,11 @@ body {
     margin-top: 1rem;
 }
 
-.footer {
-    background-color: #1f2937; /* Same dark color as header */
-    color: #ffffff;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.2rem;
-    margin-top: 2rem;
-}
+/*.footer {*/
+/*    background-color: #1f2937; !* Same dark color as header *!*/
+/*    color: #ffffff;*/
+/*    text-align: center;*/
+/*    padding: 1px;*/
+/*    font-size: 1.2rem;*/
+/*    margin-top: 2rem;*/
+/*}*/
