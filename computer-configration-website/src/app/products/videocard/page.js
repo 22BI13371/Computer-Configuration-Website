@@ -1,12 +1,14 @@
+import Videocard from './videocard'; // Ensure the path is correct
+import { fetchPcParts } from '@/app/lib/data';
 
-import Vga from "./vga";
+async function VideoCardPage() {
+    const videoCard = await fetchPcParts('videoCard');
 
-const CPUPage = () => {
     return (
         <div>
-            <Vga /> {/* Render the CPU component */}
+            <Videocard videoCard={videoCard} />
         </div>
     );
 };
 
-export default CPUPage;
+export default VideoCardPage;

@@ -7,13 +7,13 @@ const Builder = () => {
         { name: "CPU", path: "/products/cpu" },
         { name: "Motherboard", path: "/products/motherboard" },
         { name: "Memory", path: "/products/memory" },
-        { name: "SSD", path: "/products/ssd" },
-        { name: "HDD", path: "/products/hdd" },
+        { name: "Storage", path: "/products/storage" },
         { name: "Videocard", path: "/products/videocard" },
         { name: "Power Supply", path: "/products/power-supply" },
         { name: "Case", path: "/products/case" },
         { name: "Monitor", path: "/products/monitor" },
         { name: "Cooler", path: "/products/cooler" },
+        { name: "HDD", path: "/products/hdd" },
     ];
 
     const peripherals = ["Keyboard", "Mouse", "Headphones", "Speakers", "Webcam"];

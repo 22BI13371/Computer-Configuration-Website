@@ -1,12 +1,14 @@
+import Motherboard from './motherboard';
+import { fetchPcParts } from '@/app/lib/data';
 
-import Motherboard from "./motherboard";
+async function MotherboardPage() {
+    const motherboard = await fetchPcParts('Motherboard');
 
-const CPUPage = () => {
     return (
         <div>
-            <Motherboard /> {/* Render the CPU component */}
+            <Motherboard motherboard={motherboard} /> {/* Render the CPU component */}
         </div>
     );
 };
 
-export default CPUPage;
+export default MotherboardPage;
