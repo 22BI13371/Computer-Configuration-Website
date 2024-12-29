@@ -4,7 +4,7 @@ import { cpu } from '../../lib/placeholder_data'; // Importing the data from pla
 import Sidebar from './Sidebar'; // Import Sidebar component
 import './cpu.css';
 
-const CPU = ({ cpu }) => {
+const CPU = ({ }) => {
   const [cpuData, setCpuData] = useState(cpu);
   const [selectedCpus, setSelectedCpus] = useState([]);
   const handleFilterChange = (newFilters) => {
@@ -84,12 +84,12 @@ const CPU = ({ cpu }) => {
                   {cpu.series} {cpu.core_family} {cpu.performance_core_clock}{' '}
                   GHz
                 </td>
-                <td>{cpu.specification.core_count}</td>
-                <td>{cpu.specification.performance_core_clock} GHz</td>
-                <td>{cpu.specification.efficiency_core_boost_clock} GHz</td>
-                <td>{cpu.specification.micro_architecture}</td>
-                <td>{cpu.specification.tdp}W</td>
-                <td>{cpu.specification.integrated_graphics}</td>
+                <td>{cpu.core_count}</td>
+                <td>{cpu.performance_core_clock} GHz</td>
+                <td>{cpu.efficiency_core_boost_clock} GHz</td>
+                <td>{cpu.micro_architecture}</td>
+                <td>{cpu.tdp}W</td>
+                <td>{cpu.integrated_graphics}</td>
                 <td>${(cpu.current_price / 100).toFixed(2)}</td>
                 <td>
                   <button
