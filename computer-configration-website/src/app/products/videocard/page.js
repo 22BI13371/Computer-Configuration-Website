@@ -1,13 +1,14 @@
+import Videocard from './videocard'; // Ensure the path is correct
+import { fetchPcParts } from '@/app/lib/data';
 
 async function VideoCardPage() {
-    const videoCard = await fetchPcParts('Video Card');
+  const videoCard = await fetchPcParts('Video Card');
 
-const CPUPage = () => {
-    return (
-        <div>
-            <Videocard videoCard={videoCard} />
-        </div>
-    );
-};
+  return (
+    <div>
+      <Videocard videoCard={videoCard} />
+    </div>
+  );
+}
 
-export default CPUPage;
+export default VideoCardPage;
