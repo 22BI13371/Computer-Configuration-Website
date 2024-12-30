@@ -264,7 +264,7 @@ const comments = [
   },
 ];
 
-export const cpu = [
+ export const cpu = [
   // Intel Core i5-14400F 2.5 GHz 10-Core Processor
   {
     id: 'b2dc819d-994c-4038-8df9-30a12aac8475',

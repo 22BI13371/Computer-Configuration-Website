@@ -18,6 +18,10 @@
     color: white;
 }
 
+
+
+
+
 .cpu td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -26,12 +30,5 @@
 }
 
 .cpu th {
-    background-color: #f4f4f4;
-}
-.footer{
-    background-color: white;
-}
-body {
-    background-color: white; /* Dark background */
-    color: black;
+    background-color: #343a40;
 }

@@ -64,23 +64,27 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
 
   const handleManufacturerChange = (key) => {
     const updatedManufacturer = { ...manufacturer };
-
+  
     if (key === "all") {
+      // If "All" is clicked, reset everything
       updatedManufacturer.all = true;
       updatedManufacturer.amd = false;
       updatedManufacturer.intel = false;
     } else {
+      // Toggle the clicked manufacturer checkbox
       updatedManufacturer[key] = !updatedManufacturer[key];
-      updatedManufacturer.all =
-        !updatedManufacturer.amd && !updatedManufacturer.intel;
+      // If both "AMD" and "Intel" are unchecked, "All" should be unchecked
+      updatedManufacturer.all = !updatedManufacturer.amd && !updatedManufacturer.intel;
     }
-
+  
     setManufacturer(updatedManufacturer);
-
+  
+    // Get the selected manufacturers
     const selectedManufacturers = Object.keys(updatedManufacturer)
       .filter((key) => updatedManufacturer[key] && key !== "all")
       .map((key) => key);
-
+  
+    // Pass the selected manufacturers to the filter change handler
     onFilterChange({ manufacturer: selectedManufacturers });
   };
 
