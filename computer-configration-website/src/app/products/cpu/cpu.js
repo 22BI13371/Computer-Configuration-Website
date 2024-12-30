@@ -4,34 +4,40 @@ import React, { useState } from 'react';
 import Sidebar from './Sidebar'; // Import Sidebar component
 import './cpu.css';
 
-const CPU = ({ cpu }) => {
+const CPU = ({}) => {
   const [cpuData, setCpuData] = useState(cpu);
   const [selectedCpus, setSelectedCpus] = useState([]);
+
   const handleFilterChange = (newFilters) => {
     let filteredData = cpu;
+
     // Apply price filter
     if (newFilters.price) {
       filteredData = filteredData.filter(
         (cpu) => cpu.current_price <= newFilters.price
       );
     }
+
     // Apply thread count filter
     if (newFilters.thread) {
       filteredData = filteredData.filter(
         (cpu) => cpu.thread_count <= newFilters.thread
       );
     }
+
     // Apply L2 Cache filter
     if (newFilters.l2Cache) {
       filteredData = filteredData.filter(
         (cpu) => cpu.l2_cache <= newFilters.l2Cache
       );
     }
+
     if (newFilters.l3Cache) {
       filteredData = filteredData.filter(
         (cpu) => cpu.l3_cache <= newFilters.l3Cache
       );
     }
+
     // Apply manufacturer filter
     if (newFilters.manufacturer && newFilters.manufacturer !== 'all') {
       filteredData = filteredData.filter((cpu) =>
@@ -40,21 +46,26 @@ const CPU = ({ cpu }) => {
           : cpu.series.includes('Intel')
       );
     }
+
     if (newFilters.coreFamily && newFilters.coreFamily.length > 0) {
       filteredData = filteredData.filter((cpu) =>
         newFilters.coreFamily.includes(cpu.core_family)
       );
     }
+
     setCpuData(filteredData);
   };
+
   const handleCpuSelect = (cpus) => {
     setSelectedCpus(cpus);
   };
+
   const filteredCpuData = cpuData.filter(
     (cpu) =>
       selectedCpus.length === 0 ||
       selectedCpus.some((selected) => selected.id === cpu.id)
   );
+
   return (
     <div style={{ display: 'flex' }}>
       <Sidebar
@@ -86,12 +97,12 @@ const CPU = ({ cpu }) => {
                   {/*{cpu.performance_core_clock}{' '}*/}
                   {/*GHz*/}
                 </td>
-                <td>{cpu.specification.core_count}</td>
-                <td>{cpu.specification.performance_core_clock} GHz</td>
-                <td>{cpu.specification.efficiency_core_boost_clock} GHz</td>
-                <td>{cpu.specification.micro_architecture}</td>
-                <td>{cpu.specification.tdp}W</td>
-                <td>{cpu.specification.integrated_graphics}</td>
+                <td>{cpu.core_count}</td>
+                <td>{cpu.performance_core_clock} GHz</td>
+                <td>{cpu.efficiency_core_boost_clock} GHz</td>
+                <td>{cpu.micro_architecture}</td>
+                <td>{cpu.tdp}W</td>
+                <td>{cpu.integrated_graphics}</td>
                 <td>${(cpu.current_price / 100).toFixed(2)}</td>
                 <td>
                   <button
