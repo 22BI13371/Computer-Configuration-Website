@@ -1,18 +1,24 @@
 'use client'
 import './vga.css';
 import React, { useState } from 'react';
+
 const Videocard = ({videoCard}) => {
     const [videoCardData, setvideoCardData] = useState(videoCard);
     const [selectedvideoCards, setSelectedvideoCards] = useState([]);
+
     const handlevideoCardSelect = (videoCard) => {
         setSelectedvideoCards(videoCard);
     };
+
     const filteredvideoCardData = videoCardData.filter(
         (videoCard) =>
             selectedvideoCards.length === 0 ||
             selectedvideoCards.some((selected) => selected.id === videoCard.id)
     );
+
     console.log("log", filteredvideoCardData[0].id);
+    // console.log("log", videoCard[);
+
     return (
         <div className="cpu-container">
             <h1>Choose a videoCard</h1>
@@ -31,7 +37,7 @@ const Videocard = ({videoCard}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {filteredvdData.map((videoCard) => (
+                {filteredvideoCardData.map((videoCard) => (
                     <tr key={videoCard.id}>
                         <td>{videoCard.manufacturer}</td>
                         <td>{videoCard.specification.chipset}</td>
@@ -43,7 +49,7 @@ const Videocard = ({videoCard}) => {
                         <td>${(videoCard.current_price / 100).toFixed(2)}</td>
                         <td>
                             <button
-                                onClick={() => console.log('Added videocard:', videoCard)}
+                                onClick={() => handlevideoCardSelect(videoCard)}
                                 style={{
                                     backgroundColor: '#1abc9c',
                                     color: 'white',
@@ -63,4 +69,5 @@ const Videocard = ({videoCard}) => {
         </div>
     );
 };
+
 export default Videocard;

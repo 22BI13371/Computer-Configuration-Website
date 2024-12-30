@@ -42,3 +42,10 @@ h1 {
 .cpu-table tr:nth-child(even) {
     background-color: #f2f2f2; /* Zebra striping */
 }
+.footer{
+    background-color: white;
+}
+body {
+    background-color: white; /* Dark background */
+    color: black;
+}
