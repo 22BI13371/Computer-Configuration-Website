@@ -1,13 +1,23 @@
-import React from 'react';
+'use client'
 import './monitor.css';
+import React, { useState } from 'react';
 
-const Monitor = () => {
+const Monitor = ({monitor}) => {
+    const [monitorData, setmonitorData] = useState(monitor);
+    const [selectedmonitors, setSelectedmonitors] = useState([]);
+    const handlemonitorSelect = (monitor) => {
+        setSelectedmonitors(monitor);
+    };
+    const filteredmonitorData = monitorData.filter(
+        (monitor) =>
+            selectedmonitors.length === 0 ||
+            selectedmonitors.some((selected) => selected.id === monitor.id)
+    );
+
     return (
         <div className="cpu-container">
             <h1>Choose a Monitor</h1>
-            <div className="search-bar">
-                <input type="text" placeholder="find a Monitor" />
-            </div>
+
             <table className="cpu-table">
                 <thead>
                     <tr>
@@ -23,11 +33,38 @@ const Monitor = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* Data rows will be added here */}
+                {filteredmonitorData.map((monitor) => (
+                    <tr key={monitor.id}>
+                        <td>
+                            {monitor.manufacturer}
+                        </td>
+                        <td>{monitor.specification.screen_size} '</td>
+                        <td>{monitor.specification.resolution}   </td>
+                        <td>{monitor.specification.refrest_rate} Hz </td>
+                        <td>{monitor.specification.response_time} ms </td>
+                        <td>{monitor.specification.panel_type}  </td>
+                        <td>{monitor.specification.aspect_ratio} </td>
+                        <td>{(monitor.current_price / 100).toFixed(2)} $</td>
+                        <td>
+                            <button
+                                onClick={() => console.log('Added cooler:', cooler)}
+                                style={{
+                                    backgroundColor: '#1abc9c',
+                                    color: 'white',
+                                    border: 'none',
+                                    padding: '8px 16px',
+                                    cursor: 'pointer',
+                                    borderRadius: '5px',
+                                }}
+                            >
+                                Add
+                            </button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
         </div>
     );
 };
-
 export default Monitor;

@@ -1,12 +1,14 @@
+import Memory from './memory';
+import { fetchPcParts } from '@/app/lib/data';
 
-import Memory from "./memory";
+async function MemoryPage() {
+    const memory = await fetchPcParts('Memory');
 
-const CPUPage = () => {
     return (
         <div>
-            <Memory /> {/* Render the CPU component */}
+            <Memory memory={memory} /> {/* Render the CPU component */}
         </div>
     );
 };
 
-export default CPUPage;
+export default MemoryPage;

@@ -34,11 +34,11 @@ const Dropbox = () => {
     // Product data with corresponding images
     const products = [
         { href: "/products/cpu", label: "CPU", image: cpuImage },
-        { href: "/products/coolers", label: "CPU Cooler", image: coolerImage },
+        { href: "/products/cooler", label: "CPU Cooler", image: coolerImage },
         { href: "/products/motherboard", label: "Motherboard", image: motherboardImage },
         { href: "/products/memory", label: "Memory", image: memoryImage },
-        { href: "/products/ssd", label: "SSD", image: ssdImage },
-        { href: "/products/hdd", label: "HDD", image: hddImage },
+        { href: "/products/storage", label: "Storage", image: ssdImage },
+        // { href: "/products/hdd", label: "HDD", image: hddImage },
         { href: "/products/videocard", label: "Video Card", image: vgaImage },
         { href: "/products/power-supply", label: "Power Supply", image: powerSupplyImage },
         { href: "/products/case", label: "Case", image: caseImage },
