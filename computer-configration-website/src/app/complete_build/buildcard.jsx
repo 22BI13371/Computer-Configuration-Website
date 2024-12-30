@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import { pcBuildsParts, pcBuilds, pcParts } from "../lib/placeholder_data";
 import '@/styles/completebuild.css'

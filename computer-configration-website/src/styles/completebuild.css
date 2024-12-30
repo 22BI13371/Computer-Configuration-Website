@@ -115,13 +115,12 @@ body {
 }
 
 .build-info {
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: left;
     height: auto;
-    /* background-color: #14b8a6; */
 }
 
-.build-info h2 {
+.build-info h1 {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -130,7 +129,6 @@ body {
 .user_name {
     color: #1f2937;
     padding: 0.5rem 1rem;
-    position: relative;
     display: flex;  
     font-weight: bold;
     vertical-align: baseline;
@@ -155,17 +153,17 @@ body {
 .title {
     font-weight: 700;
     font-size: 1rem;
-    line-height: 1.25;
     padding: 0 1rem;
-    margin: 0.5rem 0;
 }
 
 .specs {
     padding: 0 1rem 0.5rem;
 }
 
-/* .content2 {
-} */
+.content2 {
+    position: relative;
+    padding-bottom: 0,5rem;
+}
 
 .price {
     display: flex;

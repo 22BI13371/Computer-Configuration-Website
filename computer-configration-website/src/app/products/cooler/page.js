@@ -1,12 +1,13 @@
-
 import Cooler from "./cooler";
+import { fetchPcParts } from "@/app/lib/data";
 
-const CPUPage = () => {
+async function CoolerPage() {
+    const cooler =  await fetchPcParts('Cooler')
+    console.log(cooler)
     return (
         <div>
-            <Cooler /> {/* Render the CPU component */}
+            <Cooler cooler1={cooler}/> {/* Render the CPU component */}
         </div>
     );
 };
-
-export default CPUPage;
+export default CoolerPage;
