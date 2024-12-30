@@ -28,3 +28,11 @@
 .cpu th {
     background-color: #f4f4f4;
 }
+
+.footer{
+    background-color: white;
+}
+body {
+    background-color: white; /* Dark background */
+    color: black;
+}

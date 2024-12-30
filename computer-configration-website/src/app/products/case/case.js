@@ -16,9 +16,6 @@ const Case = ({pcCase}) => {
     return (
         <div className="cpu-container">
             <h1>Choose a Case</h1>
-            <div className="search-bar">
-                <input type="text" placeholder="find a case" />
-            </div>
             <table className="cpu-table">
                 <thead>
                     <tr>

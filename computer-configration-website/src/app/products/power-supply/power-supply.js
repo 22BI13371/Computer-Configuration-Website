@@ -1,35 +1,26 @@
 'use client';
 import './power-supply.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const Powersupply = ({ powerSupply }) => {
-    const [powerSupplyData, setPowerSupplyData] = useState([]);
+    const [powerSupplyData, setPowerSupplyData] = useState(powerSupply);
     const [selectedPowerSupplys, setSelectedPowerSupplys] = useState([]);
 
-    useEffect(() => {
-        if (powerSupply) {
-            setPowerSupplyData(powerSupply);
-        }
-    }, [powerSupply]);
-
     const handlePowerSupplySelect = (powerSupply) => {
-        setSelectedPowerSupplys((prev) => [...prev, powerSupply]);
+        setSelectedPowerSupplys(powerSupply);
     };
 
     const filteredPowerSupplyData = powerSupplyData.filter(
-        (powerSupply) =>
+        (item) =>
             selectedPowerSupplys.length === 0 ||
-            selectedPowerSupplys.some((selected) => selected.id === powerSupply.id)
+            selectedPowerSupplys.some((selected) => selected.id === item.id)
     );
 
-    console.log("log", filteredPowerSupplyData[0].id);
+    console.log("log", filteredPowerSupplyData[0]?.id);
 
     return (
         <div className="cpu-container">
             <h1>Choose a Power Supply</h1>
-            <div className="search-bar">
-                <input type="text" placeholder="Find a power supply" />
-            </div>
             <table className="cpu-table">
                 <thead>
                 <tr>
@@ -44,18 +35,18 @@ const Powersupply = ({ powerSupply }) => {
                 </tr>
                 </thead>
                 <tbody>
-                {filteredPowerSupplyData.map((powerSupply) => (
-                    <tr key={powerSupply.id}>
-                        <td>{powerSupply.manufacturer}</td>
-                        <td>{powerSupply.specification.type}</td>
-                        <td>{powerSupply.specification.efficiency_rating}</td>
-                        <td>{powerSupply.specification.wattage} W</td>
-                        <td>{powerSupply.specification.modular}</td>
-                        <td>{powerSupply.specification.color}</td>
-                        <td>${(powerSupply.current_price / 100).toFixed(2)}</td>
+                {filteredPowerSupplyData.map((item) => (
+                    <tr key={item.id}>
+                        <td>{item.manufacturer}</td>
+                        <td>{item.specification.type}</td>
+                        <td>{item.specification.efficiency_rating}</td>
+                        <td>{item.specification.wattage} W</td>
+                        <td>{item.specification.modular}</td>
+                        <td>{item.specification.color}</td>
+                        <td>${(item.current_price / 100).toFixed(2)}</td>
                         <td>
                             <button
-                                onClick={() => handlePowerSupplySelect(powerSupply)}
+                                onClick={() => handlePowerSupplySelect(item)}
                                 style={{
                                     backgroundColor: '#1abc9c',
                                     color: 'white',
