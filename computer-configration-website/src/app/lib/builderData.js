@@ -1,31 +1,52 @@
-const partCategories = {
-  CPU: 'cpu_id',
-  Motherboard: 'motherboard_id',
-  Case: 'case_id',
-  Cooler: 'cooler_id',
-  Memory: 'memory_id',
-  Monitor: 'monitor_id',
-  'Power Supply': 'power_supply_id',
-  Storage: 'storage_id',
-  'Video Card': 'video_card_id',
+export const partCategoriesItem = {
+  CPU: 'cpu',
+  Motherboard: 'motherboard',
+  Case: 'case',
+  Cooler: 'cooler',
+  Memory: 'memory',
+  Monitor: 'monitor',
+  'Power Supply': 'power_supply',
+  Storage: 'storage',
+  'Video Card': 'video_card',
 };
 
-export function saveToLocalStorage(id, cat) {
-  const partId = localStorage.getItem(partCategories[cat]);
+export function saveToLocalStorage(id, cat, price, name) {
+  const part = {
+    id: id,
+    name: name,
+    category: cat,
+    price: price,
+  };
 
-  if (partId) {
+  const jsonStr = JSON.stringify(part);
+  const partLocal = localStorage.getItem(partCategoriesItem[cat]);
+
+  if (partLocal) {
     return;
   } else {
-    localStorage.setItem(partCategories[cat], id);
+    localStorage.setItem(partCategoriesItem[cat], jsonStr);
   }
 }
 
+export function getAllFromLocalStorage() {
+  let arr = [];
+  if (typeof window !== 'undefined') {
+    for (const [key, val] of Object.entries(partCategoriesItem)) {
+      window.localStorage.getItem(val)
+        ? arr.push(window.localStorage.getItem(val))
+        : 'null';
+    }
+  }
+
+  return arr;
+}
+
 export function rmvStorageItem(cat) {
-  localStorage.removeItem(partCategories[cat]);
+  localStorage.removeItem(partCategoriesItem[cat]);
 }
 
 export function rmvAllStorageItem() {
-  for (const [key, val] of Object.entries(partCategories)) {
+  for (const [key, val] of Object.entries(partCategoriesItem)) {
     localStorage.removeItem(val);
   }
 }

@@ -5,6 +5,7 @@ import {
 } from '../lib/data';
 import { cookies } from 'next/headers';
 import { setCookie, clearCookie } from './actions';
+import { PartInfoCard } from '../builder/partInfoCard';
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -35,19 +36,21 @@ export default async function Page() {
       let cpuName = cookieStore.get('cpu_name');
     }
 
-    return parts.map((cpu) => (
-      <div>
-        <form action={setCookie}>
-          <button type="submit">click here</button>
-          <button type="submit" formAction={clearCookie}>
-            delete cookie
-          </button>
-        </form>
-        {/* <p>{cpu.name}</p> */}
-        <p>{cpu.current_price / 100}</p>
-        <p>{cpu.specification.cpu_socket}</p>
-      </div>
-    ));
+    return <PartInfoCard />;
+
+    // return parts.map((cpu) => (
+    //   <div>
+    //     <form action={setCookie}>
+    //       <button type="submit">click here</button>
+    //       <button type="submit" formAction={clearCookie}>
+    //         delete cookie
+    //       </button>
+    //     </form>
+    //     {/* <p>{cpu.name}</p> */}
+    //     <p>{cpu.current_price / 100}</p>
+    //     <p>{cpu.specification.cpu_socket}</p>
+    //   </div>
+    // ));
 
     // return build1_parts.map((parts) => (
     //   <div>
