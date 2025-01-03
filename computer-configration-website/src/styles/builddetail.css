@@ -12,6 +12,7 @@
     background-color: #14b8a6;
     text-align: center;
     padding: 2rem 0;
+    font-weight: bold;
 }
 
 .page_title h4 {
@@ -43,22 +44,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 0.5px solid #1f2937;
-    border-radius: 10px;
 }
 
 .mainbar {
     width: 66%;
     background-color: #F7FFF7;
     float: right;
+    padding-right: 1rem;
     padding-left: 1rem;
-    padding-top: 1rem;
-    border: 0.5px solid #1f2937;
-    border-radius: 10px;
 }
 
 .description_box {
     margin-bottom: 2rem;
+}
+
+.description_box h1{
+    margin-bottom: 0.5rem;
 }
 
 .input_comment {
@@ -82,7 +83,7 @@
 }
 
 .gallery {
-    width: max-content;
+    width: 100%;
     min-height: 300px;
     padding: 1rem;
     display: flex;
@@ -90,6 +91,9 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    border: 0.5px solid #1f2937;
+    border-radius: 10px;
+    background-color: white;
 }
 
 .main_img {
@@ -100,6 +104,8 @@
     display: flex;
     justify-content: center;
     gap: 5px;
+    margin-top: 0.5rem;
+    min-height: 50px;
 }
 
 .main_img img{
@@ -112,17 +118,85 @@
     height: 50px;
 }
 
+.components h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 .component_item {
     width: 300px;
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 5px;
     background-color: #14b8a6;
     border-radius: 10px;
     color: #1f2937;
+    margin-top: 1rem;
+    width: 100%;
 }
 
 .detail {
     margin-left: 1rem;
+}
+
+.detail h3{
+    font-size: medium;
+    color: #F7FFF7;
+}
+
+.side_img_component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 50px;
+    max-width: 50px;
+}
+
+.mainbar h1 {
+    font-size: 1.5rem;
+    font-weight: bold   ;
+}
+
+.comment_box{
+    width: 100%;
+}
+
+.one_comment{
+    width: 100%;
+    border: 1px solid black;
+    min-height: 100px;
+    margin-top: 0.5rem;
+}
+
+.user_name {
+    color: #1f2937;
+    padding: 0.5rem 1rem;
+    position: relative;
+    display: flex;  
+    font-weight: bold;
+    vertical-align: baseline;
+}
+
+.user_avatar img{
+    vertical-align: middle;
+    margin-right: 1rem;
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    border-radius: 50% 50%;
+}
+
+.username {
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.5rem;
+}
+
+.comment_detail{
+    padding-left: 1rem;
+    padding-right: 1rem;
 }

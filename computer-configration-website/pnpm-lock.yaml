@@ -19,7 +19,7 @@ importers:
         version: 5.3.3(@popperjs/core@2.11.8)
       computer-confugration-website:
         specifier: 'file:'
-        version: 'computer-configration-website@file:'
+        version: computer-configration-website@file:(@popperjs/core@2.11.8)(@types/react@19.0.2)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -2377,19 +2377,23 @@ snapshots:
 
   commander@4.1.1: {}
 
-  'computer-configration-website@file:':
+  computer-configration-website@file:(@popperjs/core@2.11.8)(@types/react@19.0.2):
     dependencies:
       '@vercel/postgres': 0.10.0
       bcrypt: 5.1.1
+      bootstrap: 5.3.3(@popperjs/core@2.11.8)
       cross-env: 7.0.3
       next: 14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       rc-slider: 11.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
+      react-bootstrap: 2.10.7(@types/react@19.0.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
       - '@babel/core'
       - '@opentelemetry/api'
       - '@playwright/test'
+      - '@popperjs/core'
+      - '@types/react'
       - babel-plugin-macros
       - encoding
       - sass
