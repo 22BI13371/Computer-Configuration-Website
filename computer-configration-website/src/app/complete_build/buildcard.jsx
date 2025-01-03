@@ -6,7 +6,7 @@ import picture from '@/img/pic1.jpg'
 
 const BuildCard = ({id, title, users, users_id}) => {
   // Find the user from the users array using user_id
-  console.log("User ID:", users_id);
+  // console.log("User ID:", users_id);
   const user = users.find((user) => user.id === users_id);
   // Handle case where user is not found
   const userName = user ? user.name : "Unknown User";

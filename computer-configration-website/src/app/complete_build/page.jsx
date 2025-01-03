@@ -5,6 +5,7 @@ import BuildCard from './buildcard'
 import { useState } from 'react'
 import { pcBuilds, users, pcParts, pcBuildsParts } from '../lib/placeholder_data';
 import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -21,8 +22,18 @@ const completebuild = () => {
         <section className="page-title">
             <h1>Complete PC builds</h1>
         </section>
-
+        <div className='sub_content'>
+            <div className='sub_side'>
+                <Link href={"/create_complete_build"}>
+                    <Button>Create Complete Build</Button>
+                </Link>
+            </div>
+            <div className='sub_main'>
+                <h4>Complete Builds</h4 >
+            </div>
+        </div>
         <div className='main_block'>
+
         <section className='side_container'>
             <div className='filter'>Filter</div>    
         </section>
@@ -37,7 +48,6 @@ const completebuild = () => {
                             id={product.id}
                             users_id={product.user_id}
                             users={users}
-                            // picture={product.picture}
                             title={product.name}
                         />
                     </a>

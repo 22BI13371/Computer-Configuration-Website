@@ -9,18 +9,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
 
-.search-bar input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-}
 
 .cpu-table {
     width: 100%;
@@ -42,3 +31,11 @@ h1 {
 .cpu-table tr:nth-child(even) {
     background-color: #f2f2f2; /* Zebra striping */
 }
+
+.footer{
+    background-color: white;
+}
+body {
+     background-color: white; /* Dark background */
+     color: black;
+ }

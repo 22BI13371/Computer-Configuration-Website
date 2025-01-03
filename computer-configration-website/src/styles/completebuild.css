@@ -62,7 +62,9 @@ body {
 
 .main_block{
     display: flex;
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
 }
 
 .container {
@@ -80,7 +82,25 @@ body {
     min-width: 240px;
     padding-right: 1rem;
     margin-right: 1rem;
-    background-color: #14b8a6;
+    /* background-color: #F7FFF7; */
+}
+
+.sub_content {
+    display: flex;
+    margin: 0.5rem;
+    height: 4rem;
+    padding-top: 0.5rem;
+}
+
+.sub_side {
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.sub_main {
+    align-items: center;
 }
 
 /* Builds Gallery */
@@ -92,6 +112,7 @@ body {
     max-width: 1200px;
     padding: 10px;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .build-item {
@@ -102,6 +123,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     display: grid;
+    text-decoration: none;
 }   
 
 .build-item img {
