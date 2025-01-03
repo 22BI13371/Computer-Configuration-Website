@@ -11,7 +11,7 @@ body {
     color: #ffffff;
 }
 
-/* Header */
+/* Header*/
 .header {
     background-color: #1f2937;
     padding: 1rem;
@@ -151,7 +151,7 @@ body {
     background-color: #1f2937; /* Same dark color as header */
     color: #ffffff;
     text-align: center;
-    padding: 1rem;
+    padding: 1px;
     font-size: 1.2rem;
     margin-top: 2rem;
 }

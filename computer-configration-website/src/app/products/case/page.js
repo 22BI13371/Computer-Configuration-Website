@@ -1,12 +1,14 @@
+import Case from './case';
+import { fetchPcParts } from '@/app/lib/data';
 
-import Case from "./case";
+async function CasePage() {
+    const pcCase = await fetchPcParts('Case');
 
-const CPUPage = () => {
     return (
         <div>
-            <Case /> {/* Render the CPU component */}
+            <Case pcCase={pcCase} /> {/* Render the CPU component */}
         </div>
     );
 };
 
-export default CPUPage;
+export default CasePage;

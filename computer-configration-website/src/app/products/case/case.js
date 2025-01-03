@@ -1,29 +1,65 @@
-import React from 'react';
+'use client'
 import './case.css';
+import React, { useState } from 'react';
 
-const Case = () => {
+const Case = ({pcCase}) => {
+    const [pcCaseData, setpcCaseData] = useState(pcCase);
+    const [selectedpcCases, setSelectedpcCases] = useState([]);
+    const handlepcCaseSelect = (pcCase) => {
+        setSelectedpcCases(pcCase);
+    };
+    const filteredpcCaseData = pcCaseData.filter(
+        (pcCase) =>
+            selectedpcCases.length === 0 ||
+            selectedpcCases.some((selected) => selected.id === pcCase.id)
+    );
     return (
         <div className="cpu-container">
             <h1>Choose a Case</h1>
-            <div className="search-bar">
-                <input type="text" placeholder="find a case" />
-            </div>
             <table className="cpu-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Manufacturer</th>
                         <th>type</th>
                         <th>Color</th>
                         <th>Power supply</th>
                         <th>side pannel</th>
                         <th>External volume</th>
-                        <th>Internal 3.5 Bays</th>
+                        <th>Drive Bays</th>
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* Data rows will be added here */}
+                {filteredpcCaseData.map((pcCase) => (
+                    <tr key={pcCase.id}>
+                        <td>
+                            {pcCase.manufacturer}
+                        </td>
+                        <td>{pcCase.specification.type} </td>
+                        <td>{pcCase.specification.color}   </td>
+                        <td>{pcCase.specification.power_supply}  </td>
+                        <td>{pcCase.specification.side_panel}  </td>
+                        <td>{pcCase.specification.volume}  </td>
+                        <td>{pcCase.specification.drive_bays} </td>
+                        <td>{(pcCase.current_price / 100).toFixed(2)} $</td>
+                        <td>
+                            <button
+                                onClick={() => console.log('Added cooler:', cooler)}
+                                style={{
+                                    backgroundColor: '#1abc9c',
+                                    color: 'white',
+                                    border: 'none',
+                                    padding: '8px 16px',
+                                    cursor: 'pointer',
+                                    borderRadius: '5px',
+                                }}
+                            >
+                                Add
+                            </button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
         </div>

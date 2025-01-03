@@ -66,3 +66,4 @@ const Cooler = ({cooler}) => {
 };
 
 export default Cooler;
+

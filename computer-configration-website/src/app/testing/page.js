@@ -8,19 +8,24 @@ import { setCookie, clearCookie } from './actions';
 
 export default async function Page() {
   const cookieStore = await cookies();
-  let cpus;
+  const all_cookies = cookieStore.getAll();
+  let result = all_cookies.filter((obj) => {
+    // console.log(obj.name);
+    return ['cpu_name'].includes(obj.name);
+  });
+  // console.log('all cookies', all_cookies);
+  // console.log('filtered cookies', result);
+  let parts;
   let build1_parts;
   // const cpus = await fetchPcParts('Motherboard');
 
   try {
-    if (!cpus) {
-      cpus = await fetchPcPartWithFilter(
-        'CPU',
-        {
-          current_price: { min: 44000, max: 46000 },
-          manufacturer: ['AMD', 'Intel'],
-        },
-        { series: 'AMD Ryzen 7' }
+    if (!parts) {
+      parts = await fetchPcPartWithFilter(1, {}, { cpu_socket: 'LGA1700' });
+      console.log(
+        parts.forEach((part) => {
+          console.log(part.name);
+        })
       );
 
       build1_parts = await fetchPcBuildPartsWithId(
@@ -30,7 +35,7 @@ export default async function Page() {
       let cpuName = cookieStore.get('cpu_name');
     }
 
-    return cpus.map((cpu) => (
+    return parts.map((cpu) => (
       <div>
         <form action={setCookie}>
           <button type="submit">click here</button>
