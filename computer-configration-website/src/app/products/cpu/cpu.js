@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
 import Sidebar from './Sidebar'; // Import Sidebar component
+import Link from 'next/link';
+import { saveToLocalStorage } from '@/app/lib/builderData';
 import './cpu.css';
 
 const CPU = ({ cpu }) => {
@@ -91,19 +93,29 @@ const CPU = ({ cpu }) => {
                 <td>{cpu.specification.integrated_graphics}</td>
                 <td>${(cpu.current_price / 100).toFixed(2)}</td>
                 <td>
-                  <button
-                    onClick={() => console.log('Added CPU:', cpu)}
-                    style={{
-                      backgroundColor: '#1abc9c',
-                      color: 'white',
-                      border: 'none',
-                      padding: '8px 16px',
-                      cursor: 'pointer',
-                      borderRadius: '5px',
+                  <Link
+                    href={{
+                      pathname: '/builder',
+                      query: { id: cpu.id, category: cpu.category },
                     }}
                   >
-                    Add
-                  </button>
+                    <button
+                      onClick={() => {
+                        saveToLocalStorage(cpu.id, cpu.category);
+                        return 0;
+                      }}
+                      style={{
+                        backgroundColor: '#1abc9c',
+                        color: 'white',
+                        border: 'none',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        borderRadius: '5px',
+                      }}
+                    >
+                      Add
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -115,4 +127,3 @@ const CPU = ({ cpu }) => {
 };
 
 export default CPU;
-
