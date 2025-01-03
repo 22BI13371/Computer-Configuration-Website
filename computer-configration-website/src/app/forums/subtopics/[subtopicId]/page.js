@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import styles from "./subtopic.module.css"; // Import CSS for styling
+import styles from "./subtopic.module.css";
 
 export default function SubtopicPage() {
   const params = useParams();
@@ -36,19 +36,37 @@ export default function SubtopicPage() {
   }
 
   return (
-    (<div className={styles.subtopicContainer}>
-      {/* Header */}
-      <h1 className={styles.subtopicTitle}>{subtopic.title}</h1>
-      {/* Post List */}
-      <ul className={styles.postList}>
-        {subtopic.posts.map((post) => (
-          <li key={post.id} className={styles.postItem}>
-            <Link href={`/forums/posts/${post.id}`} className={styles.postLink}>
-              {post.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>)
+    <div className="forum-container">
+      {/* Header Bar */}
+      <div className="forum-header-bar">
+        <div className="header-wrap">
+          <div className="user-profile-box">
+            <img src="/avatar-placeholder.png" alt="User Avatar" />
+            <a href="/profile" className="user-name">User</a>
+            <div className="icons">
+              <i className="fas fa-comment-dots"></i>
+              <i className="fas fa-bell"></i>
+              <i className="fas fa-cog"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Subtopic Content */}
+      <div className={styles.subtopicContainer}>
+        {/* Header */}
+        <h1 className={styles.subtopicTitle}>{subtopic.title}</h1>
+        {/* Post List */}
+        <ul className={styles.postList}>
+          {subtopic.posts.map((post) => (
+            <li key={post.id} className={styles.postItem}>
+              <Link href={`/forums/posts/${post.id}`} className={styles.postLink}>
+                {post.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
+  
 }
