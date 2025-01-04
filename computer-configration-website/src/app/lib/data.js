@@ -18,6 +18,20 @@ export async function fetchPcParts(cat = '') {
   }
 }
 
+export async function fetchPcPartsWithInClause(ids) {
+  let query = `SELECT *
+    FROM pc_parts
+    WHERE id in $1
+    `;
+  console.log(ids);
+  try {
+    const data = await sql.query(query, [ids]);
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch data.');
+  }
+}
+
 export async function fetchposts() {
   try {
     const data = await sql` SELECT * from posts `;
