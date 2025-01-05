@@ -10,17 +10,17 @@ export async function setCookie(data) {
 
   if (!cpuName) {
     let cpus = await fetchPcPartWithFilter(
-      'CPU',
+      1,
       {
         current_price: { min: 44000, max: 46000 },
         manufacturer: ['AMD', 'Intel'],
       },
-      { series: 'AMD Ryzen 7' }
+      {}
     );
-    // console.log(cpus[0].name);
+    console.log(cpus[0]);
 
     cookieStore.set({
-      name: 'cpu_name',
+      name: 'cpu_id',
       value: cpus[0].name,
       secure: true,
       sameSite: 'none',
