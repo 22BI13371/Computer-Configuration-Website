@@ -339,7 +339,7 @@ const comments = [
   },
 ];
 
-const cooler = [
+export const cooler = [
   // EK AIO Elite 360 D-RGB 66.04 CFM Liquid CPU Cooler
   {
     id: 'e120c0e0-678a-4ef5-ab82-d4a4704bcd13',
