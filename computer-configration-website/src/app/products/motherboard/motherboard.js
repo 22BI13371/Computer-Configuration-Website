@@ -1,7 +1,10 @@
 'use client';
-import { saveToLocalStorage } from '@/app/lib/builderData';
 import './motherboard.css';
 import React, { useState } from 'react';
+import Sidebar from './Sidebar'; // Import Sidebar component
+import './motherboard.css';
+import Link from 'next/link';
+import { saveToLocalStorage } from '@/app/lib/builderData';
 
 const Motherboard = ({ motherboard }) => {
   const [motherboardData, setmotherboardData] = useState(motherboard);
@@ -44,27 +47,29 @@ const Motherboard = ({ motherboard }) => {
               <td>{motherboard.specification.color} </td>
               <td>${(motherboard.current_price / 100).toFixed(2)}</td>
               <td>
-                <button
-                  onClick={() => {
-                    console.log('Added cooler:', motherboard);
-                    saveToLocalStorage(
-                      motherboard.id,
-                      motherboard.category,
-                      motherboard.current_price,
-                      motherboard.name
-                    );
-                  }}
-                  style={{
-                    backgroundColor: '#1abc9c',
-                    color: 'white',
-                    border: 'none',
-                    padding: '8px 16px',
-                    cursor: 'pointer',
-                    borderRadius: '5px',
-                  }}
-                >
-                  Add
-                </button>
+                <Link href={'/builder'}>
+                  <button
+                    onClick={() => {
+                      console.log('Added cooler:', motherboard);
+                      saveToLocalStorage(
+                        motherboard.id,
+                        motherboard.category,
+                        motherboard.current_price,
+                        motherboard.name
+                      );
+                    }}
+                    style={{
+                      backgroundColor: '#1abc9c',
+                      color: 'white',
+                      border: 'none',
+                      padding: '8px 16px',
+                      cursor: 'pointer',
+                      borderRadius: '5px',
+                    }}
+                  >
+                    Add
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}
