@@ -83,8 +83,7 @@ const CPU = ({ cpu }) => {
             {filteredCpuData.map((cpu) => (
               <tr key={cpu.id}>
                 <td>
-                  {cpu.series} {cpu.core_family} {cpu.performance_core_clock}{' '}
-                  GHz
+                  {cpu.manufacturer}
                 </td>
                 <td>{cpu.specification.core_count}</td>
                 <td>{cpu.specification.performance_core_clock} GHz</td>

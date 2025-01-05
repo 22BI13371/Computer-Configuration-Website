@@ -1,4 +1,4 @@
-.cpu-container {
+.cooler-container {
     padding: 20px;
     background-color: #f8f9fa; /* Light background */
 }
@@ -11,24 +11,24 @@ h1 {
 
 
 
-.cpu-table {
+.cooler-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.cpu-table th, .cpu-table td {
+.cooler-table th, .cooler-table td {
     border: 1px solid #dee2e6;
     padding: 10px;
     text-align: left;
 }
 
-.cpu-table th {
+.cooler-table th {
     background-color: #343a40; /* Dark header */
     color: white;
 }
 
-.cpu-table tr:nth-child(even) {
+.cooler-table tr:nth-child(even) {
     background-color: #f2f2f2; /* Zebra striping */
 }
 
