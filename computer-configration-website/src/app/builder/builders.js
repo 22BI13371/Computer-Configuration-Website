@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { getAllFromLocalStorage, rmvAllStorageItem } from '../lib/builderData';
+import { fetchPcPartsWithInClause } from '../lib/data';
 import './builders.css';
-import { rmvAllStorageItem } from '../lib/builderData';
 
 const Builder = () => {
   const parts = [
@@ -19,6 +21,10 @@ const Builder = () => {
     { name: 'HDD', path: '/products/hdd' },
   ];
 
+  // const ids = getAllFromLocalStorage();
+  // const pcParts = await fetchPcPartsWithInClause(ids);
+  // console.log(ids);
+
   const peripherals = ['Keyboard', 'Mouse', 'Headphones', 'Speakers', 'Webcam'];
   const builds = ['Build 1', 'Build 2', 'Build 3'];
 
@@ -29,15 +35,13 @@ const Builder = () => {
       </header>
       <div id="tab-container">
         {builds.map((build, index) => (
-          <form>
-            <button
-              key={index}
-              className="tab-button"
-              onClick={rmvAllStorageItem}
-            >
-              {build}
-            </button>
-          </form>
+          <button
+            key={index}
+            className="tab-button"
+            onClick={rmvAllStorageItem}
+          >
+            {build}
+          </button>
         ))}
       </div>
       <table id="parts-table">

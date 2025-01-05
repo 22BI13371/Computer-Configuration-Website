@@ -101,7 +101,12 @@ const CPU = ({ cpu }) => {
                   >
                     <button
                       onClick={() => {
-                        saveToLocalStorage(cpu.id, cpu.category);
+                        saveToLocalStorage(
+                          cpu.id,
+                          cpu.category,
+                          cpu.current_price,
+                          cpu.name
+                        );
                         return 0;
                       }}
                       style={{
