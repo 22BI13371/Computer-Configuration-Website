@@ -1,15 +1,16 @@
-
 // app/builderparts/page.js
-import Builder from './builders'; // Import the Builder component
+import Builder from './builders';
+// Import the Builder component
 import { fetchPcPartsWithInClause } from '../lib/data';
 import { getAllFromLocalStorage } from '../lib/builderData';
+import { Suspense } from 'react';
 
-async function BuilderPartsPage() {
+export default async function BuilderPartsPage() {
   return (
     <div>
-      <Builder /> {/* Render the Builder component */}
+      <Suspense>
+        <Builder />
+      </Suspense>
     </div>
   );
 }
-
-export default BuilderPartsPage;

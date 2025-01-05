@@ -1,3 +1,5 @@
+import { revalidatePath } from 'next/cache';
+
 export const partCategoriesItem = {
   CPU: 'cpu',
   Motherboard: 'motherboard',
@@ -33,7 +35,7 @@ export function getAllFromLocalStorage() {
   if (typeof window !== 'undefined') {
     for (const [key, val] of Object.entries(partCategoriesItem)) {
       window.localStorage.getItem(val)
-        ? arr.push(window.localStorage.getItem(val))
+        ? arr.push(JSON.parse(window.localStorage.getItem(val)))
         : 'null';
     }
   }

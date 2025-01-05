@@ -107,7 +107,6 @@ const CPU = ({ cpu }) => {
                           cpu.current_price,
                           cpu.name
                         );
-                        return 0;
                       }}
                       style={{
                         backgroundColor: '#1abc9c',

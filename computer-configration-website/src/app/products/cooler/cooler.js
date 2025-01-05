@@ -3,6 +3,8 @@ import './cooler.css';
 import React, { useState } from 'react';
 import Sidebar from './Sidebar'; // Assuming you have a Sidebar component
 import { cooler } from '../../lib/placeholder_data'; // Importing cooler data
+import { saveToLocalStorage } from '@/app/lib/builderData';
+import Link from 'next/link';
 
 const Cooler = ({ cooler }) => {
   const [coolerData, setCoolerData] = useState(cooler);
@@ -45,9 +47,7 @@ const Cooler = ({ cooler }) => {
     // Apply socket filter
     if (newFilters.socket && newFilters.socket.length > 0) {
       filteredData = filteredData.filter((item) =>
-        newFilters.socket.some((socket) =>
-          item.cpu_socket.includes(socket)
-        )
+        newFilters.socket.some((socket) => item.cpu_socket.includes(socket))
       );
     }
 
@@ -92,19 +92,28 @@ const Cooler = ({ cooler }) => {
                 <td>{item.specification.color}</td>
                 <td>${(item.current_price / 100).toFixed(2)}</td>
                 <td>
-                  <button
-                    onClick={() => console.log('Added Cooler:', item)}
-                    style={{
-                      backgroundColor: '#1abc9c',
-                      color: 'white',
-                      border: 'none',
-                      padding: '8px 16px',
-                      cursor: 'pointer',
-                      borderRadius: '5px',
-                    }}
-                  >
-                    Add
-                  </button>
+                  <Link href={'/builder'}>
+                    <button
+                      onClick={() => {
+                        saveToLocalStorage(
+                          item.id,
+                          item.category,
+                          item.current_price,
+                          item.name
+                        );
+                      }}
+                      style={{
+                        backgroundColor: '#1abc9c',
+                        color: 'white',
+                        border: 'none',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        borderRadius: '5px',
+                      }}
+                    >
+                      Add
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
