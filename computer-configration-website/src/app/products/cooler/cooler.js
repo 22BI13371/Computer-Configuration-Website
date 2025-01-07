@@ -99,7 +99,8 @@ const Cooler = ({ cooler }) => {
                           item.id,
                           item.category,
                           item.current_price,
-                          item.name
+                          item.name,
+                          item.specification,
                         );
                       }}
                       style={{

@@ -53,7 +53,8 @@ const Memory = ({ memory }) => {
                         memory.id,
                         memory.category,
                         memory.current_price,
-                        memory.name
+                        memory.name,
+                        memory.specification,
                       );
                     }}
                     style={{

@@ -55,7 +55,8 @@ const Motherboard = ({ motherboard }) => {
                         motherboard.id,
                         motherboard.category,
                         motherboard.current_price,
-                        motherboard.name
+                        motherboard.name,
+                        motherboard.specification
                       );
                     }}
                     style={{

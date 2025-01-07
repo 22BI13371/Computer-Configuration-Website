@@ -57,7 +57,8 @@ const Videocard = ({ videoCard }) => {
                         videoCard.id,
                         videoCard.category,
                         videoCard.current_price,
-                        videoCard.name
+                        videoCard.name,
+                        videoCard.specification
                       );
                     }}
                     style={{

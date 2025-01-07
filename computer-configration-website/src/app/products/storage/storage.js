@@ -52,7 +52,8 @@ const Storage = ({ storage }) => {
                         storage.id,
                         storage.category,
                         storage.current_price,
-                        storage.name
+                        storage.name,
+                        storage.specification,
                       );
                     }}
                     style={{
