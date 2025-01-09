@@ -74,7 +74,7 @@ export default function TopicPage() {
         {/* Table-like Layout */}
         <div className="table">
           <div className="row header-row">
-            <div className="left-column">Forums</div>
+            <div className="left-column">Subtopics</div>
             <div className="right-column">Recent top posts</div>
           </div>
 
