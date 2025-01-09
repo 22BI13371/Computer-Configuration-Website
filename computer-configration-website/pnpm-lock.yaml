@@ -17,6 +17,9 @@ importers:
       bootstrap:
         specifier: ^5.3.3
         version: 5.3.3(@popperjs/core@2.11.8)
+      computer-configration-website:
+        specifier: 'file:'
+        version: file:(@popperjs/core@2.11.8)(@types/react@19.0.2)
       computer-confugration-website:
         specifier: 'file:'
         version: computer-configration-website@file:(@popperjs/core@2.11.8)(@types/react@19.0.2)
