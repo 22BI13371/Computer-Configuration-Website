@@ -5,7 +5,7 @@ import {
 } from '../lib/data';
 import { cookies } from 'next/headers';
 import { setCookie, clearCookie } from './actions';
-import { PartInfoCard } from '../builder/partInfoCard';
+import { compatibleParts } from '../lib/builderData';
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -22,7 +22,11 @@ export default async function Page() {
 
   try {
     if (!parts) {
-      parts = await fetchPcPartWithFilter(1, {}, { cpu_socket: 'LGA1700' });
+      parts = await fetchPcPartWithFilter(
+        1,
+        { manufacturer: ['Gigabyte'] },
+        {}
+      );
       console.log(
         parts.forEach((part) => {
           console.log(part.name);
@@ -36,21 +40,13 @@ export default async function Page() {
       let cpuName = cookieStore.get('cpu_name');
     }
 
-    return <PartInfoCard />;
-
-    // return parts.map((cpu) => (
-    //   <div>
-    //     <form action={setCookie}>
-    //       <button type="submit">click here</button>
-    //       <button type="submit" formAction={clearCookie}>
-    //         delete cookie
-    //       </button>
-    //     </form>
-    //     {/* <p>{cpu.name}</p> */}
-    //     <p>{cpu.current_price / 100}</p>
-    //     <p>{cpu.specification.cpu_socket}</p>
-    //   </div>
-    // ));
+    return parts.map((cpu) => (
+      <div>
+        <p>{cpu.name}</p>
+        <p>{cpu.current_price / 100}</p>
+        <p>{cpu.specification.cpu_socket}</p>
+      </div>
+    ));
 
     // return build1_parts.map((parts) => (
     //   <div>

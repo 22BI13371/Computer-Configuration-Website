@@ -1,12 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
+// import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
 import Sidebar from './Sidebar'; // Import Sidebar component
 import Link from 'next/link';
 import { saveToLocalStorage } from '@/app/lib/builderData';
 import './cpu.css';
 
 const CPU = ({ cpu }) => {
+
   const [cpuData, setCpuData] = useState(cpu);
   const [selectedCpus, setSelectedCpus] = useState([]);
   const handleFilterChange = (newFilters) => {
@@ -82,9 +83,7 @@ const CPU = ({ cpu }) => {
           <tbody>
             {filteredCpuData.map((cpu) => (
               <tr key={cpu.id}>
-                <td>
-                  {cpu.manufacturer}
-                </td>
+                <td>{cpu.manufacturer}</td>
                 <td>{cpu.specification.core_count}</td>
                 <td>{cpu.specification.performance_core_clock} GHz</td>
                 <td>{cpu.specification.efficiency_core_boost_clock} GHz</td>
@@ -105,7 +104,8 @@ const CPU = ({ cpu }) => {
                           cpu.id,
                           cpu.category,
                           cpu.current_price,
-                          cpu.name
+                          cpu.name,
+                          cpu.specification
                         );
                       }}
                       style={{

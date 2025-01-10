@@ -128,6 +128,7 @@ export async function fetchPcPartWithFilter(
   }
 
   console.log(queryParams);
+  console.log(filterClauses);
 
   try {
     const data = await sql.query(query, queryParams);

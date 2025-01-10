@@ -51,7 +51,8 @@ const Case = ({ pcCase }) => {
                         pcCase.id,
                         pcCase.category,
                         pcCase.current_price,
-                        pcCase.name
+                        pcCase.name,
+                        pcCase.specification,
                       );
                     }}
                     style={{

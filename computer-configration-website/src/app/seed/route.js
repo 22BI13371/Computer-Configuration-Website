@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import { db } from "@vercel/postgres";
+import bcrypt from 'bcrypt';
+import { db } from '@vercel/postgres';
 import {
   users,
   posts,
@@ -7,7 +7,7 @@ import {
   pcParts,
   pcBuilds,
   pcBuildsParts,
-} from "../lib/placeholder_data";
+} from '../lib/placeholder_data';
 
 const client = await db.connect();
 
@@ -187,7 +187,7 @@ async function createIndexes() {
 }
 
 export async function GET() {
-  // console.log(cpu[0].id);
+  // console.log(pcParts);
   // return Response.json(JSON.stringify(pcPart[0]));
   try {
     await client.sql`BEGIN`;
@@ -199,7 +199,7 @@ export async function GET() {
     await seedPcBuildParts();
     await createIndexes();
     await client.sql`COMMIT`;
-    return Response.json({ message: "Database seeded successfully" });
+    return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
     await client.sql`ROLLBACK`;
     return Response.json({ error }, { status: 500 });

@@ -94,47 +94,39 @@ const Cooler = ({ cooler }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredCoolerData.length > 0 ? (
-              filteredCoolerData.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.manufacturer}</td>
-                  <td>{item.specification.fan_rpm}</td>
-                  <td>{item.specification.height || 'N/A'}</td>
-                  <td>{item.specification.color}</td>
-                  <td>${(item.current_price / 100).toFixed(2)}</td>
-                  <td>
-                    <Link href={'/builder'}>
-                      <button
-                        onClick={() => {
-                          saveToLocalStorage(
-                            item.id,
-                            item.category,
-                            item.current_price,
-                            item.name
-                          );
-                        }}
-                        style={{
-                          backgroundColor: '#1abc9c',
-                          color: 'white',
-                          border: 'none',
-                          padding: '8px 16px',
-                          cursor: 'pointer',
-                          borderRadius: '5px',
-                        }}
-                      >
-                        Add
-                      </button>
-                    </Link>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" style={{ textAlign: 'center' }}>
-                  No coolers found with the selected filters.
+            {filteredCoolerData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.manufacturer}</td>
+                <td>{item.specification.fan_rpm}</td>
+                <td>{item.specification.height || 'N/A'}</td>
+                <td>{item.specification.color}</td>
+                <td>${(item.current_price / 100).toFixed(2)}</td>
+                <td>
+                  <Link href={'/builder'}>
+                    <button
+                      onClick={() => {
+                        saveToLocalStorage(
+                          item.id,
+                          item.category,
+                          item.current_price,
+                          item.name
+                        );
+                      }}
+                      style={{
+                        backgroundColor: '#1abc9c',
+                        color: 'white',
+                        border: 'none',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        borderRadius: '5px',
+                      }}
+                    >
+                      Add
+                    </button>
+                  </Link>
                 </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>

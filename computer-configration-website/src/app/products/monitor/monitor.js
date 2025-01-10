@@ -53,7 +53,8 @@ const Monitor = ({ monitor }) => {
                         monitor.id,
                         monitor.category,
                         monitor.current_price,
-                        monitor.name
+                        monitor.name,
+                        monitor.specification
                       );
                     }}
                     style={{
