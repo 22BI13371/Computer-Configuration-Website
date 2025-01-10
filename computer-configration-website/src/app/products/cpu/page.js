@@ -1,4 +1,4 @@
-    import CPU from './cpu';
+import CPU from './cpu';
 import { fetchPcParts } from '@/app/lib/data';
 
 async function CPUPage() {

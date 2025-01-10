@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .user-profile-box {
   display: flex;
   align-items: center;
