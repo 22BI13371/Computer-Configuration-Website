@@ -2,6 +2,7 @@
 import './storage.css';
 import React, { useState } from 'react';
 import { saveToLocalStorage } from '@/app/lib/builderData';
+import { compatibleParts } from '@/app/lib/builderData';
 import Link from 'next/link';
 
 const Storage = ({ storage }) => {
@@ -15,6 +16,8 @@ const Storage = ({ storage }) => {
       selectedstorages.length === 0 ||
       selectedstorages.some((selected) => selected.id === storage.id)
   );
+
+  compatibleParts(storage, 'Storage');
 
   console.log('log', filteredstorageData[0].id);
 
@@ -53,7 +56,7 @@ const Storage = ({ storage }) => {
                         storage.category,
                         storage.current_price,
                         storage.name,
-                        storage.specification,
+                        storage.specification
                       );
                     }}
                     style={{
