@@ -14,38 +14,38 @@ const Motherboard = ({ motherboard }) => {
 
     // Apply manufacturer filter
     if (newFilters.manufacturer && newFilters.manufacturer.length > 0) {
-      filteredData = filteredData.filter((mb) =>
+      filteredData = filteredData.filter((motherboard) =>
         newFilters.manufacturer.some((manufacturer) =>
-          mb.manufacturer.toLowerCase().includes(manufacturer.toLowerCase())
+          motherboard.manufacturer.toLowerCase().includes(manufacturer.toLowerCase())
         )
       );
     }
 
     // Apply socket filter
     if (newFilters.socket && newFilters.socket.length > 0) {
-      filteredData = filteredData.filter((mb) =>
-        newFilters.socket.includes(mb.cpu_socket)
+      filteredData = filteredData.filter((motherboard) =>
+        newFilters.socket.includes(motherboard.cpu_socket)
       );
     }
 
     // Apply form factor filter
-    if (newFilters.formFactor && newFilters.formFactor.length > 0) {
-      filteredData = filteredData.filter((mb) =>
-        newFilters.formFactor.includes(mb.form_factor)
+    if (newFilters.form_factor && newFilters.form_factor.length > 0) {
+      filteredData = filteredData.filter((motherboard) =>
+        newFilters.form_factor.includes(motherboard.specification.form_factor)
       );
     }
 
     setMotherboardData(filteredData);
   };
 
-  const handleMotherboardSelect = (motherboard) => {
-    setSelectedMotherboards([motherboard]);
+  const handleMotherboardSelect = (motherboards) => {
+    setSelectedMotherboards(motherboards);
   };
 
   const filteredMotherboardData = motherboardData.filter(
-    (mb) =>
+    (motherboard) =>
       selectedMotherboards.length === 0 ||
-      selectedMotherboards.some((selected) => selected.id === mb.id)
+      selectedMotherboards.some((selected) => selected.id === motherboard.id)
   );
 
   return (

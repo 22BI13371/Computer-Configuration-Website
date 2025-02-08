@@ -16,7 +16,11 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
     all: true,
     chipsets: [],
   });
-  
+  const [formFactor, setFormFactor] = useState({
+    all: true,
+    families: ["atx", "microatx"],  // Add more form factors if needed
+  });
+
   useEffect(() => {
     if (!motherboard || !Array.isArray(motherboard)) return;
     
@@ -68,6 +72,30 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
     });
   };
 
+  const handleFormFactorChange = (key) => {
+    const updatedFormFactor = { ...formFactor };
+
+    if (key === "all") {
+      updatedFormFactor.all = true;
+      updatedFormFactor.families.forEach((family) => {
+        updatedFormFactor[family] = false;
+      });
+    } else {
+      updatedFormFactor[key] = !updatedFormFactor[key];
+      updatedFormFactor.all = !Object.values(updatedFormFactor)
+        .slice(1) // Skip the 'all' key
+        .some((value) => value); // Check if at least one family is selected
+    }
+
+    setFormFactor(updatedFormFactor);
+
+    const selectedFormFactors = updatedFormFactor.families.filter(
+      (family) => updatedFormFactor[family]
+    );
+
+    onFilterChange({ form_factor: selectedFormFactors });
+  };
+
   return (
     <>
       <style>
@@ -85,6 +113,13 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
             font-weight: bold;
             text-align: center;
             margin-bottom: 15px;
+          }
+          .filter-group {
+            margin-bottom: 10px;
+          }
+          .filter-title {
+            font-weight: bold;
+            margin-bottom: 5px;
           }
           .slider-container {
             position: relative;
@@ -107,60 +142,49 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
           <div className="slider-container">
             <input
               type="range"
-              className="form-range"
               min="0"
               max="1000"
               value={price}
               onChange={handlePriceChange}
             />
-            <span className="max-value">${price}</span>
+            <span>${price}</span>
           </div>
         </div>
         {/* Manufacturer Filter */}
         <div className="filter-group">
           <div className="filter-title">Manufacturer</div>
-          <input
-            type="checkbox"
-            id="manufacturer-all"
-            checked={manufacturer.all}
-            onChange={() => handleManufacturerChange("all")}
-          />
-          <label htmlFor="manufacturer-all">All</label>
-          {Object.keys(manufacturer)
-            .filter((key) => key !== "all")
-            .map((key) => (
-              <div key={key}>
-                <input
-                  type="checkbox"
-                  id={`manufacturer-${key}`}
-                  checked={manufacturer[key]}
-                  onChange={() => handleManufacturerChange(key)}
-                />
-                <label htmlFor={`manufacturer-${key}`}>
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </label>
-              </div>
-            ))}
-        </div>
-        {/* Chipset Filter */}
-        <div className="filter-group">
-          <div className="filter-title">Chipset</div>
-          <input
-            type="checkbox"
-            id="chipset-all"
-            checked={chipset.all}
-            onChange={() => handleChipsetChange("all")}
-          />
-          <label htmlFor="chipset-all">All</label>
-          {chipset.chipsets.map((chip) => (
-            <div key={chip.name}>
+          {Object.keys(manufacturer).map((key) => (
+            <div key={key}>
               <input
                 type="checkbox"
-                id={`chipset-${chip.name}`}
-                checked={chip.checked}
-                onChange={() => handleChipsetChange(chip.name)}
+                checked={manufacturer[key]}
+                onChange={() => handleManufacturerChange(key)}
               />
-              <label htmlFor={`chipset-${chip.name}`}>{chip.name}</label>
+              <label>{key.toUpperCase()}</label>
+            </div>
+          ))}
+        </div>
+        {/* Form Factor Filter */}
+        <div className="filter-group">
+          <div className="filter-title">Form Factor</div>
+          <input
+            type="checkbox"
+            id="form_factor-all"
+            checked={formFactor.all}
+            onChange={() => handleFormFactorChange("all")}
+          />
+          <label htmlFor="form_factor-all">All</label>
+          {formFactor.families.map((key) => (
+            <div key={key}>
+              <input
+                type="checkbox"
+                id={`form_factor-${key}`}
+                checked={formFactor[key]}
+                onChange={() => handleFormFactorChange(key)}
+              />
+              <label htmlFor={`form_factor-${key}`}>
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </label>
             </div>
           ))}
         </div>
