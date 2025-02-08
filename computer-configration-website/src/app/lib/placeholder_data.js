@@ -490,7 +490,7 @@ const memory = [
   // Corsair Vengeance 32 GB (2 x 16 GB) DDR5-5600 CL36 Memory
   {
     id: '8ec3bd41-787e-47ee-8c85-112b37be40bb',
-    speed: 'DDR5-5600 ',
+    speed: 'DDR5-5600',
     form_factor: '288-pin DIMM (DDR5) ',
     modules: '2 x 16GB ',
     price_gb: 3.281,

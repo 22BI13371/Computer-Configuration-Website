@@ -4,12 +4,15 @@ import Builder from './builders';
 import { fetchPcPartsWithInClause } from '../lib/data';
 import { getAllFromLocalStorage } from '../lib/builderData';
 import { Suspense } from 'react';
+import { compatibleParts } from '../lib/builderData';
+import { fetchPcParts } from '../lib/data';
 
 export default async function BuilderPartsPage() {
+  const tmp = await fetchPcParts('Memory');
   return (
     <div>
       <Suspense>
-        <Builder />
+        <Builder tmp={tmp} />
       </Suspense>
     </div>
   );

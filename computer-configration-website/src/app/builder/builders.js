@@ -7,13 +7,14 @@ import {
   getAllFromLocalStorage,
   rmvAllStorageItem,
   rmvStorageItem,
+  compatibleParts,
 } from '../lib/builderData';
 import { fetchPcPartsWithInClause } from '../lib/data';
 import { useState, useEffect } from 'react';
 import './builders.css';
 import { useRouter } from 'next/navigation';
 
-const Builder = () => {
+const Builder = ({ tmp }) => {
   const parts = [
     { name: 'CPU', path: '/products/cpu' },
     { name: 'Motherboard', path: '/products/motherboard' },
@@ -30,6 +31,7 @@ const Builder = () => {
 
   useEffect(() => {
     setPartsInfo(getAllFromLocalStorage());
+    compatibleParts(tmp, 'Memory');
   }, []);
 
   const router = useRouter();

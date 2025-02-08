@@ -7,7 +7,6 @@ import { saveToLocalStorage } from '@/app/lib/builderData';
 import './cpu.css';
 
 const CPU = ({ cpu }) => {
-
   const [cpuData, setCpuData] = useState(cpu);
   const [selectedCpus, setSelectedCpus] = useState([]);
   const handleFilterChange = (newFilters) => {
@@ -58,6 +57,7 @@ const CPU = ({ cpu }) => {
       selectedCpus.length === 0 ||
       selectedCpus.some((selected) => selected.id === cpu.id)
   );
+
   return (
     <div style={{ display: 'flex' }}>
       <Sidebar
