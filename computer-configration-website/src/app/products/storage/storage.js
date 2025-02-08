@@ -17,9 +17,9 @@ const Storage = ({ storage }) => {
       selectedstorages.some((selected) => selected.id === storage.id)
   );
 
-  compatibleParts(storage, 'Storage');
+  // compatibleParts(storage, 'Storage');
 
-  console.log('log', filteredstorageData[0].id);
+  // console.log('log', filteredstorageData[0].id);
 
   return (
     <div className="cpu-container">
