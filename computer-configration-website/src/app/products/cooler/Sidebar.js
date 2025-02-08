@@ -101,9 +101,6 @@ const Sidebar = ({ onFilterChange, coolerData = [] }) => {
       .split(",")
       .map((socket) => socket.trim());
 
-    console.log("Supported Sockets: ", supportedSockets);
-    console.log("Selected Sockets: ", selectedSockets);
-
     return selectedSockets.every((socket) => supportedSockets.includes(socket));
   };
 

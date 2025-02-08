@@ -1,6 +1,6 @@
 'use client';
 import './cooler.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar'; // Assuming you have a Sidebar component
 import { cooler } from '../../lib/placeholder_data'; // Importing cooler data
 import { saveToLocalStorage } from '@/app/lib/builderData';
@@ -9,60 +9,70 @@ import Link from 'next/link';
 const Cooler = ({ cooler }) => {
   const [coolerData, setCoolerData] = useState(cooler);
   const [selectedCoolers, setSelectedCoolers] = useState([]);
+  const [filters, setFilters] = useState({
+    price: null,
+    fanRpm: null,
+    height: null,
+    manufacturer: [],
+    socket: [],
+  });
 
   const handleFilterChange = (newFilters) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      ...newFilters,
+    }));
+  };
+
+  const applyFilters = () => {
     let filteredData = cooler;
 
     // Apply price filter
-    if (newFilters.price) {
+    if (filters.price !== null) {
       filteredData = filteredData.filter(
-        (item) => item.current_price <= newFilters.price
+        (item) => item.current_price <= filters.price
       );
     }
 
     // Apply fan RPM filter
-    if (newFilters.fanRpm) {
+    if (filters.fanRpm !== null) {
       filteredData = filteredData.filter(
-        (item) => item.specification.fan_rpm <= newFilters.fanRpm
+        (item) => item.specification.fan_rpm <= filters.fanRpm
       );
     }
 
     // Apply height filter
-    if (newFilters.height !== undefined) {
+    if (filters.height !== null) {
       filteredData = filteredData.filter((item) => {
         if (item.specification.height === undefined) return true;
-        return item.specification.height <= newFilters.height;
+        return item.specification.height <= filters.height;
       });
     }
 
     // Apply manufacturer filter
-    if (newFilters.manufacturer && newFilters.manufacturer.length > 0) {
+    if (filters.manufacturer.length > 0) {
       filteredData = filteredData.filter((item) =>
-        newFilters.manufacturer.some((manufacturer) =>
+        filters.manufacturer.some((manufacturer) =>
           item.manufacturer.toLowerCase().includes(manufacturer.toLowerCase())
         )
       );
     }
 
     // Apply socket filter
-    if (newFilters.socket && newFilters.socket.length > 0) {
+    if (filters.socket.length > 0) {
       filteredData = filteredData.filter((item) =>
-        newFilters.socket.some((socket) => item.cpu_socket.includes(socket))
+        filters.socket.some((socket) => item.cpu_socket.includes(socket))
       );
     }
 
-    setCoolerData(filteredData);
+    return filteredData;
   };
+
+  const filteredCoolerData = applyFilters();
 
   const handleCoolerSelect = (coolers) => {
     setSelectedCoolers(coolers);
   };
-
-  const filteredCoolerData = coolerData.filter(
-    (item) =>
-      selectedCoolers.length === 0 ||
-      selectedCoolers.some((selected) => selected.id === item.id)
-  );
 
   return (
     <div style={{ display: 'flex' }}>
@@ -99,8 +109,7 @@ const Cooler = ({ cooler }) => {
                           item.id,
                           item.category,
                           item.current_price,
-                          item.name,
-                          item.specification,
+                          item.name
                         );
                       }}
                       style={{
