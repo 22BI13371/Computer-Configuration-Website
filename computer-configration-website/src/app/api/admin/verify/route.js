@@ -1,26 +1,30 @@
-import { sql } from '@vercel/postgres';
-import jwt from 'jsonwebtoken';
+
+
+export const dynamic = 'force-dynamic'; // Add this to ensure dynamic processing
 
 export async function GET(req) {
     try {
-        const authHeader = req.headers.authorization;
-
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        // Get the decoded token from the custom header set by middleware
+        const decodedTokenHeader = req.headers.get('x-decoded-token');
+        
+        // Log for debugging
+        console.log('Received decoded token in route:', decodedTokenHeader);
+        
+        if (!decodedTokenHeader) {
+            console.log('No decoded token header found');
             return new Response('Unauthorized', { status: 401 });
         }
 
-        const token = authHeader.split(' ')[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-        // Query the database to verify admin status
-        const result = await sql`SELECT is_admin FROM users WHERE id = ${decoded.id}`;
-        if (result.rows.length === 0 || !result.rows[0].is_admin) {
-            return new Response('Forbidden', { status: 403 });
-        }
-
-        return new Response(JSON.stringify({ isAdmin: true }), { status: 200 });
+        // We can trust this data because it was set by our middleware
+        return new Response(JSON.stringify({ 
+            message: 'Verified',
+            success: true 
+        }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
     } catch (error) {
-        console.error('Token verification error:', error);
-        return new Response('Unauthorized', { status: 401 });
+        console.error('Error in route handler:', error);
+        return new Response('Internal Server Error', { status: 500 });
     }
 }

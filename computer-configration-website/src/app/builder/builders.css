@@ -1,6 +1,6 @@
 :root {
-    --background-color: #fff;
-    --text-color: #333;
+    --background-color: #1f2937;
+    --text-color: white;
     --primary-color: #1abc9c;
     --secondary-color: #16a085;
     --border-color: #f2f2f2;
@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: #1f2937;
     color: var(--text-color);
     font-family: "Roboto Thin", sans-serif;
     margin: 0;
@@ -61,7 +61,7 @@ body {
 #parts-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
+    background-color: #1f2937;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 2px solid #ccc;
 }
