@@ -1,23 +1,27 @@
-// src/app/api/admin/users/route.js
-import { query } from '@vercel/postgres';
+import { sql } from '@vercel/postgres';
+import { NextResponse } from 'next/server';
 
-export async function GET(req, res) {
+export async function GET() {
     try {
-        const { rows } = await query('SELECT * FROM users');
-        return new Response(JSON.stringify(rows), { status: 200 });
+        // Adjusted to match the correct column names
+        const result = await sql`SELECT id, username, email, is_admin FROM users`;
+        return NextResponse.json(result.rows);
     } catch (error) {
-        return new Response('Error fetching users', { status: 500 });
+        console.error('Error fetching users:', error);
+        return new NextResponse('Error fetching users', { status: 500 });
     }
 }
 
-export async function POST(req) {
-    const { userId, action } = await req.json();
+export async function DELETE(request) {
     try {
-        if (action === 'ban') {
-            await query('UPDATE users SET status = $1 WHERE id = $2', ['banned', userId]);
-            return new Response('User banned successfully', { status: 200 });
-        }
+        const { id } = await request.json();
+
+        // Delete the user based on the ID
+        await sql`DELETE FROM users WHERE id = ${id}`;
+
+        return new NextResponse('User deleted successfully', { status: 200 });
     } catch (error) {
-        return new Response('Error performing action', { status: 500 });
+        console.error('Error deleting user:', error);
+        return new NextResponse('Error deleting user', { status: 500 });
     }
 }

@@ -21,7 +21,7 @@ export default function Page() {
             if (response.ok) {
                 const { token } = await response.json();
                 document.cookie = `auth-token=${token}; path=/`;
-                window.location.href = '/admin';  // Redirect to admin page
+                window.location.href = '/';  // Redirect to home
             } else {
                 const errorText = await response.text();
                 setMessage(`Error: ${errorText}`);
