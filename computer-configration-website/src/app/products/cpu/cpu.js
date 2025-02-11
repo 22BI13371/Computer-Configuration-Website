@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
 import Sidebar from './Sidebar'; // Import Sidebar component
 import Link from 'next/link';
-import { saveToLocalStorage } from '@/app/lib/builderData';
+import { saveToLocalStorage, compatibleParts } from '@/app/lib/builderData';
 import './cpu.css';
 
 const CPU = ({ cpu }) => {
@@ -47,6 +47,9 @@ const CPU = ({ cpu }) => {
         newFilters.coreFamily.includes(cpu.specification.core_family)
       );
     }
+    if (newFilters.compat && newFilters.compat.length > 0) {
+      filteredData = compatibleParts(filteredData, 'CPU');
+    }
     setCpuData(filteredData);
   };
   const handleCpuSelect = (cpus) => {
@@ -63,6 +66,7 @@ const CPU = ({ cpu }) => {
       <Sidebar
         onFilterChange={handleFilterChange}
         onCpuSelect={handleCpuSelect}
+        data={cpu}
       />
       <div style={{ marginLeft: '20px', flex: 1 }}>
         <h1>Choose a CPU</h1>

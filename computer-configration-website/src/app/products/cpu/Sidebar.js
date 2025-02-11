@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { cpu } from "../../lib/placeholder_data"; // Importing the data from placeholder_data.js
-import "./cpu.css";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { cpu } from '../../lib/placeholder_data'; // Importing the data from placeholder_data.js
+import './cpu.css';
 
-const Sidebar = ({ onFilterChange, onCpuSelect }) => {
+const Sidebar = ({ onFilterChange, onCpuSelect, data }) => {
   const [price, setPrice] = useState(71169);
   const [thread, setThread] = useState(32);
   const [l2Cache, setL2Cache] = useState(32);
@@ -21,14 +21,16 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
     all: true,
     options: cpu.map((cpuItem) => ({
       id: cpuItem.id,
-      label: cpuItem.series + " " + cpuItem.micro_architecture,
+      label: cpuItem.series + ' ' + cpuItem.micro_architecture,
       checked: false,
       details: cpuItem,
     })),
   });
 
   useEffect(() => {
-    const uniqueCoreFamilies = [...new Set(cpu.map((item) => item.core_family))];
+    const uniqueCoreFamilies = [
+      ...new Set(cpu.map((item) => item.core_family)),
+    ];
     setCoreFamily((prev) => ({
       ...prev,
       families: uniqueCoreFamilies.map((family) => ({
@@ -64,8 +66,8 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
 
   const handleManufacturerChange = (key) => {
     const updatedManufacturer = { ...manufacturer };
-  
-    if (key === "all") {
+
+    if (key === 'all') {
       // If "All" is clicked, reset everything
       updatedManufacturer.all = true;
       updatedManufacturer.amd = false;
@@ -74,16 +76,17 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
       // Toggle the clicked manufacturer checkbox
       updatedManufacturer[key] = !updatedManufacturer[key];
       // If both "AMD" and "Intel" are unchecked, "All" should be unchecked
-      updatedManufacturer.all = !updatedManufacturer.amd && !updatedManufacturer.intel;
+      updatedManufacturer.all =
+        !updatedManufacturer.amd && !updatedManufacturer.intel;
     }
-  
+
     setManufacturer(updatedManufacturer);
-  
+
     // Get the selected manufacturers
     const selectedManufacturers = Object.keys(updatedManufacturer)
-      .filter((key) => updatedManufacturer[key] && key !== "all")
+      .filter((key) => updatedManufacturer[key] && key !== 'all')
       .map((key) => key);
-  
+
     // Pass the selected manufacturers to the filter change handler
     onFilterChange({ manufacturer: selectedManufacturers });
   };
@@ -91,7 +94,7 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
   const handleCoreFamilyChange = (key) => {
     const updatedCoreFamily = { ...coreFamily };
 
-    if (key === "all") {
+    if (key === 'all') {
       updatedCoreFamily.all = true;
       updatedCoreFamily.families = updatedCoreFamily.families.map((family) => ({
         ...family,
@@ -99,9 +102,7 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
       }));
     } else {
       updatedCoreFamily.families = updatedCoreFamily.families.map((family) =>
-        family.name === key
-          ? { ...family, checked: !family.checked }
-          : family
+        family.name === key ? { ...family, checked: !family.checked } : family
       );
       updatedCoreFamily.all = updatedCoreFamily.families.every(
         (family) => !family.checked
@@ -158,6 +159,7 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
     });
     onCpuSelect([]);
   };
+
   return (
     <>
       <style>
@@ -229,145 +231,166 @@ const Sidebar = ({ onFilterChange, onCpuSelect }) => {
       </style>
 
       <div className="filter-section">
-      <div className="filter-header">Filters</div>
-
-      {/* Price Filter */}
-      <div className="filter-group">
-        <div className="filter-title">Price</div>
-        <div className="slider-container">
+        <div className="filter-group">
+          <div className="filter-title">Compatibility Checker</div>
           <input
-            type="range"
-            className="form-range"
-            min="0"
-            max="71169"
-            value={price}
-            onChange={handlePriceChange}
+            type="checkbox"
+            id="compat-chec"
+            onChange={(e) => {
+              const checked = e.target.checked;
+
+              if (checked) {
+                onFilterChange({ compat: [1] });
+              }
+              if (!checked) {
+                onFilterChange({ compat: [] });
+              }
+            }}
           />
-          <span className="max-value">${price}</span>
+          <label htmlFor="manufacturer-all">On/Off</label>
         </div>
-      </div>
 
-      {/* Thread Count Filter */}
-      <div className="filter-group">
-        <div className="filter-title">THREAD COUNT</div>
-        <div className="slider-container">
-          <input
-            type="range"
-            className="form-range"
-            min="0"
-            max="32"
-            value={thread}
-            onChange={handleThreadChange}
-          />
-          <span className="max-value">{thread}</span>
-        </div>
-      </div>
+        <div className="filter-header">Filters</div>
 
-      {/* L2 Cache Filter */}
-      <div className="filter-group">
-        <div className="filter-title">L2 CACHE</div>
-        <div className="slider-container">
-          <input
-            type="range"
-            className="form-range"
-            min="0"
-            max="95"
-            value={l2Cache}
-            onChange={handleL2CacheChange}
-          />
-          <span className="max-value">{l2Cache} MB</span>
-        </div>
-      </div>
-
-      {/* L3 Cache Filter */}
-      <div className="filter-group">
-        <div className="filter-title">L3 CACHE</div>
-        <div className="slider-container">
-          <input
-            type="range"
-            className="form-range"
-            min="0"
-            max="96"
-            value={l3Cache}
-            onChange={handleL3CacheChange}
-          />
-          <span className="max-value">{l3Cache} MB</span>
-        </div>
-      </div>
-
-      {/* Manufacturer Filter */}
-      <div className="filter-group">
-        <div className="filter-title">Manufacturer</div>
-        <input
-          type="checkbox"
-          id="manufacturer-all"
-          checked={manufacturer.all}
-          onChange={() => handleManufacturerChange("all")}
-        />
-        <label htmlFor="manufacturer-all">All</label>
-
-        {["amd", "intel"].map((key) => (
-          <div key={key}>
+        {/* Price Filter */}
+        <div className="filter-group">
+          <div className="filter-title">Price</div>
+          <div className="slider-container">
             <input
-              type="checkbox"
-              id={`manufacturer-${key}`}
-              checked={manufacturer[key]}
-              onChange={() => handleManufacturerChange(key)}
+              type="range"
+              className="form-range"
+              min="0"
+              max="71169"
+              value={price}
+              onChange={handlePriceChange}
             />
-            <label htmlFor={`manufacturer-${key}`}>
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </label>
+            <span className="max-value">${price}</span>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Core Family Filter */}
-      <div className="filter-group">
-        <div className="filter-title">Core Family</div>
-        <input
-          type="checkbox"
-          id="core-family-all"
-          checked={coreFamily.all}
-          onChange={() => handleCoreFamilyChange("all")}
-        />
-        <label htmlFor="core-family-all">All</label>
-
-        {coreFamily.families.map((family) => (
-          <div key={family.name}>
+        {/* Thread Count Filter */}
+        <div className="filter-group">
+          <div className="filter-title">THREAD COUNT</div>
+          <div className="slider-container">
             <input
-              type="checkbox"
-              id={`core-family-${family.name}`}
-              checked={family.checked}
-              onChange={() => handleCoreFamilyChange(family.name)}
+              type="range"
+              className="form-range"
+              min="0"
+              max="32"
+              value={thread}
+              onChange={handleThreadChange}
             />
-            <label htmlFor={`core-family-${family.name}`}>{family.name}</label>
+            <span className="max-value">{thread}</span>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* CPU Series Filter */}
-      <div className="filter-group">
-        <div className="filter-title">SERIES</div>
-        <input
-          type="checkbox"
-          id="cpu-all"
-          checked={cpuOptions.all}
-          onChange={handleAllCpuChange}
-        />
-        <label htmlFor="cpu-all">All</label>
-
-        {cpuOptions.options.map((option) => (
-          <div key={option.id}>
+        {/* L2 Cache Filter */}
+        <div className="filter-group">
+          <div className="filter-title">L2 CACHE</div>
+          <div className="slider-container">
             <input
-              type="checkbox"
-              id={`cpu-${option.id}`}
-              checked={option.checked}
-              onChange={() => handleCpuChange(option.id)}
+              type="range"
+              className="form-range"
+              min="0"
+              max="95"
+              value={l2Cache}
+              onChange={handleL2CacheChange}
             />
-            <label htmlFor={`cpu-${option.id}`}>{option.label}</label>
+            <span className="max-value">{l2Cache} MB</span>
           </div>
-        ))}
-      </div>
+        </div>
+
+        {/* L3 Cache Filter */}
+        <div className="filter-group">
+          <div className="filter-title">L3 CACHE</div>
+          <div className="slider-container">
+            <input
+              type="range"
+              className="form-range"
+              min="0"
+              max="96"
+              value={l3Cache}
+              onChange={handleL3CacheChange}
+            />
+            <span className="max-value">{l3Cache} MB</span>
+          </div>
+        </div>
+
+        {/* Manufacturer Filter */}
+        <div className="filter-group">
+          <div className="filter-title">Manufacturer</div>
+          <input
+            type="checkbox"
+            id="manufacturer-all"
+            checked={manufacturer.all}
+            onChange={() => handleManufacturerChange('all')}
+          />
+          <label htmlFor="manufacturer-all">All</label>
+
+          {['amd', 'intel'].map((key) => (
+            <div key={key}>
+              <input
+                type="checkbox"
+                id={`manufacturer-${key}`}
+                checked={manufacturer[key]}
+                onChange={() => handleManufacturerChange(key)}
+              />
+              <label htmlFor={`manufacturer-${key}`}>
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </label>
+            </div>
+          ))}
+        </div>
+
+        {/* Core Family Filter */}
+        <div className="filter-group">
+          <div className="filter-title">Core Family</div>
+          <input
+            type="checkbox"
+            id="core-family-all"
+            checked={coreFamily.all}
+            onChange={() => handleCoreFamilyChange('all')}
+          />
+          <label htmlFor="core-family-all">All</label>
+
+          {coreFamily.families.map((family) => (
+            <div key={family.name}>
+              <input
+                type="checkbox"
+                id={`core-family-${family.name}`}
+                checked={family.checked}
+                onChange={() => handleCoreFamilyChange(family.name)}
+              />
+              <label htmlFor={`core-family-${family.name}`}>
+                {family.name}
+              </label>
+            </div>
+          ))}
+        </div>
+
+        {/* CPU Series Filter */}
+        <div className="filter-group">
+          <div className="filter-title">SERIES</div>
+          <input
+            type="checkbox"
+            id="cpu-all"
+            checked={cpuOptions.all}
+            onChange={handleAllCpuChange}
+          />
+          <label htmlFor="cpu-all">All</label>
+
+          {cpuOptions.options.map((option) => (
+            <div key={option.id}>
+              <input
+                type="checkbox"
+                id={`cpu-${option.id}`}
+                checked={option.checked}
+                onChange={() => handleCpuChange(option.id)}
+              />
+              <label htmlFor={`cpu-${option.id}`}>{option.label}</label>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

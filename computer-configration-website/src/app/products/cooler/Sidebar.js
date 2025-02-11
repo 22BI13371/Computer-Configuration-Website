@@ -163,6 +163,25 @@ const Sidebar = ({ onFilterChange, coolerData = [] }) => {
         `}
       </style>
       <div className="filter-section">
+        <div className="filter-group">
+          <div className="filter-title">Compatibility Checker</div>
+          <input
+            type="checkbox"
+            id="compat-chec"
+            onChange={(e) => {
+              const checked = e.target.checked;
+
+              if (checked) {
+                onFilterChange({ compat: [1] });
+              }
+              if (!checked) {
+                onFilterChange({ compat: [] });
+              }
+            }}
+          />
+          <label htmlFor="manufacturer-all">On/Off</label>
+        </div>
+
         <div className="filter-header">Filters</div>
 
         {/* Price Filter */}
@@ -214,7 +233,7 @@ const Sidebar = ({ onFilterChange, coolerData = [] }) => {
             type="checkbox"
             id="manufacturer-all"
             checked={manufacturer.all}
-            onChange={() => handleManufacturerChange("all")}
+            onChange={() => handleManufacturerChange('all')}
           />
           <label htmlFor="manufacturer-all">All</label>
           <div>
@@ -222,7 +241,7 @@ const Sidebar = ({ onFilterChange, coolerData = [] }) => {
               type="checkbox"
               id="manufacturer-ek"
               checked={manufacturer.ek}
-              onChange={() => handleManufacturerChange("ek")}
+              onChange={() => handleManufacturerChange('ek')}
             />
             <label htmlFor="manufacturer-ek">EK</label>
           </div>
@@ -231,7 +250,7 @@ const Sidebar = ({ onFilterChange, coolerData = [] }) => {
               type="checkbox"
               id="manufacturer-coolerMaster"
               checked={manufacturer.coolerMaster}
-              onChange={() => handleManufacturerChange("coolerMaster")}
+              onChange={() => handleManufacturerChange('coolerMaster')}
             />
             <label htmlFor="manufacturer-coolerMaster">Cooler Master</label>
           </div>
@@ -240,7 +259,7 @@ const Sidebar = ({ onFilterChange, coolerData = [] }) => {
               type="checkbox"
               id="manufacturer-noctua"
               checked={manufacturer.noctua}
-              onChange={() => handleManufacturerChange("noctua")}
+              onChange={() => handleManufacturerChange('noctua')}
             />
             <label htmlFor="manufacturer-noctua">Noctua</label>
           </div>

@@ -3,7 +3,7 @@ import './cooler.css';
 import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar'; // Assuming you have a Sidebar component
 import { cooler } from '../../lib/placeholder_data'; // Importing cooler data
-import { saveToLocalStorage } from '@/app/lib/builderData';
+import { saveToLocalStorage, compatibleParts } from '@/app/lib/builderData';
 import Link from 'next/link';
 
 const Cooler = ({ cooler }) => {
@@ -63,6 +63,10 @@ const Cooler = ({ cooler }) => {
       filteredData = filteredData.filter((item) =>
         filters.socket.some((socket) => item.cpu_socket.includes(socket))
       );
+    }
+
+    if (filters.compat && filters.compat.length > 0) {
+      filteredData = compatibleParts(filteredData, 'Cooler');
     }
 
     return filteredData;

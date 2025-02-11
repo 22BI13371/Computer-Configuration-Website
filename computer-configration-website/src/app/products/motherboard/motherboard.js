@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar'; // Import Sidebar component
 import Link from 'next/link';
-import { saveToLocalStorage } from '@/app/lib/builderData';
+import { saveToLocalStorage, compatibleParts } from '@/app/lib/builderData';
 import './motherboard.css';
 
 const Motherboard = ({ motherboard }) => {
@@ -16,7 +16,9 @@ const Motherboard = ({ motherboard }) => {
     if (newFilters.manufacturer && newFilters.manufacturer.length > 0) {
       filteredData = filteredData.filter((motherboard) =>
         newFilters.manufacturer.some((manufacturer) =>
-          motherboard.manufacturer.toLowerCase().includes(manufacturer.toLowerCase())
+          motherboard.manufacturer
+            .toLowerCase()
+            .includes(manufacturer.toLowerCase())
         )
       );
     }
@@ -33,6 +35,10 @@ const Motherboard = ({ motherboard }) => {
       filteredData = filteredData.filter((motherboard) =>
         newFilters.form_factor.includes(motherboard.specification.form_factor)
       );
+    }
+
+    if (newFilters.compat && newFilters.compat.length > 0) {
+      filteredData = compatibleParts(filteredData, 'Motherboard');
     }
 
     setMotherboardData(filteredData);

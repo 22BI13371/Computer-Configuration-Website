@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { motherboard } from "../../lib/placeholder_data"; // Import motherboard data
-import "./motherboard.css";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { motherboard } from '../../lib/placeholder_data'; // Import motherboard data
+import './motherboard.css';
 
 const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
   const [price, setPrice] = useState(500);
@@ -18,13 +18,15 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
   });
   const [formFactor, setFormFactor] = useState({
     all: true,
-    families: ["atx", "microatx"],  // Add more form factors if needed
+    families: ['atx', 'microatx'], // Add more form factors if needed
   });
 
   useEffect(() => {
     if (!motherboard || !Array.isArray(motherboard)) return;
-    
-    const uniqueChipsets = [...new Set(motherboard.map((item) => item.chipset))];
+
+    const uniqueChipsets = [
+      ...new Set(motherboard.map((item) => item.chipset)),
+    ];
     setChipset((prev) => ({
       ...prev,
       chipsets: uniqueChipsets.map((chip) => ({ name: chip, checked: false })),
@@ -39,10 +41,10 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
 
   const handleManufacturerChange = (key) => {
     const updatedManufacturer = { ...manufacturer };
-    if (key === "all") {
+    if (key === 'all') {
       updatedManufacturer.all = true;
       Object.keys(updatedManufacturer).forEach((k) => {
-        if (k !== "all") updatedManufacturer[k] = false;
+        if (k !== 'all') updatedManufacturer[k] = false;
       });
     } else {
       updatedManufacturer[key] = !updatedManufacturer[key];
@@ -53,7 +55,7 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
     setManufacturer(updatedManufacturer);
     onFilterChange({
       manufacturer: Object.keys(updatedManufacturer).filter(
-        (key) => updatedManufacturer[key] && key !== "all"
+        (key) => updatedManufacturer[key] && key !== 'all'
       ),
     });
   };
@@ -75,7 +77,7 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
   const handleFormFactorChange = (key) => {
     const updatedFormFactor = { ...formFactor };
 
-    if (key === "all") {
+    if (key === 'all') {
       updatedFormFactor.all = true;
       updatedFormFactor.families.forEach((family) => {
         updatedFormFactor[family] = false;
@@ -135,6 +137,25 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
         `}
       </style>
       <div className="filter-section">
+        <div className="filter-group">
+          <div className="filter-title">Compatibility Checker</div>
+          <input
+            type="checkbox"
+            id="compat-chec"
+            onChange={(e) => {
+              const checked = e.target.checked;
+
+              if (checked) {
+                onFilterChange({ compat: [1] });
+              }
+              if (!checked) {
+                onFilterChange({ compat: [] });
+              }
+            }}
+          />
+          <label htmlFor="manufacturer-all">On/Off</label>
+        </div>
+
         <div className="filter-header">Filters</div>
         {/* Price Filter */}
         <div className="filter-group">
@@ -171,7 +192,7 @@ const Sidebar = ({ onFilterChange, onMotherboardSelect }) => {
             type="checkbox"
             id="form_factor-all"
             checked={formFactor.all}
-            onChange={() => handleFormFactorChange("all")}
+            onChange={() => handleFormFactorChange('all')}
           />
           <label htmlFor="form_factor-all">All</label>
           {formFactor.families.map((key) => (
