@@ -95,6 +95,11 @@ export default function AdminPage() {
                             <td>{user.email}</td>
                             <td>{user.is_admin ? 'Yes' : 'No'}</td>
                             <td>
+                                {!user.is_admin && (
+                                    <button onClick={() => handleElevateUser(user.id)}>
+                                        Elevate to Admin
+                                    </button>
+                                )}
                                 <button onClick={() => handleUpdateUser(user)}>Edit</button>
                                 <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
                             </td>
@@ -132,23 +137,50 @@ export default function AdminPage() {
         </div>
     );
 
+    async function handleElevateUser(userId) {
+        try {
+            const token = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('auth-token='))
+                ?.split('=')[1];
+
+            const response = await fetch('/api/admin/users', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ id: userId, isAdmin: true }),
+            });
+
+            if (response.ok) {
+                // Update the UI to reflect the user's new admin status
+                setUsers(prevUsers =>
+                    prevUsers.map(user =>
+                        user.id === userId ? { ...user, is_admin: true } : user
+                    )
+                );
+            } else {
+                console.error('Failed to elevate user permissions.');
+            }
+        } catch (error) {
+            console.error('Error elevating user permissions:', error);
+        }
+    }
+
     function handleUpdateUser(user) {
         console.log('Update user:', user);
-        // TODO: Implement user update logic (show form)
     }
 
     function handleDeleteUser(userId) {
         console.log('Delete user with ID:', userId);
-        // TODO: Implement user deletion logic
     }
 
     function handleUpdatePost(post) {
         console.log('Update post:', post);
-        // TODO: Implement post update logic (show form)
     }
 
     function handleDeletePost(postId) {
         console.log('Delete post with ID:', postId);
-        // TODO: Implement post deletion logic
     }
 }

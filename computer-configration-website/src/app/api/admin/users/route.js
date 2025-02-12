@@ -25,3 +25,21 @@ export async function DELETE(request) {
         return new NextResponse('Error deleting user', { status: 500 });
     }
 }
+
+export async function PATCH(request) {
+    try {
+        const { id, isAdmin } = await request.json();
+
+        // Update the user's admin status
+        await sql`
+            UPDATE users
+            SET is_admin = ${isAdmin}
+            WHERE id = ${id}
+        `;
+
+        return new NextResponse('User updated successfully', { status: 200 });
+    } catch (error) {
+        console.error('Error updating user:', error);
+        return new NextResponse('Error updating user', { status: 500 });
+    }
+}
