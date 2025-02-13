@@ -125,6 +125,15 @@ body {
     transition: background-color 0.3s;
 }
 
+.footer {
+    background-color: #1f2937; /* Same dark color as header */
+    color: #ffffff;
+    text-align: center;
+    padding: 1px;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     #builder-container {

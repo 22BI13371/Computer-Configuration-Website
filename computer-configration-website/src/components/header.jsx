@@ -58,7 +58,7 @@ const Header = () => {
                         <Dropbox className="nav-item"></Dropbox>
                         <a href="/complete_build" className="nav-item">Complete Builds</a>
                         <a href="/forums" className="nav-item">Forum</a>
-                        <a href="#" className="nav-item">Contact</a>
+                        {/* <a href="#" className="nav-item">Contact</a> */}
                     </div>
                     <div className="nav-buttons">
                         {!isLoggedIn ? (

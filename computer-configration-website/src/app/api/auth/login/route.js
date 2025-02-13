@@ -69,7 +69,7 @@ export async function POST(req) {
         console.log('JWT Payload:', payload);
 
         // Generate a JWT token
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '24h' });
 
         // Debug: Log the generated token (optional)
         console.log('Generated JWT Token:', token);
