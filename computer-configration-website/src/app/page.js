@@ -1,4 +1,5 @@
-'use client';
+"use client";
+
 import Link from 'next/link';
 import '@/styles/header.css';
 import { useRouter } from 'next/navigation';
@@ -16,14 +17,14 @@ export default function Home() {
           Compare and Share.
         </h1>
         <p>
-          We provide part selection, pricing, and compatibility guidance for
+          We provide part selection, pricing and compatibility guidance for
           do-it-yourself computer builders.
         </p>
         <button className="btn-primary" onClick={() => router.push('/builder')}>
           Start your build
         </button>
       </section>
-      <section className="complete-builds">
+      {/* <section className="complete-builds">
         <div className="builds-text">
           <h2>Complete builds</h2>
           <p>
@@ -100,7 +101,7 @@ export default function Home() {
             <button className="btn-primary">Choose components</button>
           </Link>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

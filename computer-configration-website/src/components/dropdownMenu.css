@@ -18,6 +18,11 @@
     padding: 1rem;
 }
 
+.dropdown-content a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .product-card {
     border: 2px solid #ccc; /* Border for each item */
     border-radius: 5px; /* Rounded corners */

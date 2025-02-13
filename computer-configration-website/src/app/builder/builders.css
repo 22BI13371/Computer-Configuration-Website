@@ -19,7 +19,7 @@ body {
 #builder-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 10px 30px;
     font-family: "Roboto Thin", sans-serif;
 }
 
@@ -35,6 +35,12 @@ body {
     letter-spacing: 0.3px;
     padding: 20px;
     margin-bottom: 30px; /* Space between header and tab buttons */
+    border-radius: 10px;
+}
+
+#header h1 {
+    margin: 0;
+    color: var(--text-color);
 }
 
 #tab-container {
@@ -49,14 +55,12 @@ body {
     color: black;
     border: none;
     padding: 15px 25px; /* Added larger padding for better spacing */
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-
 
 #parts-table {
     width: 100%;
@@ -85,12 +89,10 @@ body {
     color: black;
     border: none;
     padding: 8px 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-
 
 #peripherals-row {
     display: flex;
@@ -99,10 +101,10 @@ body {
 }
 
 .peripheral-item {
-    background-color: var(--border-color);
-    color: var(--text-color);
+    background-color: var(--primary-color);
+    color: black;
     padding: 5px 10px;
-    border-radius: 3px;
+    border-radius: 10px;
     margin: 10px;
 }
 
@@ -117,12 +119,20 @@ body {
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     margin: 0 10px;
     transition: background-color 0.3s;
 }
 
+.footer {
+    background-color: #1f2937; /* Same dark color as header */
+    color: #ffffff;
+    text-align: center;
+    padding: 1px;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -145,5 +155,34 @@ body {
 
     #action-buttons button {
         margin: 10px 0;
+    }
+}
+
+/* PRINT STYLES */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+        font-family: Arial, sans-serif;
+    }
+
+    #builder-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    #header {
+        text-align: center;
+        font-size: 24px;
+        background: none;
+        color: black;
+    } 
+    
+    #parts-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ccc;
     }
 }

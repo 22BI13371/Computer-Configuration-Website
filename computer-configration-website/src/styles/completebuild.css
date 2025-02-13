@@ -99,6 +99,11 @@ body {
     padding-left: 1rem;
 }
 
+.sub_side .btn {
+    background-color: #1abc9c;
+    border: none;
+}
+
 .sub_main {
     align-items: center;
 }
