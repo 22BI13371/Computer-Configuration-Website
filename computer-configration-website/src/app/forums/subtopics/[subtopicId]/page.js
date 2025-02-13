@@ -5,28 +5,25 @@ import Link from "next/link";
 import styles from "./subtopic.module.css";
 
 export default function SubtopicPage() {
-  const params = useParams();
-  const { subtopicId } = params;
+  const { subtopicId } = useParams();
 
-  // Example data structure for posts under a subtopic
   const subtopics = {
     "part-list-options": {
       title: "Part List Options Wanted",
       posts: [
-        { id: "1", title: "Best GPU for gaming" },
-        { id: "2", title: "Affordable CPU suggestions" },
-        { id: "3", title: "Choosing the right PSU" },
+        { id: "1", title: "Best GPU for gaming", lastUpdated: "1 hour ago" },
+        { id: "2", title: "Affordable CPU suggestions", lastUpdated: "2 hours ago" },
+        { id: "3", title: "Choosing the right PSU", lastUpdated: "5 hours ago" },
       ],
     },
     "build-a-pc": {
       title: "Build a PC for Me",
       posts: [
-        { id: "4", title: "Budget PC under $500" },
-        { id: "5", title: "Mid-range build guide" },
-        { id: "6", title: "High-end PC suggestions" },
+        { id: "4", title: "Budget PC under $500", lastUpdated: "3 days ago" },
+        { id: "5", title: "Mid-range build guide", lastUpdated: "1 week ago" },
+        { id: "6", title: "High-end PC suggestions", lastUpdated: "2 weeks ago" },
       ],
     },
-    // Add more subtopics as needed
   };
 
   const subtopic = subtopics[subtopicId];
@@ -36,7 +33,7 @@ export default function SubtopicPage() {
   }
 
   return (
-    <div className="forum-container">
+    <div className="forums-container">
       {/* Header Bar */}
       <div className="forum-header-bar">
         <div className="header-wrap">
@@ -51,22 +48,46 @@ export default function SubtopicPage() {
           </div>
         </div>
       </div>
-      {/* Subtopic Content */}
-      <div className={styles.subtopicContainer}>
-        {/* Header */}
-        <h1 className={styles.subtopicTitle}>{subtopic.title}</h1>
-        {/* Post List */}
-        <ul className={styles.postList}>
-          {subtopic.posts.map((post) => (
-            <li key={post.id} className={styles.postItem}>
-              <Link href={`/forums/posts/${post.id}`} className={styles.postLink}>
-                {post.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+
+      {/* Page Content */}
+      <div className="content-container">
+        <div>
+          <div className="title-wrap">
+            <h1 className="title">{subtopic.title}</h1>
+          </div>
+          <p className="subtitle">Threads</p>
+        </div>
+
+        {/* Table-like Layout */}
+        <div className="table">
+          <div className="row header-row">
+            <div className="left-column">Thread Title</div>
+            <div className="right-column">Last Updated</div>
+          </div>
+
+          {subtopic.posts.length > 0 ? (
+            subtopic.posts.map((post, index) => (
+              <div className="row" key={index}>
+                {/* Link to Post */}
+                <div className="left-column">
+                  <Link href={`/forums/posts/${post.id}`} legacyBehavior>
+                    {post.title}
+                  </Link>
+                </div>
+
+                {/* Last Updated (Placeholder for metadata) */}
+                <div className="right-column">
+                  {post.lastUpdated}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="row">
+              <div className="left-column">No posts yet.</div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-  
 }
